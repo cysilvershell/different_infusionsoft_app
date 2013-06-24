@@ -5,7 +5,19 @@
     "email": "support@zendesk.com"
   },
   "defaultLocale": "en",
-  "private": true,
-  "location": "ticket_sidebar",
-  "frameworkVersion": "0.5"
+  "private": false,
+  "location": ["ticket_sidebar","new_ticket_sidebar"],
+  "frameworkVersion": "0.5",
+  "parameters": [
+    {
+      "name": "subdomain",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "token",
+      "type": "text",
+      "required": true
+    }
+  ]
 }
