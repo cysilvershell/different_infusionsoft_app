@@ -1,0 +1,5 @@
+<div class="error">
+  <h4>{{title}}</h4>
+  <p>{{message}}</p>
+  <a href="#" class="back">&lt;&lt; {{t "global.back"}}</a>
+</div>

@@ -1,0 +1,20 @@
+<methodCall>
+  <methodName>ContactService.findByEmail</methodName>
+  <params>
+    <param>
+      <value><string>7f5e9a7a664acc2cbc00b6fa791c2569</string></value>
+    </param>
+    <param>
+      <value><string>there_he_go@itsjohndoe.com</string></value>
+    </param>
+    <param>
+      <value><array>
+        <data>
+          <value><string>Id</string></value>
+          <value><string>FirstName</string></value>
+          <value><string>LastName</string></value>
+        </data>
+      </array></value>
+    </param>
+  </params>
+</methodCall>

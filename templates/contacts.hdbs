@@ -1,0 +1,18 @@
+{{#each contacts}}
+<div class="contact well">
+  <h4><a href="">{{fullName}}<span class="type">{contact}</span></a></h4>
+  <section class="general">
+    <h5><a href="">General information</a></h5>
+  </section>
+  <section class="billing">
+    <h5><a href="">Billing address</a></h5>
+  </section>
+  <section class="tags">
+    <h5><a href="">Tags</a></h5>
+  </section>
+  <section class="orders">
+    <h5><a href="">Orders &amp; Subscriptions</a></h5>
+  </section>
+  <a href="" class="more"></a>
+</div>
+{{/each}}
