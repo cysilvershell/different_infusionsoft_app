@@ -2,9 +2,13 @@
   <span class="logo"/>
   <h3>{{setting "name"}}</h3>
 </header>
-<section data-main/>
-<footer>
-  <a href="mailto:{{author.email}}">
-    {{author.name}}
-  </a>
-</footer>
+<section class="search">
+  <div class="input-append">
+    <input class="search-input" placeholder="Search by name or email" type="text">
+    <button class="btn search-button" type="button">
+      <span class="icon-search"></span>
+    </button>
+  </div>
+  <hr>
+</section>
+<section class="main" data-main/>
