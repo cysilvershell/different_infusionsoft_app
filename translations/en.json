@@ -16,6 +16,9 @@
   "search": {
     "results": {
       "invalid": "Please enter the contacts name or email"
+    },
+    "contact": {
+      "edit": "Click to edit this contact"
     }
   }
 }
