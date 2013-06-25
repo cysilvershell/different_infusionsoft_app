@@ -2,34 +2,22 @@
 (function() {
 
   // Constants
-  var API_CONTACT_FIELDS  = [ 'Id', 'FirstName', 'LastName' ],
-      API_URL             = 'https://%@.infusionsoft.com/api/xmlrpc',
-      EMAIL_REGEX         = '';
-
-  // Models
-  var Contact = function() {
-  };
-
-  Contact.prototype.fullName = function() {
-    return '%@ %@'.fmt(this.firstName, this.lastName);
-  };
-
-  Contact.prototype.parse = function() {
-
-  };
+  var API_CONTACT_NAME_FIELDS    = [ 'FirstName', 'LastName' ],
+      API_CONTACT_DETAIL_FIELDS  = API_CONTACT_NAME_FIELDS.concat([ 'Company', 'DateCreated', 'Email', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ]),
+      API_URL                    = 'https://%@.infusionsoft.com/api/xmlrpc',
+      EMAIL_REGEX                = '';
 
   return {
     defaultState: 'loading',
     events: {
       'app.activated'             : 'init',
       'click .search-button'      : 'onSearch',
-      'getContactsByEmail.done'   : 'loadContactResults', // 200 returned on API error
-      'getContactsByEmail.fail'   : 'loadContactResults',
-      'keypress .search-input'    : 'onSearch'
+      'click .contact h5'         : 'toggleContactSection',
+      'getContacts.always'        : 'loadContactResults', // 200 returned on API error
+      // 'keypress .search-input'    : 'onSearch'
     },
-    requests: { // TODO: Would be better to call directly
-      'getContactsByEmail'        : function(request) { return this.getRequest(request); },
-      'getContactsByName'         : function(request) { return this.getRequest(request); }
+    requests: {
+      'getContacts'               : function(request) { return this.getRequest(request); },
     },
 
     // Initialization
@@ -38,13 +26,19 @@
         return;
       }
 
-      // Perform default search
-      this.getContacts(this.ticket().requester().email());
+      // Perform default search-input
+      this.getContacts('kiran@zendesk.com');//this.ticket().requester().email());
     },
 
     // Events
     onSearch: function(e) {
-      this.getContacts(this.$().find('search-input').val());
+      var $input = this.$().find('.search-input'),
+          query  = $input.val();
+
+      if (!_.isEmpty(query)) {
+        this.switchTo('loading');
+        this.getContacts(query); 
+      }
     },
 
     // Methods
@@ -55,49 +49,46 @@
       return this.getContactsByName(query);
     },
 
+    getContactById: function(id) {
+      return this.ajax('getContacts', this.getRequestXml('ContactService.load', id, API_CONTACT_NAME_FIELDS));
+    },
+
     getContactsByEmail: function(email) {
-      return this.ajax('getContactsByEmail', this.getRequestXml('ContactService.findByEmail', this.settings.token, email) );
+      return this.ajax('getContacts', this.getRequestXml('ContactService.findByEmail', email, API_CONTACT_DETAIL_FIELDS));
     },
 
     getContactsByName: function(name) {
-      return this.ajax('getContactsByName', this.getRequestXml('SearchService.quickSearch', this.settings.token, name));
+      return this.ajax('getContacts', this.getRequestXml('SearchService.quickSearch', name));
     },
 
     getRequest: function(data) {
-      // debugger;
       return {
         contentType : 'application/xml',
-        cors        : false,
         data        : data,
-        dataType    : 'text',
-        'proxy_v2'  : false ,
+        dataType    : 'xml',
+        proxy_v2    : true,
         type        : 'POST',
         url         : API_URL.fmt(this.settings.subdomain)
       };
     },
 
-    getRequestXml: function(serviceName) {
-      var args    = Array.prototype.slice.call(arguments, 1),
-          params  = args.map(function(param) {
-            return {
-              type  : _.isArray(param) ? 'array': typeof(param),
-              value : param
-            };
-          }),
-          templateData = {
-            name    : serviceName,
-            params  : params
-          };
-
+    getRequestXml: function(serviceName, query, select) {
+      var templateData = {
+        name    : serviceName,
+        query   : query,
+        select  : select,
+        token   : this.settings.token
+      };
       return this.renderTemplate('request', templateData);
     },
 
-    gotoContacts: function() {
-      var contacts = [];
-      contacts.push(new Contact());
-      contacts.push(new Contact());
-      contacts.push(new Contact());
-      this.switchTo('contacts', contacts);
+    gotoContacts: function(contacts) {
+      var templateData = {
+        contacts  : contacts,
+        matches   : contacts.length,
+        subdomain : this.settings.subdomain
+      };
+      this.switchTo('contacts', templateData);
     },
 
     gotoError: function(message, title) {
@@ -111,48 +102,51 @@
 
     loadContactResults: function(response, state) {
       var $contacts, $fault, $faultString, $response;
-
       if (response && state === 'success' && ($response = this.$(response))) {
 
-        $fault = $response.find('fault');
-
         // Check for faults
-        if ($fault) {
+        $fault = $response.find('fault');
+        if ($fault.length > 0) {
           $faultString = $fault.find('name:contains("faultString")').next();
           return this.gotoError($faultString.text());
         }
 
-        var contacts = [
-          new Contact(),
-          new Contact(),
-          new Contact(),
-          new Contact()
-        ];//this.parseContacts($response.find('struct'));
-        if (!_.isEmpty(contacts)) {
-          this.switchTo('contacts', contacts);
-        } else {
-          this.gotoError('No matching contacts');
-        }
+        // Otherwise attempt to load contacts
+        var contacts = this.parseContacts($response);
+        this.gotoContacts(contacts);
       } else {
-        this.showError('SOMETHING WENT WRONG!!');
+        this.gotoError('SOMETHING WENT WRONG!!');
       }
     },
 
-    parseContacts: function($nodes) {
-      var contacts = [];
-      if ($nodes) {
-        contacts = $nodes.map(function(index, node) {
-          var contact = {},
-            $node     = $(node);
+    parseContacts: function($response, fields) {
+      var contacts = [],
+          $nodes;
 
-          _.each(API_CONTACT_FIELDS, function(field) {
-            contact[field] = $node.find('name:contains("' + field + '")').next();
+      if ($response && ($nodes = $response.find('struct'))) {
+        fields   = fields || API_CONTACT_DETAIL_FIELDS,
+        contacts = $nodes.get().map(function(node) {
+          var contact = {};
+          _.each(fields, function(field) {
+            contact[field] = this.$(node).find('name:contains("' + field + '")').next().text(); // NOTE: Should we camelCase this keys?
           });
 
+          // Get the contact owner
+          
           return contact;
-        });
+        }.bind(this));
       }
       return contacts;
+    },
+
+    toggleContactSection: function(e) {
+      var $heading  = this.$(e.currentTarget),
+          $contact  = $heading.parents('.contact'),
+          $section  = $heading.parent(),
+          $sections = $contact.find('section').not($section);
+
+      $section.addClass('active');
+      $sections.removeClass('active');
     }
   };
 
