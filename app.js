@@ -2,17 +2,19 @@
 (function() {
 
   // Constants
-  var API_CONTACT_NAME_FIELDS    = [ 'FirstName', 'LastName' ],
-      API_CONTACT_DETAIL_FIELDS  = API_CONTACT_NAME_FIELDS.concat([ 'Company', 'DateCreated', 'Email', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ]),
-      API_URL                    = 'https://%@.infusionsoft.com/api/xmlrpc',
-      EMAIL_REGEX                = '';
+  var API_CONTACT_NAME_FIELDS     = [ 'FirstName', 'LastName' ],
+      API_CONTACT_ADDRESS_FIELDS  = [ 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country' ],
+      API_CONTACT_DETAIL_FIELDS   = API_CONTACT_NAME_FIELDS.concat(API_CONTACT_ADDRESS_FIELDS, [ 'Address1Type',  'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ]),
+      API_URL                     = 'https://%@.infusionsoft.com/api/xmlrpc',
+      EMAIL_REGEX                 = '';
 
   return {
     defaultState: 'loading',
     events: {
       'app.activated'             : 'init',
-      'click .search-button'      : 'onSearch',
+      'click .contact-toggle'     : 'toggleContact',
       'click .contact h5'         : 'toggleContactSection',
+      'click .search-button'      : 'onSearch',
       'getContacts.always'        : 'loadContactResults', // 200 returned on API error
       // 'keypress .search-input'    : 'onSearch'
     },
@@ -37,7 +39,7 @@
 
       if (!_.isEmpty(query)) {
         this.switchTo('loading');
-        this.getContacts(query); 
+        this.getContacts(query);
       }
     },
 
@@ -137,6 +139,15 @@
         }.bind(this));
       }
       return contacts;
+    },
+
+    toggleContact: function(e) {
+      var $toggle   = this.$(e.currentTarget),
+          $icon     = $toggle.find('i'),
+          $contact  = $toggle.parents('.contact').toggleClass('inactive'),
+          isActive  = $contact.hasClass('inactive');
+
+      $icon.prop('class', '').addClass( isActive ? 'icon-chevron-down' : 'icon-chevron-up' );
     },
 
     toggleContactSection: function(e) {

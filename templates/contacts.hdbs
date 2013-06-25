@@ -1,6 +1,7 @@
 <p class="lead">{{matches}} matching contact(s)</p>
 {{#each contacts}}
 <div class="contact well">
+  <a class="contact-toggle" title="Toggle"><i class="icon-chevron-up"></i></a>
   <h4><a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" target="_blank" title='{{t "search.contact.edit"}}'>{{FirstName}} {{LastName}} <span class="type">(contact)</span></a></h4>
   <section class="active general">
     <h5>General information</h5>
@@ -48,18 +49,38 @@
       {{/if}}
     </div>
   </section>
+
+  {{#if StreetAddress1}}
   <section class="billing">
     <h5>Billing address</h5>
-    <div class="fields"></div>
+    <div class="fields">
+      <div class="field">
+        <address>
+          {{StreetAddress1}}<br>
+          {{#if StreetAddress2}}{{StreetAddress2}}<br>{{/if}}
+          {{City}},&nbsp;{{PostalCode}},&nbsp;{{State}}<br>
+          {{Country}}
+        </address>
+      </div>
+    </div>
   </section>
+  {{/if}}
+
+  {{#if Groups}}
   <section class="tags">
     <h5>Tags</h5>
-    <div class="fields"></div>
+    <div class="fields">
+      {{Groups}}
+    </div>
   </section>
+  {{/if}}
+
   <section class="orders">
     <h5>Orders &amp; Subscriptions</h5>
     <div class="fields"></div>
   </section>
-  <a href="" class="more"></a>
+  <p class="clearfix">
+    <a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" class="more pull-right" target="_blank" title='{{t "search.contact.edit"}}'>See more</a>
+  </p>
 </div>
 {{/each}}
