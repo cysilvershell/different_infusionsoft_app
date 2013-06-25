@@ -1,0 +1,31 @@
+.search-input {
+
+}
+
+/* Contact details */
+.contact {
+  margin-bottom: 20px;
+}
+.contact h4 {
+  margin-bottom: 10px;
+}
+.contact h5 {
+  color: #1a74b0;
+}
+.contact h5:hover {
+  color: #10486d;
+  cursor: pointer;
+}
+.contact .fields {
+  display: none;
+  margin: 0 0 20px;
+}
+.contact .active .fields {
+  display: block;
+}
+.field {
+  margin-bottom: 10px;
+}
+.field label {
+  font-weight: bold;
+}
