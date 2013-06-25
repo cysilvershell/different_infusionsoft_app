@@ -1,17 +1,64 @@
+<p class="lead">{{matches}} matching contact(s)</p>
 {{#each contacts}}
 <div class="contact well">
-  <h4><a href="">{{fullName}}<span class="type">{contact}</span></a></h4>
-  <section class="general">
-    <h5><a href="">General information</a></h5>
+  <h4><a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" target="_blank" title='{{t "search.contact.edit"}}'>{{FirstName}} {{LastName}} <span class="type">(contact)</span></a></h4>
+  <section class="active general">
+    <h5>General information</h5>
+    <div class="fields">
+      {{#if Email}}
+      <div class="field">
+        <label>Email</label>
+        <p>{{Email}}</p> 
+      </div>
+      {{/if}}
+      {{#if Company}}
+      <div class="field">
+        <label>Company</label>
+        <p>{{Company}}</p>
+      </div>
+      {{/if}}
+      {{#if JobTitle}}
+      <div class="field">
+        <label>Job title</label>
+        <p>{{JobTitle}}</p>
+      </div>
+      {{/if}}
+      {{#if Leadsource}}
+      <div class="field">
+        <label>Lead source</label>
+        <p>{{Leadsource}}</p>
+      </div>
+      {{/if}}
+      {{#if Owner}}
+      <div class="field">
+        <label>Owner</label>
+        <p>{{Owner.FirstName}} {{Owner.LastName}}</p>
+      </div>
+      {{/if}}
+      {{#if Phone1}}
+      <div class="field">
+        <label>Phone 1</label>
+        <p>{{Phone1}}</p>
+      </div>{{/if}}
+      {{#if DateCreated}}
+      <div class="field">
+        <label>Contact created date</label>
+        <p>{{DateCreated}}</p>
+      </div>
+      {{/if}}
+    </div>
   </section>
   <section class="billing">
-    <h5><a href="">Billing address</a></h5>
+    <h5>Billing address</h5>
+    <div class="fields"></div>
   </section>
   <section class="tags">
-    <h5><a href="">Tags</a></h5>
+    <h5>Tags</h5>
+    <div class="fields"></div>
   </section>
   <section class="orders">
-    <h5><a href="">Orders &amp; Subscriptions</a></h5>
+    <h5>Orders &amp; Subscriptions</h5>
+    <div class="fields"></div>
   </section>
   <a href="" class="more"></a>
 </div>
