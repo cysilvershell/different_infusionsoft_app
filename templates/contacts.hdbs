@@ -1,11 +1,10 @@
-<p class="lead">{{matches}} matching contact(s)</p>
 {{#each contacts}}
 <div class="contact well">
   <a class="contact-toggle" title="Toggle"><i class="icon-chevron-up"></i></a>
   <h4><a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" target="_blank" title='{{t "search.contact.edit"}}'>{{FirstName}} {{LastName}} <span class="type">(contact)</span></a></h4>
   <section class="active general">
     <h5>General information</h5>
-    <div class="fields">
+    <div class="content">
       {{#if Email}}
       <div class="field">
         <label>Email</label>
@@ -53,7 +52,7 @@
   {{#if StreetAddress1}}
   <section class="billing">
     <h5>Billing address</h5>
-    <div class="fields">
+    <div class="content">
       <div class="field">
         <address>
           {{StreetAddress1}}<br>
@@ -66,21 +65,23 @@
   </section>
   {{/if}}
 
-  {{#if Groups}}
   <section class="tags">
     <h5>Tags</h5>
-    <div class="fields">
-      {{Groups}}
+    <div class="content"></div>
+  </section>
+
+  <section class="orders-subscriptions">
+    <h5>Orders &amp; Subscriptions</h5>
+    <div class="content">
+      <h6>Orders</h6>
+      <div class="orders"></div>
+
+      <h6>Subscriptions</h6>
+      <div class="subscriptions"></div>
     </div>
   </section>
-  {{/if}}
-
-  <section class="orders">
-    <h5>Orders &amp; Subscriptions</h5>
-    <div class="fields"></div>
-  </section>
-  <p class="clearfix">
-    <a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" class="more pull-right" target="_blank" title='{{t "search.contact.edit"}}'>See more</a>
-  </p>
 </div>
 {{/each}}
+
+<p><a href="https://{{subdomain}}.infusionsoft.com/app/nav/link?navSystem=nav.crm&amp;navModule=contact&amp;navLink=search-contact" class="more pull-right" target="_blank">See more</a></p>
+

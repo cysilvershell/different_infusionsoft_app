@@ -4,15 +4,14 @@
     "name": "Buddha Machine"
   },
 
-  "error": {
+  "message": {
+    "back": "Back",
     "default": {
-      "title": "Error",
-      "message": "An error occured"
+      "title": "An error has occured",
+      "message": "There was an error loading contact data. Please try again later."
     }
   },
-  "global": {
-    "back": "Back"
-  },
+
   "search": {
     "results": {
       "invalid": "Please enter the contacts name or email"

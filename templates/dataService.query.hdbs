@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<methodCall>
+  <methodName>DataService.query</methodName>
+  <params>
+    <param>
+      <value><string>{{privateKey}}</string></value>
+    </param>
+    <param>
+      <value><string>{{tableName}}</string></value>
+    </param>
+    <param>
+      <value><int>{{limit}}</int></value>
+    </param>
+    <param>
+      <value><int>{{page}}</int></value>
+    </param>
+    <param>
+      <value><struct>
+        <member><name>queryField</name>
+          <value><string>query</string></value>
+        </member>
+      </struct></value>
+    </param>
+    <param>
+      <value><array>
+        <data>
+          <value><string>returnField1</string></value>
+          <value><string>returnField2</string></value>
+        </data>
+      </array></value>
+    </param>
+  </params>
+</methodCall>

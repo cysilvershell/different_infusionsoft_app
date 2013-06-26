@@ -1,6 +1,19 @@
-.search-input {
-
+header {
+  position: relative;
 }
+  header .goto-search {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+.search {}
+  .search .input-append {
+    margin: 0;
+  }
+  .search-input {
+    width: 270px;
+  }
 
 /* Contact details */
 .contact {
@@ -17,16 +30,17 @@
 }
 .contact h5 {
   color: #1a74b0;
+  margin-bottom: 5px;
 }
-.contact h5:hover {
+.contact .active h5, .contact h5:hover {
   color: #10486d;
   cursor: pointer;
 }
-.contact .fields {
+.contact .content {
   display: none;
   margin: 5px 0 20px;
 }
-.contact .active .fields {
+.contact .active .content {
   display: block;
 }
 .field {
@@ -41,4 +55,64 @@
 }
 .contact.inactive h4 {
   margin: 0;
+}
+
+.message p {
+  margin-bottom: 10px;
+}
+
+
+
+.centered {
+  text-align: center;
+}
+
+.btn {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.input-append {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.input-append input {
+  font-size: 12px;
+}
+.input-append input {
+  position: relative;
+  margin-bottom: 0;
+  *margin-left: 0;
+  vertical-align: top;
+  -webkit-border-radius: 0 4px 4px 0;
+     -moz-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
+}
+.input-append input:focus {
+  z-index: 2;
+}
+.input-append .btn {
+  vertical-align: top;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+.input-append .active {
+  background-color: #a9dba9;
+  border-color: #46a546;
+}
+.input-append input {
+  -webkit-border-radius: 4px 0 0 4px;
+     -moz-border-radius: 4px 0 0 4px;
+          border-radius: 4px 0 0 4px;
+}
+.input-append .btn {
+  margin-left: -1px;
+}
+.input-append .btn:last-child {
+  -webkit-border-radius: 0 4px 4px 0;
+     -moz-border-radius: 0 4px 4px 0;
+          border-radius: 0 4px 4px 0;
 }

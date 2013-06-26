@@ -1,0 +1,23 @@
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+      <th>Next bill date</th>
+      <th>Plan</th>
+      <th>Bill amt.</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each Subscriptions}}
+    <tr>
+      <td></td>
+      <td>Nurture Category</td>
+      <td>01/06/2013</td>
+      <td><span class="label label-inverse">Default</span></td>
+    </tr>
+    {{/each}}
+    {{#unless Subscriptions}}
+    <tr><td class="centered" colspan="4">No subscriptions found</td></tr>
+    {{/unless}}
+  </tbody>
+</table>
