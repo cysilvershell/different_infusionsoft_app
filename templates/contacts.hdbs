@@ -1,5 +1,5 @@
 {{#each contacts}}
-<div class="contact well">
+<div class="contact well" data-contact="{{Id}}">
   <a class="contact-toggle" title="Toggle"><i class="icon-chevron-up"></i></a>
   <h4><a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" target="_blank" title='{{t "search.contact.edit"}}'>{{FirstName}} {{LastName}} <span class="type">(contact)</span></a></h4>
   <section class="active general">
@@ -65,19 +65,19 @@
   </section>
   {{/if}}
 
-  <section class="tags">
+  <section class="groups">
     <h5>Tags</h5>
-    <div class="content"></div>
+    <div class="content">Loading...</div>
   </section>
 
   <section class="orders-subscriptions">
     <h5>Orders &amp; Subscriptions</h5>
     <div class="content">
       <h6>Orders</h6>
-      <div class="orders"></div>
+      <div class="orders">Loading...</div>
 
       <h6>Subscriptions</h6>
-      <div class="subscriptions"></div>
+      <div class="subscriptions">Loading...</div>
     </div>
   </section>
 </div>
