@@ -1,18 +1,9 @@
-/*globals console, debugger */
 (function() {
-
-  // Constants
-  var API_CONTACT_NAME_FIELDS     = [ 'FirstName', 'LastName' ],
-      API_CONTACT_ADDRESS_FIELDS  = [ 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country' ],
-      API_CONTACT_DETAIL_FIELDS   = API_CONTACT_NAME_FIELDS.concat(API_CONTACT_ADDRESS_FIELDS, [ 'Address1Type',  'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ]),
-      API_MAX_RESULTS             = 5,
-      EMAIL_REGEX                 = '';
 
   return {
     data: {},
     events: {
       'app.activated'                   : 'init',
-      // 'click .back'                     : 'gotoContacts',
       'click .contact-toggle'           : 'toggleContact',
       'click .contact h5'               : 'toggleContactSection',
       'click .groups h5'                : 'getGroupsForContact',
@@ -20,7 +11,6 @@
       'click .goto-search'              : 'gotoSearch',
       'click .search-button'            : 'onSearch',
       'ticket.requester.email.changed'  : 'onSearch'
-      // 'keypress .search-input'    : 'onSearch'
     },
     requests: {
       'get' : function(request) { return request; }
@@ -39,94 +29,6 @@
       this.gotoLoading();
       this.getContactGroups();
     },
-
-    // createService: function() {
-    //   var app           = this,
-    //       serviceData   = {
-    //         privateKey: app.settings.token
-    //       };
-
-    //   return {
-    //     app: app,
-    //     createRequest: function(template) {
-    //       return {
-    //         contentType : 'application/xml',
-    //         data        : template,
-    //         dataType    : 'xml',
-    //         proxy_v2    : true,
-    //         type        : 'POST',
-    //         url         : API_URL.fmt(app.settings.subdomain)
-    //       };
-    //     },
-    //     createTemplate: function(name, data) {
-    //       return app.renderTemplate(name, _.extend(serviceData, data));
-    //     },
-    //     sendRequest: function(name, data) {
-    //       var template  = this.createTemplate(name, data),
-    //           request   = this.createRequest(template);
-
-    //       return this.app.promise(function(done, fail) {
-    //         app.ajax('get', request).then(function(response) {
-    //           done(response, data),
-    //           fail.bind(fail)
-    //         });
-    //       });
-    //     },
-    //     validateResponse: function(xml) {
-    //       var message   = '',
-    //           valid     = false,
-    //           $fault,
-    //           $xml;
-
-    //       if (xml && ($xml = app.$(xml))) {
-    //         $fault  = $xml.find('fault');
-    //         if ($fault.length > 0) {
-    //           message = $fault.find('name:contains("faultString")').next().text();
-    //         } else {
-    //           valid = true;
-    //         }
-    //       }
-
-    //       return {
-    //         $xml    : $xml,
-    //         message : message,
-    //         valid   : valid
-    //       };
-    //     },
-    //   };
-    // },
-
-    // createContactService: function() {
-    //   return _.extend(this.createService(), {
-    //     name: 'ContactService',
-    //     findByEmail: function(email) {
-    //       var response = this.sendRequest('contactService.findByEmail', {
-    //         email:  email,
-    //         fields: API_CONTACT_DETAIL_FIELDS
-    //       });
-
-    //       return response;
-    //     },
-    //     parseContacts: function() {
-    //       var validate = this.validateResponse.apply(this, arguments),
-    //           contacts = [],
-    //           $nodes;
-
-    //       if (validate.valid && validate.$response && ($nodes = validate.$response.find('struct'))) {
-    //         contacts = $nodes.get().map(function(node) {
-    //           var contact = {};
-    //           _.each(API_CONTACT_DETAIL_FIELDS, function(field) {
-    //             contact[field] = this.$(node).find('name:contains("' + field + '")').next().text(); // NOTE: Should we camelCase this keys?
-    //           });
-
-    //           return contact;
-    //         }.bind(this));
-    //       }
-
-    //       return contacts;
-    //     }
-    //   });
-    // },
 
     createDataService: function() {
       var app         = this,
@@ -225,57 +127,6 @@
           };
         }
       };
-//       return _.extend(this.createService(), {
-//         name: 'DataService',
-//         load: function(table, fields, id) {
-//           return this.sendRequest('dataService.load', {
-//             fields  : fields,
-//             id      : id,
-//             table   : table
-//           });
-//         },
-//         query: function(table, fields, query, limit, page) {
-//           var request = this.sendRequest('dataService.query', {
-//             limit   : limit   || 1000,
-//             page    : page    || 0,
-//             query   : query   || '',
-//             fields  : fields,
-//             table   : table
-//           });
-
-//           return this.app.promise(function(done, fail) {
-//             request.then(function(xml, data) {
-//               console.log(a,b,c,d);
-//             });
-//           });
-// // return this.app.promise(function(done, fail) {
-// //             app.ajax('get', request).then(function(response, state) {
-// //               done(response, state, data),
-// //               fail.bind(fail)
-// //             });
-// //           });
-//           return request;
-//         },
-//         parseResponse: function(response, state) {
-//           var validate  = this.validateResponse.apply(this, arguments),
-//               rows      = [],
-//               $rows;
-
-//           if (validate.valid && validate.$response && ($rows = validate.$response.find('struct'))) {
-//             rows = $rows.get().map(function(row) {
-
-//               var column = {};
-//               _.each(this.data.fields, function(field) {
-//                 column[field] = this.$(row).find('name:contains("' + field + '")').next().text();
-//               });
-
-//               return column;
-//             }.bind(this));
-//           }
-
-//           return rows;
-//         }
-//       });
     },
 
     getContactGroups: function() {
@@ -338,7 +189,6 @@
           }.bind(this));
 
           this.gotoContacts(contacts);
-          // console.log(contacts);
         }.bind(this),
 
         function(message) {
@@ -412,52 +262,15 @@
 
       if (contacts.length > 0) {
         this.switchTo('contacts', templateData);
-
-        // var orders        = [],
-        //     subscriptions = [],
-        //     tags          = [],
-        //     $view         = this.$();
-
-        // _.each(contacts, function(contact) {
-
-        //   // Get partials
-        //   var $contact = $view.find('[data-contact=' + contact.Id + ']');
-        //   // console.log($contact);
-
-          
-        //       // $orders         = this.renderTemplate('orders'),
-        //       // $subscriptions  = this.renderTemplate('orders'),
-        //       // $tags           = this.renderTemplate('tags');
-
-        
-
-        //   // Get tags for each contact
-        //   // this.dataService.query('ContactGroupAssign', 5, 0, [{ name: 'ContactId', value: 4 }], [ 'ContactGroup', 'DateCreated' ])
-        //   //   .done(function(response, state) {
-        //   //     // console.log(a,b,c);
-        //   //     this.dataService.parseResponse(response, state);
-        //   //   }.bind(this));
-        //   //table, limit, page, queryData, selectedFields
-
-
-        // }.bind(this));
-
-
-
-        // Inject
-        // $view.find('.orders').append($orders);
-        // $view.find('.subscriptions').append($subscriptions);
-        
-
         return;
       }
 
       this.gotoMessage('We\'re sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead', 'Contact not found');
     },
 
-    // gotoIndex: function() {
-    //   this.switchTo('orders');
-    // },
+    gotoIndex: function() {
+      this.switchTo('contacts');
+    },
 
     gotoLoading: function() {
       this.gotoMessage('Please wait. Loading data...','Loading');
@@ -479,35 +292,6 @@
     isEmail: function(value) {
       return true;
     },
-
-    // loadContactResults: function(response, state) {
-    //   var $contacts, $fault, $faultString, $response;
-    //   if (response && state === 'success' && ($response = this.$(response))) {
-
-    //     // Check for faults
-    //     $fault = $response.find('fault');
-    //     if ($fault.length > 0) {
-    //       $faultString = $fault.find('name:contains("faultString")').next();
-    //       return this.gotoMessage($faultString.text());
-    //     }
-
-    //     // Otherwise attempt to load contacts
-    //     var contacts = this.parseContacts($response, API_CONTACT_DETAIL_FIELDS);
-    //     this.gotoContacts(contacts);
-    //   } else {
-    //     this.gotoMessage('Could not load data...');
-    //   }
-    // },
-
-
-
-    // parseContactsOrders: function() {
-
-    // },
-
-    // parseContactsTags: function() {
-
-    // },
 
     onSearch: function() {
       var query = this.$().find('.search-input').val();
