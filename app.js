@@ -90,7 +90,7 @@
             return app.promise(function(done, fail) {
               app.ajax('get', request).then(
                 function(response) {
-                  var response = _parseResponse(response, data);
+                  response = _parseResponse(response, data);
                   if (_.isArray(response)) {
                     done(response);
                   } else {

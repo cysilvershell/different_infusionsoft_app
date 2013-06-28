@@ -9,7 +9,7 @@
   <tbody>
     {{#each groups}}
     <tr>
-      <td><span class="label label-inverse">{{name}}</span></td>
+      <td>{{name}}</td>
       <td>{{category}}</td>
       <td>{{created}}</td>
     </tr>
