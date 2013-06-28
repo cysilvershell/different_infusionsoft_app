@@ -1,23 +1,35 @@
 header {
   position: relative;
 }
-  header .goto-search {
+  header .toggle-search {
     position: absolute;
     right: 5px;
     top: 5px;
   }
 
-.search {}
+.search {
+  height: 0;
+  overflow: hidden;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
   .search .input-append {
     margin: 0;
   }
   .search-input {
-    width: 270px;
+    width: 272px;
   }
+.search.active {
+  display: block;
+  height: 50px;
+}
 
 /* Contact details */
 .contact {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: relative;
 }
 .contact-toggle {
@@ -25,7 +37,13 @@ header {
   right: 20px;
   top: 20px;
 }
-.contact h4 {
+.contact section {
+  display: none;
+}
+.contact.active section {
+  display: block;
+}
+.contact.active h4 {
   margin-bottom: 10px;
 }
 .contact h5 {
@@ -49,14 +67,16 @@ header {
 .field label {
   font-weight: bold;
 }
-.contact.inactive section,
+/*.contact.inactive section,
 .contact.inactive .more {
   display: none;
 }
 .contact.inactive h4 {
   margin: 0;
 }
-
+.contact.inactive .icon-chevron-up {
+  background-position: -313px -119px;
+}*/
 .message p {
   margin-bottom: 10px;
 }
