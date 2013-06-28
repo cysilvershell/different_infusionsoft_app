@@ -140,7 +140,7 @@
         },
         query: function(table, fields, query, limit, page) {
           return _sendRequest('dataService.query', {
-            limit   : limit   || 1000,
+            limit   : limit   || 5,
             page    : page    || 0,
             query   : _mapQueryFields(query),
             fields  : fields,
@@ -195,8 +195,8 @@
         });
       } else {
         request = this.dataService.query('Contact', fields, {
-          FirstName : query,
-          LastName  : query
+          FirstName : query
+          // LastName  : query
         });
       }
 
