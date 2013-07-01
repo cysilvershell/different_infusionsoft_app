@@ -1,63 +1,63 @@
 <ul class="unstyled">
   {{#each contacts}}
-  <li class="contact well" data-contact="{{Id}}">
+  <li class="contact well" data-id="{{id}}" data-owner-id="{{ownerID}}">
     <a class="contact-toggle" title="Toggle"><i class="icon-chevron-up"></i></a>
-    <h4><a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" target="_blank" title='{{t "search.contact.edit"}}'>{{FirstName}} {{LastName}}</a></h4>
+    <h4><a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{id}}" target="_blank" title='{{t "search.contact.edit"}}'>{{firstName}} {{lastName}}</a></h4>
     <section class="active general">
       <h5>General information</h5>
       <div class="content">
-        {{#if Email}}
+        {{#if email}}
         <div class="field">
           <label>Email</label>
-          <p>{{Email}}</p>
+          <p>{{email}}</p>
         </div>
         {{/if}}
-        {{#if Company}}
+        {{#if company}}
         <div class="field">
           <label>Company</label>
-          <p>{{Company}}</p>
+          <p>{{company}}</p>
         </div>
         {{/if}}
-        {{#if JobTitle}}
+        {{#if jobTitle}}
         <div class="field">
           <label>Job title</label>
-          <p>{{JobTitle}}</p>
+          <p>{{jobTitle}}</p>
         </div>
         {{/if}}
-        {{#if Leadsource}}
+        {{#if leadsource}}
         <div class="field">
           <label>Lead source</label>
-          <p>{{Leadsource}}</p>
+          <p>{{leadsource}}</p>
         </div>
         {{/if}}
         <div class="field owner">
           <label>Owner</label>
           <p>Loading...</p>
         </div>
-        {{#if Phone1}}
+        {{#if phone1}}
         <div class="field">
           <label>Phone 1</label>
-          <p>{{Phone1}}</p>
+          <p>{{phone1}}</p>
         </div>{{/if}}
-        {{#if DateCreated}}
+        {{#if dateCreated}}
         <div class="field">
           <label>Contact created date</label>
-          <p>{{DateCreated}}</p>
+          <p>{{dateCreated}}</p>
         </div>
         {{/if}}
       </div>
     </section>
 
-    {{#if StreetAddress1}}
+    {{#if streetAddress1}}
     <section class="billing">
       <h5>Billing address</h5>
       <div class="content">
         <div class="field">
           <address>
-            {{StreetAddress1}}<br>
-            {{StreetAddress2}}<br>
-            {{City}},&nbsp;{{PostalCode}},&nbsp;{{State}}<br>
-            {{Country}}
+            {{streetAddress1}}<br>
+            {{#if streetAddress2}}{{streetAddress2}}<br>{{/if}}
+            {{city}},&nbsp;{{postalCode}},&nbsp;{{state}}<br>
+            {{country}}
           </address>
         </div>
       </div>
@@ -79,6 +79,10 @@
         <div class="subscriptions">Loading...</div>
       </div>
     </section>
+  </li>
+  {{else}}
+  <li class="well">
+    <p>We're sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try <a class="toggle-search">searching</a> instead.</p>
   </li>
   {{/each}}
 </ul>

@@ -7,19 +7,14 @@
     </tr>
   </thead>
   <tbody>
-    {{#each groups}}
+    {{#groups}}
     <tr>
-      <td>{{name}}</td>
-      <td>{{category}}</td>
-      <td>{{created}}</td>
+      <td>{{groupName}}</td>
+      <td>{{groupCategoryName}}</td>
+      <td>{{dateCreated}}</td>
     </tr>
-    {{/each}}
-    {{#unless groups}}
-    <tr><td colspan="3">No tags found</td></tr>
-    {{/unless}}
+    {{else}}
+    <tr><td colspan="3">No tags available</td></tr>
+    {{/groups}}
   </tbody>
 </table>
-<!--div class="input-append">
-  <input placeholder="Add tag to Infusionsoft contact" type="text">
-  <button class="btn"><i class="icon-plus-sign"></i></button>
-</div-->

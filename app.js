@@ -1,3 +1,7 @@
+/*
+* Change .attr to .data
+*/
+
 (function() {
 
   return {
@@ -6,28 +10,36 @@
       'app.activated'                   : 'init',
       'click .contact-toggle'           : 'toggleContact',
       'click .contact h5'               : 'toggleContactSection',
-      'click .groups h5'                : 'getGroupsForContact',
-      'click .orders-subscriptions h5'  : 'getOrdersAndSubscriptionsForContact',
-      'click .search-button'            : 'onSearch',
+      'click .groups h5'                : 'setGroupsForContact',
+      'click .orders-subscriptions h5'  : 'setOrdersAndSubscriptionsForContact',
+      'click .search-button'            : 'search',
       'click .toggle-search'            : 'toggleSearch',
-      'ticket.requester.email.changed'  : 'onSearch'
+      'ticket.requester.email.changed'  : 'search'
+    },
+    fields: {
+      contact               : [ 'FirstName', 'LastName', 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country', 'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ],
+      contactGroup          : [ 'Id', 'GroupName', 'GroupCategoryId' ],
+      contactGroupAssign    : [ 'GroupId', 'DateCreated' ],
+      contactGroupCategory  : [ 'Id', 'CategoryName' ],
+      job                   : [ 'JobTitle', 'DateCreated', 'OrderStatus', 'JobStatus' ],
+      owner                 : [ 'FirstName', 'LastName' ],
+      recurringOrder        : [ 'NextBillDate', 'SubscriptionPlanId', 'BillingAmt', 'Status' ]
     },
     requests: {
       'get' : function(request) { return request; }
     },
 
-    // Initialization
-    init: function(data) {
-      if (!data.firstLoad) {
-        return;
-      }
+    // Methods
+    activateContact: function(id) {
+      var $contact = this.$('[data-id="' + id + '"]');
 
-      // Create services
-      this.dataService = this.createDataService();
+      // Set active class
+      $contact.addClass('active');
 
-      // Load dependencies, which also performs initial contact search
-      this.gotoLoading();
-      this.getContactGroups();
+      // Set additional contact content
+      this.setOwnerForContact($contact);
+      // this.setGroupsForContact($contact);
+      // this.setOrdersAndSubscriptionsForContact($contact);
     },
 
     createDataService: function() {
@@ -37,6 +49,12 @@
           },
 
           // private
+          _camelize = function(str) {
+            return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
+              if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+              return index == 0 ? match.toLowerCase() : match.toUpperCase();
+            });
+          },
           _createRequest = function(xml) {
             return {
               contentType : 'application/xml',
@@ -66,16 +84,16 @@
             }
           },
           _parseResponse = function(xml, data) {
-            var validate = _validateResponse(xml),
+            var validate  = _validateResponse(xml),
                 $structs;
 
             if (validate.valid && validate.$xml && ($structs = validate.$xml.find('struct'))) {
               return $structs.get().map(function(struct, index) {
-                var member = {
-                  index: index
-                };
+                var member = { index: index };
                 _.each(data.fields, function(field) {
-                  member[field] = app.$(struct).find('name:contains("' + field + '")').next().text();
+                  member[_camelize(field)] = app.$(struct).find('name').filter(function(index, element) {
+                    return app.$(element).text() === field;
+                  }).next().text();
                 });
                 return member;
               });
@@ -88,7 +106,7 @@
                 self     = this;
 
             return app.promise(function(done, fail) {
-              app.ajax('get', request).then(
+              return app.ajax('get', request).then(
                 function(response) {
                   response = _parseResponse(response, data);
                   if (_.isArray(response)) {
@@ -98,11 +116,11 @@
                   }
                 },
                 function(message) {
-                  fail();
+                  fail(message);
                 }
               );
             }).fail(function(message) {
-              app.gotoMessage(message);
+              // app.gotoMessage(message);
             });
           },
           _validateResponse = function(xml) {
@@ -127,15 +145,15 @@
       return {
         load: function(table, fields, id) {
           return app.promise(function(done, fail) {
-            if (id > 0) {
-              _sendRequest('dataService.load', {
-                fields  : fields,
-                table   : table,
-                id      : id
-              }).done(function(response) {
-                done(_.first(response));
-              });
-            }
+            return _sendRequest('dataService.load', {
+              fields  : fields,
+              table   : table,
+              id      : id
+            }).done(function(response) {
+              done(_.first(response));
+            }).fail(function(response) {
+              fail(response);
+            });
           }.bind(this));
         },
         query: function(table, fields, query, limit, page) {
@@ -150,33 +168,48 @@
       };
     },
 
-    getContactGroups: function() {
-      return this.dataService.query('ContactGroup', [ 'Id', 'GroupName', 'GroupCategoryId' ])
+    formatDate: function(value) {
+      return value;
+    },
+
+    getGroups: function() {
+      return this.dataService.query('ContactGroup', this.fields.contactGroup)
         .done(function(groups) {
-          this.getContactGroupCategories(groups);
+          this.getGroupCategories(groups);
         }.bind(this));
     },
 
-    getContactGroupCategories: function(groups) {
-      return this.dataService.query('ContactGroupCategory', [ 'Id', 'CategoryName' ])
+    getGroupCategories: function(groups) {
+      return this.dataService.query('ContactGroupCategory', this.fields.contactGroupCategory)
         .done(function(categories) {
-
-          // Assign categories to group, TODO: Would be nicer without using global variable
+          // Assign categories to group
           this.data.groups = groups.map(function(group) {
             return _.extend(group, {
-              GroupCategoryName: _.find(categories, function(category) { return category.Id === group.GroupCategoryId; }).CategoryName
+              groupCategoryName : _.find(categories, function(category) { return category.id === group.groupCategoryId; }).categoryName
             });
           });
-
-          // Initial load of contacts by email
-          this.getContacts(this.ticket().requester().email());
         }.bind(this));
     },
 
-    getContactOwner: function(contact) {
-      return this.dataService.load('User', [ 'FirstName', 'LastName' ], contact.OwnerID).done(function(owner) {
-        contact.Owner = owner;
+    getContactGroups: function(id) {
+      var self = this;
+      return this.promise(function(done, fail) {
+        return self.dataService.query('ContactGroupAssign', self.fields.contactGroupAssign, { contactId: id })
+          .done(function(groups) {
+            groups = groups.map(function(group) {
+              var groupCategory = _.find(self.data.groups, function(grp) {
+                return grp.id === group.groupId;
+              });
+
+              return _.extend(group, groupCategory);
+            });
+            done(groups);
+          });
       });
+    },
+
+    getContactOwner: function(id) {
+      return this.dataService.load('User', this.fields.owner, id);
     },
 
     getContacts: function(query) {
@@ -188,89 +221,37 @@
       this.gotoLoading();
 
       // Create request
-      var request, fields = [ 'FirstName', 'LastName', 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country', 'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ];
+      var request;
       if (this.isEmail(query)) {
-        request = this.dataService.query('Contact', fields, {
+        request = this.dataService.query('Contact', this.fields.contact, {
           Email: query
         });
       } else {
-        request = this.dataService.query('Contact', fields, {
+        request = this.dataService.query('Contact', this.fields.contact, {
           FirstName : query
-          // LastName  : query
         });
       }
 
       request.then(function(contacts) {
         this.data.contacts = contacts;
-        this.gotoContacts(contacts);
+        this.gotoContacts();
       }.bind(this));
     },
 
-    getGroupsForContact: function(e) {
-      var $heading  = this.$(e.currentTarget),
-          $section  = $heading.parent(),
-          $content  = $section.find('.content'),
-          $contact  = $section.parents('.contact'),
-          contactId = $contact.data('contact');
+    gotoContacts: function() {
+      var matches = this.data.contacts.length;
 
-      // Exit if we have already attempted to load data
-      if ($section.data('loaded')) {
-        return;
+      // Render contacts
+      this.switchTo('contacts', {
+        contacts  : this.data.contacts,
+        matches   : matches,
+        more      : matches > 5,
+        subdomain : this.settings.subdomain
+      });
+
+      if (matches > 0) {
+        this.activateContact(_.first(this.data.contacts).id);
       }
-
-      // Get groups for each contact
-      this.dataService.query('ContactGroupAssign', [ 'ContactId', 'GroupId', 'ContactGroup', 'DateCreated' ], {
-        ContactId: contactId
-      }).done(function(groups) {
-          groups = groups.map(function(contactGroup) {
-            return {
-              category  : _.filter(this.data.groups, function(group) { return group.Id === contactGroup.GroupId; }),
-              created   : contactGroup.DateCreated,
-              id        : contactGroup.GroupId,
-              name      : contactGroup.ContactGroup
-            };
-          }.bind(this));
-
-          // Generate template
-          var $groups = this.renderTemplate('groups', {
-            groups: groups
-          });
-
-          // Append content
-          $content.html($groups);
-
-          // Set state to loaded
-          $section.attr('loaded', true);
-        }.bind(this));
-    },
-
-    getOrdersAndSubscriptionsForContact: function(e) {
-      var elements = this.getElementsForSection(e);
-    },
-
-    gotoContacts: function(contacts) {
-      var matches = contacts.length,
-          templateData = {
-            contacts  : contacts,
-            matches   : matches,
-            more      : matches > 5,
-            subdomain : this.settings.subdomain
-          };
-
-      if (contacts.length > 0) {
-        this.getContactOwner(_.first(contacts)).done(function(owner) {
-          this.switchTo('contacts', templateData);
-          var $contact = this.$('.contact:first-child');
-          $contact.find('.owner p').text('%@ %@'.fmt(owner.FirstName, owner.LastName));
-          $contact.addClass('active');
-        }.bind(this));
-      } else {
-        this.gotoMessage('We\'re sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead', 'Contact not found');  
-      }
-    },
-
-    gotoIndex: function() {
-      this.switchTo('contacts');
     },
 
     gotoLoading: function() {
@@ -284,12 +265,127 @@
       });
     },
 
+    init: function(data) {
+      if (!data.firstLoad) {
+        return;
+      }
+
+      // Show loading screen, using this instead of
+      // defaultState since we are using a generic
+      // template to display a translated message
+      this.gotoLoading();
+
+      // Create services
+      this.dataService = this.createDataService();
+
+      // Preload data
+      this.getGroups()
+        .done(function() {
+          this.getContacts('kiran@zendesk.com');//this.ticket().requester().email()); // Initial load of contacts by email
+        }.bind(this));
+    },
+
     isEmail: function(value) {
       return value.indexOf('@') !== -1;
     },
 
-    onSearch: function() {
+    search: function() {
       this.getContacts(this.$().find('.search-input').val());
+    },
+
+    setGroupsForContact: function(e) {
+      var $section  = this.$(e.currentTarget).parent(),
+          $content  = $section.find('.content'),
+          $contact  = $section.parents('.contact'),
+          contactId = $contact.data('id'),
+          $groups;
+
+      // Check to see if we have done this before
+      if (_.isUndefined($contact.data('groups-loaded'))) {
+
+        this.getContactGroups(contactId)
+          .done(function(groups) {
+            // Generate template
+            $groups = this.renderTemplate('groups', { groups: groups });
+            // Append content
+            $content.html($groups);
+          }.bind(this))
+          .always(function() {
+            // Set loaded state
+            $contact.attr('data-groups-loaded', 1);
+          });
+      }
+    },
+
+    setOrdersAndSubscriptionsForContact: function(e) {
+      // var $heading  = this.$(e.currentTarget),
+      //     $section  = $heading.parent(),
+      //     $contact  = $section.parents('.contact'),
+      //     contactId = $contact.data('contact');
+
+      // // Exit if we have already attempted to load data
+      // if ($section.data('loaded')) {
+      //   return;
+      // }
+
+      // // Get data for orders
+      // this.dataService.query('Job', this.fields.job, {
+      //   contactId: contactId
+      // }).done(function(orders) {
+
+      //   // Generate template
+      //   var $orders = this.renderTemplate('orders', {
+      //     orders: orders
+      //   });
+
+      //   // Append content
+      //   $section.find('.orders').html($orders);
+
+      //   // Set state to loaded
+      //   $section.attr('loaded', true);
+      // }.bind(this));
+
+      // // Get data for subscriptions
+      // this.dataService.query('RecurringOrder', this.fields.recurringOrder, {
+      //   ContactId: contactId
+      // }).done(function(orders) {
+
+      //   orders = orders.map(function(order) {
+      //     return {
+      //       billingAmount   : order.BillingAmt,
+      //       nextBillingDate : order.NextBillDate,
+      //       status          : order.Status,
+      //       plan            : 'TODO'
+      //     };
+      //   });
+
+      //   // Generate template
+      //   var $orders = this.renderTemplate('subscriptions', {
+      //     orders: orders
+      //   });
+
+      //   // Append content
+      //   $section.find('.subscriptions').html($orders);
+
+      //   // Set state to loaded
+      //   $section.attr('loaded', true);
+      // }.bind(this));
+    },
+
+    setOwnerForContact: function($contact) {
+      var $owner = $contact.find('.owner p');
+      if (_.isUndefined($contact.data('owner-loaded'))) {
+        this.getContactOwner($contact.data('owner-id'))
+          .done(function(owner) {
+            $owner.text('%@ %@'.fmt(owner.firstName, owner.lastName));
+          })
+          .fail(function() {
+            $owner.text('Could not find owner info');
+          })
+          .always(function() {
+            $contact.data('owner-loaded', true);
+          });
+      }
     },
 
     toggleContact: function(e) {
@@ -298,19 +394,8 @@
           $contact  = $toggle.parents('.contact'),
           $contacts = this.$().find('.contact').not($contact);
 
-      // Get contact owner
-      if (!$contact.hasClass('active') && !$contact.data('owner')) {
-        var contactId = $contact.data('contact').toString(),
-            contact   = this.data.contacts.findProperty('Id', contactId);
-
-        this.getContactOwner(contact).done(function(owner) {
-          $contact.find('.owner p').text('%@ %@'.fmt(owner.FirstName, owner.LastName));
-          $contact.attr('data-owner', true);
-        });
-      }
-
       $contacts.removeClass('active');
-      $contact.addClass('active');
+      this.activateContact($contact.data('id'));
     },
 
     toggleContactSection: function(e) {

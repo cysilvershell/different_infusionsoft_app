@@ -8,16 +8,15 @@
     </tr>
   </thead>
   <tbody>
-    {{#each Subscriptions}}
+    {{#each subscriptions}
     <tr>
-      <td></td>
-      <td>Nurture Category</td>
-      <td>01/06/2013</td>
-      <td><span class="label label-inverse">Default</span></td>
+      <td>{{nextBillingDate}}</td>
+      <td>{{plan}}</td>
+      <td>{{billingAmount}}</td>
+      <td>{{status}}</td>
     </tr>
+    {{else}}
+    <tr><td colspan="4">No subscriptions found</td></tr>
     {{/each}}
-    {{#unless Subscriptions}}
-    <tr><td class="centered" colspan="4">No subscriptions found</td></tr>
-    {{/unless}}
   </tbody>
 </table>
