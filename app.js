@@ -23,7 +23,9 @@
       contactGroupCategory  : [ 'Id', 'CategoryName' ],
       job                   : [ 'JobTitle', 'DateCreated', 'OrderStatus', 'JobStatus' ],
       owner                 : [ 'FirstName', 'LastName' ],
-      recurringOrder        : [ 'NextBillDate', 'SubscriptionPlanId', 'BillingAmt', 'Status' ]
+      product               : [ 'Id', 'ProductName' ],
+      recurringOrder        : [ 'NextBillDate', 'SubscriptionPlanId', 'BillingAmt', 'Status' ],
+      subscriptionPlan      : [ 'Id', 'ProductId' ]
     },
     requests: {
       'get' : function(request) { return request; }
@@ -38,8 +40,6 @@
 
       // Set additional contact content
       this.setOwnerForContact($contact);
-      // this.setGroupsForContact($contact);
-      // this.setOrdersAndSubscriptionsForContact($contact);
     },
 
     createDataService: function() {
@@ -51,7 +51,7 @@
           // private
           _camelize = function(str) {
             return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
-              if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+              if (+match === 0) return "";
               return index == 0 ? match.toLowerCase() : match.toUpperCase();
             });
           },
@@ -120,7 +120,7 @@
                 }
               );
             }).fail(function(message) {
-              // app.gotoMessage(message);
+              services.notify(message, 'error');
             });
           },
           _validateResponse = function(xml) {
@@ -166,6 +166,10 @@
           });
         }
       };
+    },
+
+    formatCurrency: function(value) {
+      return value;
     },
 
     formatDate: function(value) {
@@ -238,6 +242,24 @@
       }.bind(this));
     },
 
+    getProducts: function() {
+      return this.dataService.query('Product', this.fields.product)
+        .done(function(products) {
+          this.data.products = products;
+        }.bind(this));
+    },
+
+    getSubscriptionPlans: function(products) {
+      return this.dataService.query('SubscriptionPlan', this.fields.subscriptionPlan)
+        .done(function(subscriptionPlans) {
+          this.data.subscriptionPlans = subscriptionPlans.map(function(subscriptionPlan) {
+            return _.extend(subscriptionPlan, {
+              productName: _.find(products, function(product) { return product.id === subscriptionPlan.productId; }).productName
+            });
+          });
+        }.bind(this));
+    },
+
     gotoContacts: function() {
       var matches = this.data.contacts.length;
 
@@ -281,7 +303,13 @@
       // Preload data
       this.getGroups()
         .done(function() {
-          this.getContacts('kiran@zendesk.com');//this.ticket().requester().email()); // Initial load of contacts by email
+           // Initial load of contacts by email
+          this.getContacts('kiran@zendesk.com');//this.ticket().requester().email());
+        }.bind(this));
+
+      this.getProducts()
+        .done(function(products) {
+          this.getSubscriptionPlans(products);
         }.bind(this));
     },
 
@@ -302,74 +330,62 @@
 
       // Check to see if we have done this before
       if (_.isUndefined($contact.data('groups-loaded'))) {
-
         this.getContactGroups(contactId)
           .done(function(groups) {
             // Generate template
             $groups = this.renderTemplate('groups', { groups: groups });
+
             // Append content
             $content.html($groups);
           }.bind(this))
           .always(function() {
             // Set loaded state
-            $contact.attr('data-groups-loaded', 1);
+            $contact.data('groups-loaded', true);
           });
       }
     },
 
     setOrdersAndSubscriptionsForContact: function(e) {
-      // var $heading  = this.$(e.currentTarget),
-      //     $section  = $heading.parent(),
-      //     $contact  = $section.parents('.contact'),
-      //     contactId = $contact.data('contact');
+      var $section  = this.$(e.currentTarget).parent(),
+          $contact  = $section.parents('.contact'),
+          contactId = $contact.data('id');
 
-      // // Exit if we have already attempted to load data
-      // if ($section.data('loaded')) {
-      //   return;
-      // }
+      // Check to see if we have done this before
+      if (_.isUndefined($contact.data('orders-loaded'))) {
 
-      // // Get data for orders
-      // this.dataService.query('Job', this.fields.job, {
-      //   contactId: contactId
-      // }).done(function(orders) {
+        // Get data for orders
+        this.dataService.query('Job', this.fields.job, { contactId: contactId })
+          .done(function(orders) {
+            // Generate template
+            var $orders = this.renderTemplate('orders', { orders: orders });
+            console.log('Orders', orders);
 
-      //   // Generate template
-      //   var $orders = this.renderTemplate('orders', {
-      //     orders: orders
-      //   });
+            // Append content
+            $section.find('.orders').html($orders);
+          }.bind(this));
 
-      //   // Append content
-      //   $section.find('.orders').html($orders);
 
-      //   // Set state to loaded
-      //   $section.attr('loaded', true);
-      // }.bind(this));
+        // Get data for subscriptions
+        this.dataService.query('RecurringOrder', this.fields.recurringOrder, { contactId: contactId })
+          .done(function(subscriptions) {
+            // Map subscriptions for contact to data
+            subscriptions = subscriptions.map(function(subscription) {
+              return _.extend(subscription, {
+                productName: _.find(this.data.subscriptionPlans, function(subscriptionPlan) { return subscriptionPlan.id === subscription.subscriptionPlanId; }).productName
+              });
+            }.bind(this));
 
-      // // Get data for subscriptions
-      // this.dataService.query('RecurringOrder', this.fields.recurringOrder, {
-      //   ContactId: contactId
-      // }).done(function(orders) {
+            // Generate template
+            var $subscriptions = this.renderTemplate('subscriptions', { subscriptions: subscriptions });
 
-      //   orders = orders.map(function(order) {
-      //     return {
-      //       billingAmount   : order.BillingAmt,
-      //       nextBillingDate : order.NextBillDate,
-      //       status          : order.Status,
-      //       plan            : 'TODO'
-      //     };
-      //   });
-
-      //   // Generate template
-      //   var $orders = this.renderTemplate('subscriptions', {
-      //     orders: orders
-      //   });
-
-      //   // Append content
-      //   $section.find('.subscriptions').html($orders);
-
-      //   // Set state to loaded
-      //   $section.attr('loaded', true);
-      // }.bind(this));
+            // Append content
+            $section.find('.subscriptions').html($subscriptions);
+          }.bind(this))
+          .always(function() {
+            // Set loaded state
+            $contact.data('orders-loaded', true);
+          });
+      }
     },
 
     setOwnerForContact: function($contact) {

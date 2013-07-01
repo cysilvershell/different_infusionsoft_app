@@ -8,15 +8,15 @@
     </tr>
   </thead>
   <tbody>
-    {{#each subscriptions}
+    {{#subscriptions}}
     <tr>
-      <td>{{nextBillingDate}}</td>
-      <td>{{plan}}</td>
-      <td>{{billingAmount}}</td>
+      <td>{{nextBillDate}}</td>
+      <td>{{productName}}</td>
+      <td>{{billingAmt}}</td>
       <td>{{status}}</td>
     </tr>
     {{else}}
     <tr><td colspan="4">No subscriptions found</td></tr>
-    {{/each}}
+    {{/subscriptions}}
   </tbody>
 </table>
