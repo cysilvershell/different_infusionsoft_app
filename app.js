@@ -358,7 +358,6 @@
           .done(function(orders) {
             // Generate template
             var $orders = this.renderTemplate('orders', { orders: orders });
-            console.log('Orders', orders);
 
             // Append content
             $section.find('.orders').html($orders);
