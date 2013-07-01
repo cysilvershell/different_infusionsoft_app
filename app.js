@@ -124,7 +124,7 @@
             });
           },
           _validateResponse = function(xml) {
-            var message   = 'DEFAULT MESSAGE',
+            var message   = '',
                 valid     = false,
                 $fault,
                 $xml;
@@ -304,7 +304,7 @@
       this.getGroups()
         .done(function() {
            // Initial load of contacts by email
-          this.getContacts('kiran@zendesk.com');//this.ticket().requester().email());
+          this.getContacts(this.ticket().requester().email());
         }.bind(this));
 
       this.getProducts()
