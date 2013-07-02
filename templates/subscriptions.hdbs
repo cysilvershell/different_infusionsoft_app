@@ -1,10 +1,10 @@
 <table class="table table-condensed table-striped">
   <thead>
     <tr>
-      <th>Next bill date</th>
-      <th>Plan</th>
-      <th>Bill amt.</th>
-      <th>Status</th>
+      <th>{{t "contact.details.subscriptions.date"}}</th>
+      <th>{{t "contact.details.subscriptions.plan"}}</th>
+      <th>{{t "contact.details.subscriptions.billAmount"}}</th>
+      <th>{{t "contact.details.subscriptions.status"}}</th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +16,7 @@
       <td>{{status}}</td>
     </tr>
     {{else}}
-    <tr><td colspan="4">No subscriptions found</td></tr>
+    <tr><td colspan="4">{{t "contact.details.subscriptions.empty"}}</td></tr>
     {{/subscriptions}}
   </tbody>
 </table>

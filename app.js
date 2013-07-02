@@ -1,10 +1,7 @@
-/*
-* Change .attr to .data
-*/
-
 (function() {
 
   return {
+    API_MAX_RESULTS: 5,
     data: {},
     events: {
       'app.activated'                   : 'init',
@@ -131,8 +128,9 @@
 
             if (xml && ($xml = app.$(xml))) {
               $fault  = $xml.find('fault');
-              if ($fault.length > 0) { message = $fault.find('name:contains("faultString")').next().text(); }
-              else { valid = true; }
+              if ($fault.length > 0) {
+                message = $fault.find('name:contains("faultString")').next().text();
+              } else { valid = true; }
             }
 
             return {
@@ -158,7 +156,7 @@
         },
         query: function(table, fields, query, limit, page) {
           return _sendRequest('dataService.query', {
-            limit   : limit   || 5,
+            limit   : limit   || app.API_MAX_RESULTS,
             page    : page    || 0,
             query   : _mapQueryFields(query),
             fields  : fields,
@@ -176,22 +174,22 @@
       return value;
     },
 
-    getGroups: function() {
-      return this.dataService.query('ContactGroup', this.fields.contactGroup)
-        .done(function(groups) {
-          this.getGroupCategories(groups);
-        }.bind(this));
-    },
-
+     // Assign categories to group
     getGroupCategories: function(groups) {
       return this.dataService.query('ContactGroupCategory', this.fields.contactGroupCategory)
         .done(function(categories) {
-          // Assign categories to group
           this.data.groups = groups.map(function(group) {
             return _.extend(group, {
               groupCategoryName : _.find(categories, function(category) { return category.id === group.groupCategoryId; }).categoryName
             });
           });
+        }.bind(this));
+    },
+
+    getGroups: function() {
+      return this.dataService.query('ContactGroup', this.fields.contactGroup)
+        .done(function(groups) {
+          this.getGroupCategories(groups);
         }.bind(this));
     },
 
@@ -213,18 +211,17 @@
     },
 
     getContactOwner: function(id) {
-      return this.dataService.load('User', this.fields.owner, id);
+      if (id) { return this.dataService.load('User', this.fields.owner, id); }
+      return this.reject;
     },
 
     getContacts: function(query) {
       if (_.isEmpty(query)) {
-        return this.gotoMessage('Not a valid search');
+        return this.gotoMessage(this.I18n.t('search.invalid'));
       }
 
-      // Show the loading screen
       this.gotoLoading();
 
-      // Create request
       var request;
       if (this.isEmail(query)) {
         request = this.dataService.query('Contact', this.fields.contact, {
@@ -236,8 +233,11 @@
         });
       }
 
-      request.then(function(contacts) {
-        this.data.contacts = contacts;
+      request.done(function(contacts) {
+        this.data.contacts = contacts.map(function(contact) {
+          if ((contact.firstName + contact.lastName).length === 0) { contact.firstName = '--'; }
+          return contact;
+        });
         this.gotoContacts();
       }.bind(this));
     },
@@ -262,13 +262,10 @@
 
     gotoContacts: function() {
       var matches = this.data.contacts.length;
-
-      // Render contacts
       this.switchTo('contacts', {
         contacts  : this.data.contacts,
         matches   : matches,
-        more      : matches > 5,
-        subdomain : this.settings.subdomain
+        more      : matches >= this.API_MAX_RESULTS
       });
 
       if (matches > 0) {
@@ -277,7 +274,7 @@
     },
 
     gotoLoading: function() {
-      this.gotoMessage('Please wait, loading data...','Loading');
+      this.gotoMessage(this.I18n.t('global.loadingLong'), this.I18n.t('global.loading'));
     },
 
     gotoMessage: function(message, title) {
@@ -292,19 +289,14 @@
         return;
       }
 
-      // Show loading screen, using this instead of
-      // defaultState since we are using a generic
-      // template to display a translated message
       this.gotoLoading();
-
-      // Create services
       this.dataService = this.createDataService();
+      this.reject      = this.promise(function(done, fail) { fail(); });
 
       // Preload data
       this.getGroups()
         .done(function() {
-           // Initial load of contacts by email
-          this.getContacts(this.ticket().requester().email());
+          this.getContacts(this.ticket().requester().email()); // Initial load of contacts by email
         }.bind(this));
 
       this.getProducts()
@@ -339,7 +331,6 @@
             $content.html($groups);
           }.bind(this))
           .always(function() {
-            // Set loaded state
             $contact.data('groups-loaded', true);
           });
       }
@@ -356,13 +347,9 @@
         // Get data for orders
         this.dataService.query('Job', this.fields.job, { contactId: contactId })
           .done(function(orders) {
-            // Generate template
             var $orders = this.renderTemplate('orders', { orders: orders });
-
-            // Append content
             $section.find('.orders').html($orders);
           }.bind(this));
-
 
         // Get data for subscriptions
         this.dataService.query('RecurringOrder', this.fields.recurringOrder, { contactId: contactId })
@@ -374,14 +361,10 @@
               });
             }.bind(this));
 
-            // Generate template
             var $subscriptions = this.renderTemplate('subscriptions', { subscriptions: subscriptions });
-
-            // Append content
             $section.find('.subscriptions').html($subscriptions);
           }.bind(this))
           .always(function() {
-            // Set loaded state
             $contact.data('orders-loaded', true);
           });
       }
@@ -395,8 +378,8 @@
             $owner.text('%@ %@'.fmt(owner.firstName, owner.lastName));
           })
           .fail(function() {
-            $owner.text('Could not find owner info');
-          })
+            $owner.text(this.I18n.t('contact.details.ownerEmpty'));
+          }.bind(this))
           .always(function() {
             $contact.data('owner-loaded', true);
           });
@@ -404,10 +387,8 @@
     },
 
     toggleContact: function(e) {
-      var $toggle   = this.$(e.currentTarget),
-          $icon     = $toggle.find('i'),
-          $contact  = $toggle.parents('.contact'),
-          $contacts = this.$().find('.contact').not($contact);
+      var $contact  = this.$(e.currentTarget).parents('.contact'),
+          $contacts = this.$('.contact').not($contact);
 
       $contacts.removeClass('active');
       this.activateContact($contact.data('id'));
@@ -427,5 +408,4 @@
       this.$('.search').toggleClass('active');
     }
   };
-
 }());

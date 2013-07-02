@@ -1,9 +1,9 @@
 <table class="table table-condensed table-striped">
   <thead>
     <tr>
-      <th>Tag</th>
-      <th>Category</th>
-      <th>Date</th>
+      <th>{{t "contact.details.group.tag"}}</th>
+      <th>{{t "contact.details.group.category"}}</th>
+      <th>{{t "contact.details.group.date"}}</th>
     </tr>
   </thead>
   <tbody>
@@ -14,7 +14,7 @@
       <td>{{dateCreated}}</td>
     </tr>
     {{else}}
-    <tr><td colspan="3">No tags available</td></tr>
+    <tr><td colspan="3">{{t "contact.details.group.empty"}}</td></tr>
     {{/groups}}
   </tbody>
 </table>

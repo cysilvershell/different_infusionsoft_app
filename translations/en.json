@@ -1,23 +1,63 @@
 {
   "app": {
-    "description": "Play the famous zen tunes in your help desk.",
-    "name": "Buddha Machine"
+    "description": "",
+    "name": "Infusionsoft App"
   },
-
+  "contact": {
+    "details": {
+      "billingAddress": "Billing address",
+      "company": "Company",
+      "dateCreated": "Contact created date",
+      "email": "Email",
+      "jobTitle": "Job title",
+      "leadSource": "Lead source",
+      "owner": "Owner",
+      "ownerEmpty": "Could not find owner info",
+      "phone1": "Phone 1",
+      "group": {
+        "category": "Category",
+        "date": "Date",
+        "empty": "No tags found",
+        "tag": "Tag",
+        "title": "Tags"
+      },
+      "orders": {
+        "date": "Date",
+        "empty": "No orders found",
+        "order": "Order",
+        "status": "Status",
+        "title": "Orders",
+        "total": "Total"
+      },
+      "subscriptions": {
+        "billAmount": "Bill amt.",
+        "date": "Next bill date",
+        "empty": "No subscriptions found",
+        "plan": "Plan",
+        "status": "Status",
+        "title": "Subscriptions"
+      }
+    },
+    "edit": "Click to edit this contact"
+  },
+  "contacts": {
+    "empty": "We're sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead.",
+    "generalInformation": "General information",
+    "more": "See more"
+  },
+  "global": {
+    "loading": "Loading...",
+    "loadingLong": "Please wait, loading data"
+  },
   "message": {
-    "back": "Back",
     "default": {
       "title": "An error has occured",
       "message": "There was an error loading contact data. Please try again later."
     }
   },
-
   "search": {
-    "results": {
-      "invalid": "Please enter the contacts name or email"
-    },
-    "contact": {
-      "edit": "Click to edit this contact"
-    }
+    "invalid": "Not a valid search",
+    "placeholder": "Search by name or email",
+    "toggle": "Click to toggle search"
   }
 }
