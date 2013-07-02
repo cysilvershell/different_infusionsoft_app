@@ -310,7 +310,7 @@
     },
 
     search: function() {
-      this.getContacts(this.$().find('.search-input').val());
+      this.getContacts(this.$('.search-input').val());
     },
 
     setGroupsForContact: function(e) {
