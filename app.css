@@ -1,12 +1,12 @@
 header {
   position: relative;
-}
-  header .toggle-search {
+
+  .toggle-search {
     position: absolute;
     right: 5px;
     top: 5px;
   }
-
+}
 .search {
   height: 0;
   overflow: hidden;
@@ -15,78 +15,68 @@ header {
   -o-transition: .2s;
   -webkit-transition: .2s;
   transition: .2s;
-}
-  .search .input-append {
+
+  &.active {
+    display: block;
+    height: 50px;
+  }
+  .input-append {
     margin: 0;
   }
   .search-input {
     width: 272px;
   }
-.search.active {
-  display: block;
-  height: 50px;
 }
 
 /* Contact details */
 .contact {
   margin-bottom: 10px;
   position: relative;
+
+  section {
+    display: none;
+  }
+  h5 {
+    color: #1a74b0;
+    margin-bottom: 5px;
+  }
+  &.active {
+    section {
+      display: block;
+    }
+    h4 {
+      margin-bottom: 10px;
+    }
+  }
+  .active h5, h5:hover {
+    color: #10486d;
+    cursor: pointer;
+  }
+  .content {
+    display: none;
+    margin: 5px 0 20px;
+  }
+  .active .content {
+    display: block;
+  }
+  .field {
+    margin-bottom: 5px;
+  }
+  .field label {
+    font-weight: bold;
+  }
 }
 .contact-toggle {
   position: absolute;
   right: 20px;
   top: 20px;
 }
-.contact section {
-  display: none;
-}
-.contact.active section {
-  display: block;
-}
-.contact.active h4 {
-  margin-bottom: 10px;
-}
-.contact h5 {
-  color: #1a74b0;
-  margin-bottom: 5px;
-}
-.contact .active h5, .contact h5:hover {
-  color: #10486d;
-  cursor: pointer;
-}
-.contact .content {
-  display: none;
-  margin: 5px 0 20px;
-}
-.contact .active .content {
-  display: block;
-}
-.field {
-  margin-bottom: 5px;
-}
-.field label {
-  font-weight: bold;
-}
-/*.contact.inactive section,
-.contact.inactive .more {
-  display: none;
-}
-.contact.inactive h4 {
-  margin: 0;
-}
-.contact.inactive .icon-chevron-up {
-  background-position: -313px -119px;
-}*/
 .message p {
   margin-bottom: 10px;
 }
-
-
-
 .centered {
   text-align: center;
 }
-
 .btn {
   padding-bottom: 5px;
   padding-top: 5px;
