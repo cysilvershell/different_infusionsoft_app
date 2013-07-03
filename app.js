@@ -292,6 +292,7 @@
       }
 
       this.gotoLoading();
+      this.data        = {};
       this.dataService = this.createDataService();
       this.reject      = this.promise(function(done, fail) { fail(); });
 
