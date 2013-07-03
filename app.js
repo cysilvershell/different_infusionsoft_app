@@ -306,7 +306,9 @@
       // Preload data
       this.getGroups()
         .done(function() {
-          this.getContacts(this.ticket().requester().email()); // Initial load of contacts by email
+          var requester = this.ticket().requester();
+          if (!requester) { return; }
+          this.getContacts(requester.email());
         }.bind(this));
 
       this.getProducts()
