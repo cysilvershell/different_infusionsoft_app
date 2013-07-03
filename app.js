@@ -2,6 +2,7 @@
 
   return {
     API_MAX_RESULTS: 5,
+    FORMAT_DATE: new RegExp(/^(\d{4})(\d{2})(\d{2})/),
     data: {},
     events: {
       'app.activated'                   : 'init',
@@ -89,9 +90,14 @@
               return $structs.get().map(function(struct, index) {
                 var member = { index: index };
                 _.each(data.fields, function(field) {
-                  member[_camelize(field)] = app.$(struct).find('name').filter(function(index, element) {
-                    return app.$(element).text() === field;
-                  }).next().text();
+                  $value = app.$(struct).find('name').filter(function(index, element) { return app.$(element).text() === field; }).next(),
+                  value  = $value.text();
+
+                  // Match date element nodes so we can format them
+                  if ($value.find('dateTime\\.iso8601').length > 0) {
+                    value = app.formatDate(value);
+                  }
+                  member[_camelize(field)] = value;
                 });
                 return member;
               });
@@ -172,6 +178,9 @@
     },
 
     formatDate: function(value) {
+      if (_.isString(value)) {
+        return this.FORMAT_DATE.exec(value).slice(1).join('/');
+      }
       return value;
     },
 
