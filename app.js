@@ -173,10 +173,6 @@
       };
     },
 
-    formatCurrency: function(value) {
-      return value;
-    },
-
     formatDate: function(value) {
       if (_.isString(value)) {
         return this.FORMAT_DATE.exec(value).slice(1).join('/');
