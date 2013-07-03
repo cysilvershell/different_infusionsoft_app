@@ -11,6 +11,7 @@
       'click .orders-subscriptions h5'  : 'setOrdersAndSubscriptionsForContact',
       'click .search-button'            : 'search',
       'click .toggle-search'            : 'toggleSearch',
+      'keypress .search-input'          : 'searchOnEnter',
       'ticket.requester.email.changed'  : 'search'
     },
     fields: {
@@ -311,6 +312,12 @@
 
     search: function() {
       this.getContacts(this.$('.search-input').val());
+    },
+
+    searchOnEnter: function(e) {
+      if (e.charCode === 13) {
+        this.search();
+      }
     },
 
     setGroupsForContact: function(e) {
