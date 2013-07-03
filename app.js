@@ -244,19 +244,16 @@
       }
 
       request.done(function(contacts) {
-        this.data.contacts = contacts.map(function(contact) {
+        contacts = contacts.map(function(contact) {
           if ((contact.firstName + contact.lastName).length === 0) { contact.firstName = '--'; }
           return contact;
         });
-        this.gotoContacts();
+        this.gotoContacts(contacts);
       }.bind(this));
     },
 
     getProducts: function() {
-      return this.dataService.query('Product', this.fields.product)
-        .done(function(products) {
-          this.data.products = products;
-        }.bind(this));
+      return this.dataService.query('Product', this.fields.product);
     },
 
     getSubscriptionPlans: function(products) {
@@ -270,16 +267,16 @@
         }.bind(this));
     },
 
-    gotoContacts: function() {
-      var matches = this.data.contacts.length;
+    gotoContacts: function(contacts) {
+      var matches = contacts.length;
       this.switchTo('contacts', {
-        contacts  : this.data.contacts,
+        contacts  : contacts,
         matches   : matches,
         more      : matches >= this.API_MAX_RESULTS
       });
 
       if (matches > 0) {
-        this.activateContact(_.first(this.data.contacts).id);
+        this.activateContact(_.first(contacts).id);
       }
     },
 
