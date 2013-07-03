@@ -405,12 +405,9 @@
 
     toggleContactSection: function(e) {
       var $heading  = this.$(e.currentTarget),
-          $contact  = $heading.parents('.contact'),
-          $section  = $heading.parent(),
-          $sections = $contact.find('section').not($section);
+          $section  = $heading.parent();
 
-      $section.addClass('active');
-      $sections.removeClass('active');
+      $section.toggleClass('active', !$section.hasClass('active'));
     },
 
     toggleSearch: function(e) {
