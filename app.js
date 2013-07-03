@@ -3,7 +3,6 @@
   return {
     API_MAX_RESULTS: 5,
     FORMAT_DATE: new RegExp(/^(\d{4})(\d{2})(\d{2})/),
-    data: {},
     events: {
       'app.activated'                   : 'init',
       'click .contact'                  : 'toggleContact',
