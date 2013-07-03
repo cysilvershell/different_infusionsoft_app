@@ -1,7 +1,6 @@
 <ul class="unstyled">
   {{#each contacts}}
   <li class="contact well" data-id="{{id}}" data-owner-id="{{ownerID}}">
-    <a class="contact-toggle" title="Toggle"><i class="icon-chevron-up"></i></a>
     <h4><a href="https://{{setting "subdomain" }}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{id}}" target="_blank" title='{{t "contact.edit"}}'>{{firstName}} {{lastName}}</a></h4>
     <section class="active general">
       <h5>{{t "contacts.generalInformation" }}</h5>

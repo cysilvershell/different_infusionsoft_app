@@ -19,6 +19,7 @@ header {
 
 /* Contact details */
 .contact {
+  cursor: pointer;
   margin-bottom: 10px;
   position: relative;
 
@@ -30,6 +31,7 @@ header {
     margin-bottom: 5px;
   }
   &.active {
+    cursor: auto;
     section {
       display: block;
     }
@@ -50,9 +52,6 @@ header {
   }
   .field {
     margin-bottom: 5px;
-  }
-  .field label {
-    font-weight: bold;
   }
 }
 .contact-toggle {

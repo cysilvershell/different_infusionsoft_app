@@ -5,7 +5,7 @@
     data: {},
     events: {
       'app.activated'                   : 'init',
-      'click .contact-toggle'           : 'toggleContact',
+      'click .contact'                  : 'toggleContact',
       'click .contact h5'               : 'toggleContactSection',
       'click .groups h5'                : 'setGroupsForContact',
       'click .orders-subscriptions h5'  : 'setOrdersAndSubscriptionsForContact',
@@ -394,11 +394,13 @@
     },
 
     toggleContact: function(e) {
-      var $contact  = this.$(e.currentTarget).parents('.contact'),
+      var $contact  = this.$(e.currentTarget),
           $contacts = this.$('.contact').not($contact);
 
-      $contacts.removeClass('active');
-      this.activateContact($contact.data('id'));
+      if (!$contact.hasClass('active')) {
+        $contacts.removeClass('active');
+        this.activateContact($contact.data('id'));
+      }
     },
 
     toggleContactSection: function(e) {
