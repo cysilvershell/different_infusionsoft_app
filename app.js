@@ -13,7 +13,7 @@
       'click .search-button'            : 'search',
       'click .toggle-search'            : 'toggleSearch',
       'keypress .search-input'          : 'searchOnEnter',
-      'ticket.requester.email.changed'  : 'search'
+      'ticket.requester.email.changed'  : 'searchByRequester'
     },
     fields: {
       contact               : [ 'FirstName', 'LastName', 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country', 'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ],
@@ -306,9 +306,7 @@
       // Preload data
       this.getGroups()
         .done(function() {
-          var requester = this.ticket().requester();
-          if (!requester) { return; }
-          this.getContacts(requester.email());
+          this.searchByRequester();
         }.bind(this));
 
       this.getProducts()
@@ -323,6 +321,12 @@
 
     search: function() {
       this.getContacts(this.$('.search-input').val());
+    },
+
+    searchByRequester: function() {
+      var requester = this.ticket().requester();
+      if (!requester) { return; }
+      this.getContacts(requester.email());
     },
 
     searchOnEnter: function(e) {
