@@ -8,40 +8,40 @@
       <div class="content">
         {{#if email}}
         <div class="field">
-          <label>{{t "contact.details.email" }}</label>
+          <strong>{{t "contact.details.email" }}</strong>
           <p>{{email}}</p>
         </div>
         {{/if}}
         {{#if company}}
         <div class="field">
-          <label>{{t "contact.details.company" }}</label>
+          <strong>{{t "contact.details.company" }}</strong>
           <p>{{company}}</p>
         </div>
         {{/if}}
         {{#if jobTitle}}
         <div class="field">
-          <label>{{t "contact.details.jobTitle" }}</label>
+          <strong>{{t "contact.details.jobTitle" }}</strong>
           <p>{{jobTitle}}</p>
         </div>
         {{/if}}
         {{#if leadsource}}
         <div class="field">
-          <label>{{t "contact.details.leadSource" }}</label>
+          <strong>{{t "contact.details.leadSource" }}</strong>
           <p>{{leadsource}}</p>
         </div>
         {{/if}}
         <div class="field owner">
-          <label>{{t "contact.details.owner" }}</label>
+          <strong>{{t "contact.details.owner" }}</strong>
           <p>{{t "global.loading" }}</p>
         </div>
         {{#if phone1}}
         <div class="field">
-          <label>{{t "contact.details.phone1" }}</label>
+          <strong>{{t "contact.details.phone1" }}</strong>
           <p>{{phone1}}</p>
         </div>{{/if}}
         {{#if dateCreated}}
         <div class="field">
-          <label>{{t "contact.details.dateCreated" }}</label>
+          <strong>{{t "contact.details.dateCreated" }}</strong>
           <p>{{dateCreated}}</p>
         </div>
         {{/if}}
