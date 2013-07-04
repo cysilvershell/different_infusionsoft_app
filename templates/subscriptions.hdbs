@@ -1,23 +1,22 @@
 <table class="table table-condensed table-striped">
   <thead>
     <tr>
-      <th>Next bill date</th>
-      <th>Plan</th>
-      <th>Bill amt.</th>
-      <th>Status</th>
+      <th>{{t "contact.details.subscriptions.date"}}</th>
+      <th>{{t "contact.details.subscriptions.plan"}}</th>
+      <th>{{t "contact.details.subscriptions.billAmount"}}</th>
+      <th>{{t "contact.details.subscriptions.status"}}</th>
     </tr>
   </thead>
   <tbody>
-    {{#each Subscriptions}}
+    {{#subscriptions}}
     <tr>
-      <td></td>
-      <td>Nurture Category</td>
-      <td>01/06/2013</td>
-      <td><span class="label label-inverse">Default</span></td>
+      <td>{{nextBillDate}}</td>
+      <td>{{productName}}</td>
+      <td>{{billingAmt}}</td>
+      <td>{{status}}</td>
     </tr>
-    {{/each}}
-    {{#unless Subscriptions}}
-    <tr><td class="centered" colspan="4">No subscriptions found</td></tr>
-    {{/unless}}
+    {{else}}
+    <tr><td colspan="4">{{t "contact.details.subscriptions.empty"}}</td></tr>
+    {{/subscriptions}}
   </tbody>
 </table>

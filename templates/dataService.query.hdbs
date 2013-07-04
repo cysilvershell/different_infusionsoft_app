@@ -6,7 +6,7 @@
       <value><string>{{privateKey}}</string></value>
     </param>
     <param>
-      <value><string>{{tableName}}</string></value>
+      <value><string>{{table}}</string></value>
     </param>
     <param>
       <value><int>{{limit}}</int></value>
@@ -15,19 +15,27 @@
       <value><int>{{page}}</int></value>
     </param>
     <param>
-      <value><struct>
-        <member><name>queryField</name>
-          <value><string>query</string></value>
-        </member>
-      </struct></value>
+      <value>
+        <struct>
+          {{#each query}}
+          <member>
+            <name>{{name}}</name>
+            <value><string>{{value}}</string></value>
+          </member>
+          {{/each}}
+        </struct>
+      </value>
     </param>
     <param>
-      <value><array>
-        <data>
-          <value><string>returnField1</string></value>
-          <value><string>returnField2</string></value>
-        </data>
-      </array></value>
+      <value>
+        <array>
+          <data>
+            {{#each fields}}
+            <value><string>{{this}}</string></value>
+            {{/each}}
+          </data>
+        </array>
+      </value>
     </param>
   </params>
 </methodCall>

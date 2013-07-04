@@ -1,87 +1,90 @@
-{{#each contacts}}
-<div class="contact well">
-  <a class="contact-toggle" title="Toggle"><i class="icon-chevron-up"></i></a>
-  <h4><a href="https://{{../subdomain}}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{Id}}" target="_blank" title='{{t "search.contact.edit"}}'>{{FirstName}} {{LastName}} <span class="type">(contact)</span></a></h4>
-  <section class="active general">
-    <h5>General information</h5>
-    <div class="content">
-      {{#if Email}}
-      <div class="field">
-        <label>Email</label>
-        <p>{{Email}}</p> 
+<ul class="unstyled">
+  {{#each contacts}}
+  <li class="contact well" data-id="{{id}}" data-owner-id="{{ownerID}}">
+    <h4><a href="https://{{setting "subdomain" }}.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID={{id}}" target="_blank" title='{{t "contact.edit"}}'>{{firstName}} {{lastName}}</a></h4>
+    <section class="active general">
+      <h5>{{t "contacts.generalInformation" }}</h5>
+      <div class="content">
+        {{#if email}}
+        <div class="field">
+          <strong>{{t "contact.details.email" }}</strong>
+          <p>{{email}}</p>
+        </div>
+        {{/if}}
+        {{#if company}}
+        <div class="field">
+          <strong>{{t "contact.details.company" }}</strong>
+          <p>{{company}}</p>
+        </div>
+        {{/if}}
+        {{#if jobTitle}}
+        <div class="field">
+          <strong>{{t "contact.details.jobTitle" }}</strong>
+          <p>{{jobTitle}}</p>
+        </div>
+        {{/if}}
+        {{#if leadsource}}
+        <div class="field">
+          <strong>{{t "contact.details.leadSource" }}</strong>
+          <p>{{leadsource}}</p>
+        </div>
+        {{/if}}
+        <div class="field owner">
+          <strong>{{t "contact.details.owner" }}</strong>
+          <p>{{t "global.loading" }}</p>
+        </div>
+        {{#if phone1}}
+        <div class="field">
+          <strong>{{t "contact.details.phone1" }}</strong>
+          <p>{{phone1}}</p>
+        </div>{{/if}}
+        {{#if dateCreated}}
+        <div class="field">
+          <strong>{{t "contact.details.dateCreated" }}</strong>
+          <p>{{dateCreated}}</p>
+        </div>
+        {{/if}}
       </div>
-      {{/if}}
-      {{#if Company}}
-      <div class="field">
-        <label>Company</label>
-        <p>{{Company}}</p>
-      </div>
-      {{/if}}
-      {{#if JobTitle}}
-      <div class="field">
-        <label>Job title</label>
-        <p>{{JobTitle}}</p>
-      </div>
-      {{/if}}
-      {{#if Leadsource}}
-      <div class="field">
-        <label>Lead source</label>
-        <p>{{Leadsource}}</p>
-      </div>
-      {{/if}}
-      {{#if Owner}}
-      <div class="field">
-        <label>Owner</label>
-        <p>{{Owner.FirstName}} {{Owner.LastName}}</p>
-      </div>
-      {{/if}}
-      {{#if Phone1}}
-      <div class="field">
-        <label>Phone 1</label>
-        <p>{{Phone1}}</p>
-      </div>{{/if}}
-      {{#if DateCreated}}
-      <div class="field">
-        <label>Contact created date</label>
-        <p>{{DateCreated}}</p>
-      </div>
-      {{/if}}
-    </div>
-  </section>
+    </section>
 
-  {{#if StreetAddress1}}
-  <section class="billing">
-    <h5>Billing address</h5>
-    <div class="content">
-      <div class="field">
-        <address>
-          {{StreetAddress1}}<br>
-          {{#if StreetAddress2}}{{StreetAddress2}}<br>{{/if}}
-          {{City}},&nbsp;{{PostalCode}},&nbsp;{{State}}<br>
-          {{Country}}
-        </address>
+    {{#if streetAddress1}}
+    <section class="billing">
+      <h5>{{t "contact.details.billingAddress" }}</h5>
+      <div class="content">
+        <div class="field">
+          <address>
+            {{streetAddress1}}<br>
+            {{#if streetAddress2}}{{streetAddress2}}<br>{{/if}}
+            {{city}}, {{postalCode}}, {{state}}<br>
+            {{country}}
+          </address>
+        </div>
       </div>
-    </div>
-  </section>
-  {{/if}}
+    </section>
+    {{/if}}
 
-  <section class="tags">
-    <h5>Tags</h5>
-    <div class="content"></div>
-  </section>
+    <section class="groups">
+      <h5>{{t "contact.details.group.title" }}</h5>
+      <div class="content">{{t "global.loading" }}</div>
+    </section>
 
-  <section class="orders-subscriptions">
-    <h5>Orders &amp; Subscriptions</h5>
-    <div class="content">
-      <h6>Orders</h6>
-      <div class="orders"></div>
+    <section class="orders-subscriptions">
+      <h5>{{t "contact.details.orders.title" }} &amp; {{t "contact.details.subscriptions.title" }}</h5>
+      <div class="content">
+        <h6>{{t "contact.details.orders.title" }}</h6>
+        <div class="orders">{{t "global.loading" }}</div>
 
-      <h6>Subscriptions</h6>
-      <div class="subscriptions"></div>
-    </div>
-  </section>
-</div>
-{{/each}}
-
-<p><a href="https://{{subdomain}}.infusionsoft.com/app/nav/link?navSystem=nav.crm&amp;navModule=contact&amp;navLink=search-contact" class="more pull-right" target="_blank">See more</a></p>
-
+        <h6>{{t "contact.details.subscriptions.title" }}</h6>
+        <div class="subscriptions">{{t "global.loading" }}</div>
+      </div>
+    </section>
+  </li>
+  {{else}}
+  <li class="well">
+    <p>{{t "contacts.empty" }}</p>
+  </li>
+  {{/each}}
+</ul>
+{{#if more}}
+<p><a href="https://{{setting "subdomain"}}.infusionsoft.com/app/nav/link?navSystem=nav.crm&amp;navModule=contact&amp;navLink=search-contact" class="more pull-right" target="_blank">{{t "contacts.more"}}</a></p>
+{{/if}}
