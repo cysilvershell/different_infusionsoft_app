@@ -6,19 +6,21 @@
       <value><string>{{privateKey}}</string></value>
     </param>
     <param>
-      <value><string>{{tableName}}</string></value>
+      <value><string>{{table}}</string></value>
     </param>
     <param>
-      <value><int>{{recordId}}</int></value>
+      <value><int>{{id}}</int></value>
     </param>
     <param>
-      <value><array>
-        <data>
-          {{#each fields}}
-          <value><string>{{this}}</string></value>
-          {{/each}}
-        </data>
-      </array></value>
+      <value>
+        <array>
+          <data>
+            {{#each fields}}
+            <value><string>{{this}}</string></value>
+            {{/each}}
+          </data>
+        </array>
+      </value>
     </param>
   </params>
 </methodCall>

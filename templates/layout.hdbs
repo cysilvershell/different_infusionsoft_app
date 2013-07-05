@@ -1,5 +1,13 @@
 <header class="clearfix">
   <h3>{{setting "name"}}</h3>
-  <a class="goto-search"><i class="icon-search"></i></a>
+  <a class="toggle-search" title="{{t "search.toggle"}}"><i class="icon-search"></i></a>
 </header>
+<section class="search">
+  <div class="input-append">
+    <input class="search-input" placeholder="{{t "search.placeholder"}}" type="text">
+    <button class="btn search-button" type="button">
+      <i class="icon-search"></i>
+    </button>
+  </div>
+</section>
 <section class="main" data-main/>

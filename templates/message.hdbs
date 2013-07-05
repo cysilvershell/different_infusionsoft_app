@@ -1,5 +1,4 @@
 <div class="message">
   <h4>{{title}}</h4>
   <p>{{message}}</p>
-  <!--p><a class="back">&lt;&lt; {{t "message.back"}}</a></p-->
 </div>
