@@ -53,6 +53,9 @@
     "default": {
       "title": "An error has occured",
       "message": "There was an error loading contact data. Please try again later."
+    },
+    "badGateway": {
+      "message": "There was an error connecting to Infusionsoft. Please ensure the Subdomain and API token are correct in your settings."
     }
   },
   "search": {

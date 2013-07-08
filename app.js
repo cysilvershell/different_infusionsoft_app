@@ -118,8 +118,12 @@
                     fail(response);
                   }
                 },
-                function(message) {
-                  fail(message);
+                function(response) {
+                  if (response.status === 502) {
+                    app.gotoMessage(app.I18n.t('message.badGateway.message'));
+                  } else {
+                    fail();
+                  }
                 }
               );
             }).fail(function(message) {
@@ -296,15 +300,16 @@
       this.dataService = this.createDataService();
       this.reject      = this.promise(function(done, fail) { fail(); });
 
-      // Preload data
       this.getGroups()
         .done(function() {
-          this.searchByRequester();
-        }.bind(this));
 
-      this.getProducts()
-        .done(function(products) {
-          this.getSubscriptionPlans(products);
+          // Get product information
+          this.getProducts()
+            .done(function(products) {
+              this.getSubscriptionPlans(products);
+            }.bind(this));
+
+          this.searchByRequester();
         }.bind(this));
     },
 
