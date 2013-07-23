@@ -55,7 +55,7 @@
           <address>
             {{streetAddress1}}<br>
             {{#if streetAddress2}}{{streetAddress2}}<br>{{/if}}
-            {{city}}, {{postalCode}}, {{state}}<br>
+            {{city}}, {{state}}, {{postalCode}}<br>
             {{country}}
           </address>
         </div>
