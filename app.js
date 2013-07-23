@@ -184,7 +184,7 @@
       return value;
     },
 
-     // Assign categories to group
+    // Assign categories to group
     getGroupCategories: function(groups) {
       return this.dataService.query('ContactGroupCategory', this.fields.contactGroupCategory)
         .done(function(categories) {
@@ -272,7 +272,7 @@
       this.switchTo('contacts', {
         contacts  : contacts,
         matches   : matches,
-        more      : matches >= this.API_MAX_RESULTS
+        more      : matches >= this.API_MAX_RESULTS_DEFAULT
       });
 
       if (matches > 0) {
