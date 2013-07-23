@@ -1,7 +1,7 @@
 (function() {
 
   return {
-    API_MAX_RESULTS: 5,
+    API_MAX_RESULTS_DEFAULT: 5,
     FORMAT_DATE: new RegExp(/^(\d{4})(\d{2})(\d{2})/),
     events: {
       'app.activated'                   : 'init',
@@ -166,7 +166,7 @@
         },
         query: function(table, fields, query, limit, page) {
           return _sendRequest('dataService.query', {
-            limit   : limit   || app.API_MAX_RESULTS,
+            limit   : limit   || app.API_MAX_RESULTS_DEFAULT,
             page    : page    || 0,
             query   : _mapQueryFields(query),
             fields  : fields,
@@ -197,7 +197,7 @@
     },
 
     getGroups: function() {
-      return this.dataService.query('ContactGroup', this.fields.contactGroup)
+      return this.dataService.query('ContactGroup', this.fields.contactGroup, null, 100)
         .done(function(groups) {
           this.getGroupCategories(groups);
         }.bind(this));
