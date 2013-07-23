@@ -178,7 +178,8 @@
 
     formatDate: function(value) {
       if (_.isString(value)) {
-        return this.FORMAT_DATE.exec(value).slice(1).join('/');
+        var dateParts = this.FORMAT_DATE.exec(value).slice(1);
+        return '%@/%@/%@'.fmt(dateParts[1], dateParts[2], dateParts[0]);
       }
       return value;
     },
