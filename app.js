@@ -15,7 +15,7 @@
       'ticket.requester.email.changed'  : 'searchByRequester'
     },
     fields: {
-      contact               : [ 'FirstName', 'LastName', 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country', 'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1' ],
+      contact               : [ 'FirstName', 'LastName', 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country', 'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1', 'Phone1Ext', 'Phone1Type' ],
       contactGroup          : [ 'Id', 'GroupName', 'GroupCategoryId' ],
       contactGroupAssign    : [ 'GroupId', 'DateCreated' ],
       contactGroupCategory  : [ 'Id', 'CategoryName' ],

@@ -36,7 +36,7 @@
         {{#if phone1}}
         <div class="field">
           <strong>{{t "contact.details.phone1" }}</strong>
-          <p>{{phone1}}</p>
+          <p>{{phone1}} {{#if phone1Ext}}+{{phone1Ext}}{{/if}} ({{phone1Type}})</p>
         </div>{{/if}}
         {{#if dateCreated}}
         <div class="field">
