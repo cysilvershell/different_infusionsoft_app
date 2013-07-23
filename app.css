@@ -26,11 +26,18 @@ header {
   section {
     display: none;
   }
+  h4 a {
+    color: #444;
+  }
   h5 {
     color: #1a74b0;
     margin-bottom: 5px;
   }
+  &:hover {
+    background-color: #e5e5e5;
+  }
   &.active {
+    background-color: #f5f5f5;
     cursor: auto;
     section {
       display: block;
@@ -40,7 +47,6 @@ header {
     }
   }
   .active h5, h5:hover {
-    color: #10486d;
     cursor: pointer;
   }
   .content {
@@ -52,6 +58,9 @@ header {
   }
   .field {
     margin-bottom: 5px;
+    p {
+      margin-left: 5px;
+    }
   }
 }
 .contact-toggle {
