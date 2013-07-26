@@ -10,10 +10,16 @@
   <tbody>
     {{#orders}}
     <tr>
-      <td>{{dateCreated}}</td>
-      <td></td>
-      <td></td>
-      <td><span class="label label-inverse"></span></td>
+      <td>{{dueDate}}</td>
+      <td>{{jobTitle}}</td>
+      <td>${{invoiceTotal}}</td>
+      <td>
+        {{#if payStatus}}
+        <span class="label label-success">Paid</span>
+        {{else}}
+        <span class="label label-important">Unpaid</span>
+        {{/if}}
+      </td>
     </tr>
     {{else}}
     <tr><td colspan="4">{{t "contact.details.orders.empty"}}</td></tr>

@@ -19,11 +19,11 @@
       contactGroup          : [ 'Id', 'GroupName', 'GroupCategoryId' ],
       contactGroupAssign    : [ 'GroupId', 'DateCreated' ],
       contactGroupCategory  : [ 'Id', 'CategoryName' ],
-      job                   : [ 'JobTitle', 'DateCreated', 'OrderStatus', 'JobStatus' ],
+      invoice               : [ 'JobId', 'InvoiceTotal', 'PayStatus' ],
+      job                   : [ 'Id', 'JobTitle', 'DueDate' ],
       owner                 : [ 'FirstName', 'LastName' ],
       product               : [ 'Id', 'ProductName' ],
-      recurringOrder        : [ 'NextBillDate', 'SubscriptionPlanId', 'BillingAmt', 'Status' ],
-      subscriptionPlan      : [ 'Id', 'ProductId' ]
+      recurringOrder        : [ 'NextBillDate', 'ProductId', 'BillingAmt', 'Status' ]
     },
     requests: {
       'get' : function(request) { return request; }
@@ -303,13 +303,6 @@
 
       this.getGroups()
         .done(function() {
-
-          // Get product information
-          this.getProducts()
-            .done(function(products) {
-              this.getSubscriptionPlans(products);
-            }.bind(this));
-
           this.searchByRequester();
         }.bind(this));
     },
@@ -365,30 +358,50 @@
       // Check to see if we have done this before
       if (_.isUndefined($contact.data('orders-loaded'))) {
 
-        // Get data for orders
-        this.dataService.query('Job', this.fields.job, { contactId: contactId })
-          .done(function(orders) {
-            var $orders = this.renderTemplate('orders', { orders: orders });
-            $section.find('.orders').html($orders);
-          }.bind(this));
+        // Get the invoices for the contact
+        this.dataService.query('Invoice', this.fields.invoice, { contactId: contactId }).done(function(invoices) {
+          // Get data for orders
+          this.dataService.query('Job', this.fields.job, { contactId: contactId })
+            .done(function(orders) {
 
-        // Get data for subscriptions
-        this.dataService.query('RecurringOrder', this.fields.recurringOrder, { contactId: contactId })
-          .done(function(subscriptions) {
-            // Map subscriptions for contact to data
-            subscriptions = subscriptions.map(function(subscription) {
-              return _.extend(subscription, {
-                productName: _.find(this.data.subscriptionPlans, function(subscriptionPlan) { return subscriptionPlan.id === subscription.subscriptionPlanId; }).productName
+              // Map Job to Invoice
+              orders = orders.map(function(order) {
+                var invoice = _.find(invoices, function(invoice) {
+                  return invoice.jobId === order.id;
+                });
+                return _.extend(order, {
+                  invoiceTotal: invoice.invoiceTotal,
+                  payStatus:    invoice.payStatus === '1'
+                });
               });
+              var $orders = this.renderTemplate('orders', { orders: orders });
+              $section.find('.orders').html($orders);
             }.bind(this));
 
-            var $subscriptions = this.renderTemplate('subscriptions', { subscriptions: subscriptions });
-            $section.find('.subscriptions').html($subscriptions);
-          }.bind(this))
-          .always(function() {
-            $contact.data('orders-loaded', true);
-          });
-      }
+        }.bind(this));
+
+        // Get product information
+        this.getProducts().done(function(products) {
+
+          // Get data for subscriptions
+          this.dataService.query('RecurringOrder', this.fields.recurringOrder, { contactId: contactId })
+            .done(function(subscriptions) {
+
+              // Map subscriptions for contact to data
+              subscriptions = subscriptions.map(function(subscription) {
+                return _.extend(subscription, {
+                  productName: _.find(products, function(product) { return product.id === subscription.productId; }).productName
+                });
+              }.bind(this));
+
+              var $subscriptions = this.renderTemplate('subscriptions', { subscriptions: subscriptions });
+              $section.find('.subscriptions').html($subscriptions);
+            }.bind(this))
+            .always(function() {
+              $contact.data('orders-loaded', true);
+            });
+          }.bind(this));
+        }
     },
 
     setOwnerForContact: function($contact) {

@@ -12,8 +12,8 @@
     <tr>
       <td>{{nextBillDate}}</td>
       <td>{{productName}}</td>
-      <td>{{billingAmt}}</td>
-      <td>{{status}}</td>
+      <td>${{billingAmt}}</td>
+      <td><span class="label label-inverse">{{status}}</span></td>
     </tr>
     {{else}}
     <tr><td colspan="4">{{t "contact.details.subscriptions.empty"}}</td></tr>
