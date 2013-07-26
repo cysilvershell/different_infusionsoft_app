@@ -184,40 +184,36 @@
       return value;
     },
 
-    // Assign categories to group
-    getGroupCategories: function(groups) {
-      return this.dataService.query('ContactGroupCategory', this.fields.contactGroupCategory)
+    getGroupCategories: function() {
+      return this.dataService.query('ContactGroupCategory', this.fields.contactGroupCategory, null, 100)
         .done(function(categories) {
-          this.data.groups = groups.map(function(group) {
+          this.data.categories      = categories;
+          this.data.groupCategories = this.data.groups.map(function(group) {
             return _.extend(group, {
-              groupCategoryName : _.find(categories, function(category) { return category.id === group.groupCategoryId; }).categoryName
+              groupCategoryName: _.find(categories, function(category) {
+                return category.id === group.groupCategoryId;
+              }).categoryName
             });
           });
-        }.bind(this));
-    },
-
-    getGroups: function() {
-      return this.dataService.query('ContactGroup', this.fields.contactGroup, null, 100)
-        .done(function(groups) {
-          this.getGroupCategories(groups);
         }.bind(this));
     },
 
     getContactGroups: function(id) {
-      var self = this;
-      return this.promise(function(done, fail) {
-        return self.dataService.query('ContactGroupAssign', self.fields.contactGroupAssign, { contactId: id })
-          .done(function(groups) {
-            groups = groups.map(function(group) {
-              var groupCategory = _.find(self.data.groups, function(grp) {
-                return grp.id === group.groupId;
-              });
+      console.log(id);
+      // var self = this;
+      // return this.promise(function(done, fail) {
+      //   return self.dataService.query('ContactGroupAssign', self.fields.contactGroupAssign, { contactId: id })
+      //     .done(function(groups) {
+      //       groups = groups.map(function(group) {
+      //         var groupCategory = _.find(self.data.groups, function(grp) {
+      //           return grp.id === group.groupId;
+      //         });
 
-              return _.extend(group, groupCategory);
-            });
-            done(groups);
-          });
-      });
+      //         return _.extend(group, groupCategory);
+      //       });
+      //       done(groups);
+      //     });
+      // });
     },
 
     getContactOwner: function(id) {
@@ -232,16 +228,13 @@
 
       this.gotoLoading();
 
-      var request;
+      var queryFields, request;
       if (this.isEmail(query)) {
-        request = this.dataService.query('Contact', this.fields.contact, {
-          Email: query
-        });
+        queryFields = { Email: query };
       } else {
-        request = this.dataService.query('Contact', this.fields.contact, {
-          FirstName : query
-        });
+        queryFields = { FirstName : query };
       }
+      request = this.dataService.query('Contact', this.fields.contact, queryFields);
 
       request.done(function(contacts) {
         contacts = contacts.map(function(contact) {
@@ -252,20 +245,28 @@
       }.bind(this));
     },
 
-    getProducts: function() {
-      return this.dataService.query('Product', this.fields.product);
-    },
-
-    getSubscriptionPlans: function(products) {
-      return this.dataService.query('SubscriptionPlan', this.fields.subscriptionPlan)
-        .done(function(subscriptionPlans) {
-          this.data.subscriptionPlans = subscriptionPlans.map(function(subscriptionPlan) {
-            return _.extend(subscriptionPlan, {
-              productName: _.find(products, function(product) { return product.id === subscriptionPlan.productId; }).productName
-            });
-          });
+    getGroups: function() {
+      return this.dataService.query('ContactGroup', this.fields.contactGroup, null, 100)
+        .done(function(groups) {
+          this.data.groups = groups;
+          this.getGroupCategories();
         }.bind(this));
     },
+
+    // getProducts: function() {
+    //   return this.dataService.query('Product', this.fields.product);
+    // },
+
+    // getSubscriptionPlans: function(products) {
+    //   return this.dataService.query('SubscriptionPlan', this.fields.subscriptionPlan)
+    //     .done(function(subscriptionPlans) {
+    //       this.data.subscriptionPlans = subscriptionPlans.map(function(subscriptionPlan) {
+    //         return _.extend(subscriptionPlan, {
+    //           productName: _.find(products, function(product) { return product.id === subscriptionPlan.productId; }).productName
+    //         });
+    //       });
+    //     }.bind(this));
+    // },
 
     gotoContacts: function(contacts) {
       var matches = contacts.length;
@@ -301,10 +302,7 @@
       this.dataService = this.createDataService();
       this.reject      = this.promise(function(done, fail) { fail(); });
 
-      this.getGroups()
-        .done(function() {
-          this.searchByRequester();
-        }.bind(this));
+      this.searchByRequester();
     },
 
     isEmail: function(value) {
@@ -334,19 +332,24 @@
           contactId = $contact.data('id'),
           $groups;
 
+      this.getGroups()
+        .done(function() {
+
+        });
+
       // Check to see if we have done this before
       if (_.isUndefined($contact.data('groups-loaded'))) {
-        this.getContactGroups(contactId)
-          .done(function(groups) {
-            // Generate template
-            $groups = this.renderTemplate('groups', { groups: groups });
+      //   this.getContactGroups(contactId)
+      //     .done(function(groups) {
+      //       // Generate template
+      //       $groups = this.renderTemplate('groups', { groups: groups });
 
-            // Append content
-            $content.html($groups);
-          }.bind(this))
-          .always(function() {
-            $contact.data('groups-loaded', true);
-          });
+      //       // Append content
+      //       $content.html($groups);
+      //     }.bind(this))
+      //     .always(function() {
+      //       $contact.data('groups-loaded', true);
+      //     });
       }
     },
 
