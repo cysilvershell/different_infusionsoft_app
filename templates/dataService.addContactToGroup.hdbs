@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<methodCall>
+  <methodName>ContactService.addToGroup</methodName>
+  <params>
+    <param>
+      <value><string>{{privateKey}}</string></value>
+    </param>
+    <param>
+      <value><int>{{contactId}}</int></value>
+    </param>
+    <param>
+      <value><int>{{groupId}}</int></value>
+    </param>
+  </params>
+</methodCall>
