@@ -113,7 +113,9 @@
                 return $structs.get().map(function(struct, index) {
                   var member = { index: index };
                   _.each(data.fields, function(field) {
-                    var $value = app.$(struct).find('name').filter(function(index, element) { return app.$(element).text() === field; }).next(),
+                    var $value = app.$(struct).find('name').filter(function(index, element) {
+                      return app.$(element).text() === field;
+                    }).next(),
                     value  = $value.text();
 
                     // Match date element nodes so we can format them
