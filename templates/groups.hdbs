@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#groups}}
+    {{#contactGroups}}
     <tr>
       <td>{{groupName}}</td>
       <td>{{groupCategoryName}}</td>
@@ -15,6 +15,24 @@
     </tr>
     {{else}}
     <tr><td colspan="3">{{t "contact.details.group.empty"}}</td></tr>
-    {{/groups}}
+    {{/contactGroups}}
   </tbody>
 </table>
+{{#if groups}}
+<div class="add-tags">
+  <h6>Add tag to contact</h6>
+  <div class="clearfix tags">
+    <select class="tag">
+      <option value="">Please choose:</option>
+      {{#categories}}
+      <optgroup label="{{categoryName}}">
+        {{#groups}}
+        <option value="{{id}}">{{groupName}}</option>
+        {{/groups}}
+      </optgroup>
+      {{/categories}}
+    </select>
+    <button class="add-tag btn" data-category-id="{{id}}"><i class="icon-plus"></i></button>
+  </div>
+</div>
+{{/if}}

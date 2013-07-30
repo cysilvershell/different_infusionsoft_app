@@ -71,8 +71,25 @@ header {
 .message p {
   margin-bottom: 10px;
 }
+.add-tags {
+  h6 {
+    margin-bottom: 10px;
+  }
+  select, button {
+    float: left;
+  }
+  select {
+    margin-right: 10px;
+    width: 230px;
+  }
+}
 .centered {
   text-align: center;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 .btn {
   padding-bottom: 5px;

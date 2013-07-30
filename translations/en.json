@@ -62,5 +62,9 @@
     "invalid": "Not a valid search",
     "placeholder": "Search by name or email",
     "toggle": "Click to toggle search"
+  },
+  "addTag": {
+    "error": "Failed to add tag to contact. Check to see if you have already added it",
+    "success": "Added tag to contact"
   }
 }
