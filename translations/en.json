@@ -51,7 +51,8 @@
   },
   "global": {
     "loading": "Loading...",
-    "loadingLong": "Please wait, loading data"
+    "loadingLong": "Please wait, loading data",
+    "limitReached": "You reached a limit fetching your results."
   },
   "message": {
     "default": {

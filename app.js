@@ -140,9 +140,15 @@
             return app.promise(function(done, fail) {
               return app.ajax('get', request).then(
                 function(response) {
-                  response = _parseResponse(response, data);
-                  if (_.isArray(response) || _.isBoolean(response)) {
+                  response    = _parseResponse(response, data);
+                  var isArray = _.isArray(response);
+
+                  if (isArray || _.isBoolean(response)) {
                     done(response);
+                    // Specifically checking against the large limit
+                    if (isArray && response.length === this.API_MAX_RESULTS_GROUPS) {
+                      this.limitReached();
+                    }
                   } else {
                     fail(response);
                   }
@@ -380,6 +386,10 @@
 
     isEmail: function(value) {
       return value.indexOf('@') !== -1;
+    },
+
+    limitReached: function() {
+      services.notify(this.I18n.t('global.limitReached'), 'alert');
     },
 
     search: function() {
