@@ -2,7 +2,7 @@
 
   return {
     API_MAX_RESULTS_DEFAULT: 5,
-    API_MAX_RESULTS_GROUPS: 100,
+    API_MAX_RESULTS_GROUPS: 250,
     FORMAT_DATE: new RegExp(/^(\d{4})(\d{2})(\d{2})/),
     events: {
       'app.activated'                   : 'init',
@@ -268,7 +268,9 @@
       if (this.isEmail(query)) {
         queryFields = { Email: query };
       } else {
-        queryFields = { FirstName : query };
+        queryFields = {
+          FirstName : query
+        };
       }
       request = this.dataService.query('Contact', this.fields.contact, queryFields);
 
@@ -295,9 +297,12 @@
               return matches;
             });
 
-            return _.extend(group, {
-              groupCategoryName: category.categoryName
-            });
+            if (category) {
+              return _.extend(group, {
+                groupCategoryName: category.categoryName
+              });
+            }
+            return group;
           });
         });
       }
