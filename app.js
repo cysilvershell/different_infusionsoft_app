@@ -80,7 +80,6 @@
               contentType : 'application/xml',
               data        : xml,
               dataType    : 'xml',
-              proxy_v2    : true,
               type        : 'POST',
               url         : 'https://%@.infusionsoft.com/api/xmlrpc'.fmt(app.settings.subdomain)
             };
