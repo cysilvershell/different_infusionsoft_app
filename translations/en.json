@@ -51,7 +51,8 @@
   },
   "global": {
     "loading": "Loading...",
-    "loadingLong": "Please wait, loading data"
+    "loadingLong": "Please wait, loading data",
+    "limitReached": "You reached the maximum limit of results to display. Please contact Support for additional information."
   },
   "message": {
     "default": {

@@ -2,7 +2,7 @@
 
   return {
     API_MAX_RESULTS_DEFAULT: 5,
-    API_MAX_RESULTS_GROUPS: 100,
+    API_MAX_RESULTS_GROUPS: 250,
     FORMAT_DATE: new RegExp(/^(\d{4})(\d{2})(\d{2})/),
     events: {
       'app.activated'                   : 'init',
@@ -140,9 +140,15 @@
             return app.promise(function(done, fail) {
               return app.ajax('get', request).then(
                 function(response) {
-                  response = _parseResponse(response, data);
-                  if (_.isArray(response) || _.isBoolean(response)) {
+                  response    = _parseResponse(response, data);
+                  var isArray = _.isArray(response);
+
+                  if (isArray || _.isBoolean(response)) {
                     done(response);
+                    // Specifically checking against the large limit
+                    if (isArray && response.length === this.API_MAX_RESULTS_GROUPS) {
+                      this.limitReached();
+                    }
                   } else {
                     fail(response);
                   }
@@ -268,7 +274,9 @@
       if (this.isEmail(query)) {
         queryFields = { Email: query };
       } else {
-        queryFields = { FirstName : query };
+        queryFields = {
+          FirstName : query
+        };
       }
       request = this.dataService.query('Contact', this.fields.contact, queryFields);
 
@@ -295,9 +303,12 @@
               return matches;
             });
 
-            return _.extend(group, {
-              groupCategoryName: category.categoryName
-            });
+            if (category) {
+              return _.extend(group, {
+                groupCategoryName: category.categoryName
+              });
+            }
+            return group;
           });
         });
       }
@@ -375,6 +386,10 @@
 
     isEmail: function(value) {
       return value.indexOf('@') !== -1;
+    },
+
+    limitReached: function() {
+      services.notify(this.I18n.t('global.limitReached'), 'alert');
     },
 
     search: function() {
