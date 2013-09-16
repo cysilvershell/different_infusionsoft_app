@@ -3,7 +3,7 @@
     "description": "Displays customer, order and subscriptions details from Infusionsoft",
     "name": "Infusionsoft App",
     "parameters": {
-      "subdomain"  : { "label": "Infusionsoft subdomain", "helpText": "Enter the first part of the subdomain only here. For example enter 'yourcompany'" },
+      "subdomain"  : { "label": "Infusionsoft App Name", "helpText": "Enter the first part of the app name only here. For example enter 'yourcompany'" },
       "token"      : { "label": "API token", "helpText": "You can find your Infusionsoft API token in the Infusionsoft Admin settings section" }
     }
 },
