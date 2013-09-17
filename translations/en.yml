@@ -1,0 +1,196 @@
+---
+title: "Infusionsoft"
+packages:
+  - default
+  - app_infusionsoft_app
+
+parts:
+  - translation:
+      key: "txt.apps.infusionsoft_app.app.description"
+      title: "Application Description"
+      value: "Displays customer, order and subscriptions details from Infusionsoft"
+  - translation:
+      key: "txt.apps.infusionsoft_app.app.name"
+      title: "Application Name"
+      value: "Infusionsoft App"
+  - translation:
+      key: "txt.apps.infusionsoft_app.app.parameters.subdomain.label"
+      title: "Infusionsoft App Name (ie appname.infusionsoft.com)"
+      value: "Infusionsoft App Name"
+  - translation:
+      key: "txt.apps.infusionsoft_app.app.parameters.subdomain.helpText"
+      title: "Help text for subdomain field"
+      value: "Enter the first part of the subdomain only here. For example enter 'yourcompany'"
+  - translation:
+      key: "txt.apps.infusionsoft_app.app.parameters.token.label"
+      title: "API token from Infusionsoft"
+      value: "API token"
+  - translation:
+      key: "txt.apps.infusionsoft_app.app.parameters.token.helpText"
+      title: "API Token from Infusionsoft help text"
+      value: "You can find your Infusionsoft API token in the Infusionsoft Admin settings section"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.billingAddress"
+      title: "App field label for Billing adress"
+      value: "Billing address"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.company"
+      title: "App field label for Company"
+      value: "Company"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.dateCreated"
+      title: "App field label for Contact created date"
+      value: "Contact created date"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.email"
+      title: "App field label for email address"
+      value: "Email"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.jobTitle"
+      title: "App field label for job title"
+      value: "Job title"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.leadSource"
+      title: "App field label for lead source"
+      value: "Lead source"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.owner"
+      title: "App field label for owner"
+      value: "Owner"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.ownerEmpty"
+      title: "App field error if owner not found"
+      value: "Could not find owner info"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.phone1"
+      title: "App field label for Phone 1"
+      value: "Phone 1"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.group.category"
+      title: "App field label for category"
+      value: "Category"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.group.date"
+      title: "App field label for group date field"
+      value: "Date"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.group.empty"
+      title: "App field placeholder for when there no tags"
+      value: "No tags found"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.group.tag"
+      title: "App field label for tags"
+      value: "Tag"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.group.title"
+      title: "App field label for tag group"
+      value: "Tags"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.date"
+      title: "App field label for date"
+      value: "Date"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.empty"
+      title: "App field placeholder text when there are no orders"
+      value: "No orders found"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.order"
+      title: "App field label for orders"
+      value: "Order"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.status"
+      title: "App field label for order details status"
+      value: "Status"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.title"
+      title: "App field label for order title"
+      value: "Orders"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.total"
+      title: "App field label for order total"
+      value: "Total"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.subscriptions.billAmount"
+      title: "App field label for subscription bill amounts"
+      value: "Bill amt."
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.subscriptions.date"
+      title: "App field label for subscription dates"
+      value: "Next bill date"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.subscriptions.empty"
+      title: "App field error for no subscriptions"
+      value: "No subscriptions found"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.subscriptions.plan"
+      title: "App field label for subscriptions plan"
+      value: "Plan"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.subscriptions.status"
+      title: "App field label for subscriptions status"
+      value: "Status"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.subscriptions.title"
+      title: "App field label for subscriptions title"
+      value: "Subscriptions"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.edit"
+      title: "App field label for editing contact details"
+      value: "Click to edit this contact"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contacts.empty"
+      title: "App field error for no matches found"
+      value: "We're sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead."
+  - translation:
+      key: "txt.apps.infusionsoft_app.contacts.generalInformation"
+      title: "App field label for General information"
+      value: "General information"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contacts.more"
+      title: "App field label for more link for contacts"
+      value: "See more"
+  - translation:
+      key: "txt.apps.infusionsoft_app.global.loading"
+      title: "App text for loading "
+      value: "Loading..."
+  - translation:
+      key: "txt.apps.infusionsoft_app.global.loadingLong"
+      title: "App text for loading"
+      value: "Please wait, loading data"
+  - translation:
+      key: "txt.apps.infusionsoft_app.global.limitReached"
+      title: "App error message for loading too many tags"
+      value: "You reached the maximum limit of results to display. Please contact Support for additional information."
+  - translation:
+      key: "txt.apps.infusionsoft_app.message.default.title"
+      title: "Generic error message"
+      value: "An error has occured"
+  - translation:
+      key: "txt.apps.infusionsoft_app.message.default.message"
+      title: "Default error message"
+      value: "There was an error loading contact data. Please try again later."
+  - translation:
+      key: "txt.apps.infusionsoft_app.message.badGateway.message"
+      title: "Error message for incorrect settings/unable to connect to Infusionsoft"
+      value: "There was an error connecting to Infusionsoft. Please ensure the Subdomain and API token are correct in your settings."
+  - translation:
+      key: "txt.apps.infusionsoft_app.search.invalid"
+      title: "Error message for invalid search criteria"
+      value: "Not a valid search"
+  - translation:
+      key: "txt.apps.infusionsoft_app.search.placeholder"
+      title: "Search box default text"
+      value: "Search by name or email"
+  - translation:
+      key: "txt.apps.infusionsoft_app.search.toggle"
+      title: "Alt text for Toggle search button"
+      value: "Click to toggle search"
+  - translation:
+      key: "txt.apps.infusionsoft_app.addTag.error"
+      title: "Error message for failure to add tag if it already has been added"
+      value: "Failed to add tag to contact. Check to see if you have already added it"
+  - translation:
+      key: "txt.apps.infusionsoft_app.addTag.success"
+      title: "Success message after adding a tag successfully in Infusionsoft"
+      value: "Added tag to contact"
+
