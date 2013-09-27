@@ -1,0 +1,81 @@
+{
+  "app": {
+    "description": "Muestra los detalles del cliente, del pedido y de las suscripciones de Infusionsoft",
+    "name": "Aplicación Infusionsoft",
+    "parameters": {
+      "subdomain": {
+        "label": "Nombre de aplicación Infusionsoft",
+        "helpText": "Ingrese solo la primera parte del subdominio acá. Por ejemplo, ingrese \"sucompañía\""
+      },
+      "token": {
+        "label": "Token de API",
+        "helpText": "El token de la API de Infusionsoft se encuentra en la sección de configuración del administrador de Infusionsoft"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "Dirección de facturación",
+      "company": "Compañía",
+      "dateCreated": "Fecha de creación del contacto",
+      "email": "Correo electrónico",
+      "jobTitle": "Puesto de trabajo",
+      "leadSource": "Origen del contacto",
+      "owner": "Dueño",
+      "ownerEmpty": "No se pudo encontrar información del dueño",
+      "phone1": "Teléfono 1",
+      "group": {
+        "category": "Categoría",
+        "date": "Fecha",
+        "empty": "No se han encontrado etiquetas",
+        "tag": "Etiqueta",
+        "title": "Etiquetas"
+      },
+      "orders": {
+        "date": "Fecha",
+        "empty": "No se han encontrado pedidos",
+        "order": "Pedido",
+        "status": "Estado",
+        "title": "Pedidos",
+        "total": "Total"
+      },
+      "subscriptions": {
+        "billAmount": "Monto de la factura",
+        "date": "Fecha de próxima factura",
+        "empty": "No se han encontrado suscripciones",
+        "plan": "Plan",
+        "status": "Estado",
+        "title": "Suscripciones"
+      },
+      "edit": "Haga clic para editar este contacto"
+    }
+  },
+  "contacts": {
+    "empty": "Lo sentimos, pero este usuario final no coincide con ningún contacto de Infusionsoft. Puede intentar hacer una búsqueda en su lugar.",
+    "generalInformation": "Información general",
+    "more": "Más información"
+  },
+  "global": {
+    "loading": "Cargando...",
+    "loadingLong": "Espere por favor, se están cargando los datos",
+    "limitReached": "Se ha alcanzado el número máximo de resultados que se pueden mostrar. Comuníquese con soporte si desea más información."
+  },
+  "message": {
+    "default": {
+      "title": "Se ha producido un error",
+      "message": "Hubo un error al cargar los datos del contacto. Vuelva a intentarlo más tarde."
+    },
+    "badGateway": {
+      "message": "Hubo un error al intentar conectarse con Infusionsoft. Verifique que el subdominio y el token de API estén correctos en la configuración."
+    }
+  },
+  "search": {
+    "invalid": "No es una búsqueda válida",
+    "placeholder": "Buscar por nombre o correo electrónico",
+    "toggle": "Haga clic para abrir/cerrar el cuadro de búsqueda"
+  },
+  "addTag": {
+    "error": "No se pudo agregar la pestaña al contacto. Verifique si ya la ha agregado",
+    "success": "Se ha agregado la etiqueta al contacto"
+  }
+}

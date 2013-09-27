@@ -1,0 +1,81 @@
+{
+  "app": {
+    "description": "Viser kunde-, ordre- og abonnementdetaljer fra Infusionsoft",
+    "name": "Infusionsoft App",
+    "parameters": {
+      "subdomain": {
+        "label": "Navn på Infusionsoft App",
+        "helpText": "Indtast kun den første del af underdomænet her. Indtast f.eks. 'dit firma'"
+      },
+      "token": {
+        "label": "API-token",
+        "helpText": "API-tokenet til Infusionsoft findes i området med indstillinger for Infusionsoft Admin"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "Faktureringsadresse",
+      "company": "Firma",
+      "dateCreated": "Oprettelsesdato for kontakt",
+      "email": "E-mail",
+      "jobTitle": "Jobtitel",
+      "leadSource": "Kontaktkilde",
+      "owner": "Indehaver",
+      "ownerEmpty": "Kunne ikke finde indehavers info",
+      "phone1": "Telefon 1",
+      "group": {
+        "category": "Kategori",
+        "date": "Dato",
+        "empty": "Ingen tags blev fundet",
+        "tag": "Tag",
+        "title": "Tags"
+      },
+      "orders": {
+        "date": "Dato",
+        "empty": "Ingen ordrer blev fundet",
+        "order": "Ordre",
+        "status": "Status",
+        "title": "Ordrer",
+        "total": "I alt"
+      },
+      "subscriptions": {
+        "billAmount": "Fakturer. beløb",
+        "date": "Næste faktureringsdato",
+        "empty": "Ingen abonnementer blev fundet",
+        "plan": "Plan",
+        "status": "Status",
+        "title": "Abonnementer"
+      },
+      "edit": "Klik for at redigere denne kontakt"
+    }
+  },
+  "contacts": {
+    "empty": "Vi beklager, men vi kunne ikke matche denne slutbruger med en Infusionsoft-kontakt. Du kan prøve at søge i stedet for.",
+    "generalInformation": "Generelle oplysninger",
+    "more": "Se mere"
+  },
+  "global": {
+    "loading": "Indlæser...",
+    "loadingLong": "Vent venligst, indlæser data",
+    "limitReached": "Du har nået det maksimale antal resultater, der kan vises. Kontakt support for yderligere oplysninger."
+  },
+  "message": {
+    "default": {
+      "title": "Der forekom en fejl",
+      "message": "Der forekom en fejl under indlæsning af kontaktdata. Prøv igen senere."
+    },
+    "badGateway": {
+      "message": "Der forekom en fejl ved oprettelse af forbindelse til Infusionsoft. Sørg for, at underdomænet og API-token’et er korrekte i dine indstillinger."
+    }
+  },
+  "search": {
+    "invalid": "Ikke en gyldig søgning",
+    "placeholder": "Søg efter navn eller e-mail",
+    "toggle": "Klik for at slå søgning til og fra"
+  },
+  "addTag": {
+    "error": "Kunne ikke føje tag til kontakt. Kontroller, om du allerede har tilføjet den",
+    "success": "Føjede tag til kontakt"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "app": {
+    "description": "Infusionsoftからカスタマー、注文および購読の詳細を表示します",
+    "name": "Infusionsoftアプリ",
+    "parameters": {
+      "subdomain": {
+        "label": "Infusionsoftアプリ名",
+        "helpText": "ここにはサブドメインの最初の部分のみ入力してください。たとえば、'会社名'を入力します"
+      },
+      "token": {
+        "label": "APIトークン",
+        "helpText": "Infusionsoft APIトークンは、Infusionsoft Admin設定セクションにあります"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "請求先アドレス",
+      "company": "会社名",
+      "dateCreated": "連絡先作成日",
+      "email": "メール",
+      "jobTitle": "役職",
+      "leadSource": "リードソース",
+      "owner": "オーナー",
+      "ownerEmpty": "オーナー情報が見つかりませんでした",
+      "phone1": "電話1",
+      "group": {
+        "category": "カテゴリ",
+        "date": "日付",
+        "empty": "タグが見つかりません",
+        "tag": "タグ",
+        "title": "タグ"
+      },
+      "orders": {
+        "date": "日付",
+        "empty": "注文が見つかりません",
+        "order": "注文内容",
+        "status": "ステータス",
+        "title": "注文",
+        "total": "合計"
+      },
+      "subscriptions": {
+        "billAmount": "請求金額",
+        "date": "次の請求日",
+        "empty": "購読が見つかりません",
+        "plan": "プラン",
+        "status": "ステータス",
+        "title": "購読"
+      },
+      "edit": "クリックして、この連絡先を編集"
+    }
+  },
+  "contacts": {
+    "empty": "申し訳ございませんが、このエンドユーザーとInfusionsoftの連絡先を照合できませんでした。代わりに検索を試すことができます。",
+    "generalInformation": "一般情報",
+    "more": "もっと見る"
+  },
+  "global": {
+    "loading": "読み込み中...",
+    "loadingLong": "データの読み込み中です。しばらくお待ちください",
+    "limitReached": "結果表示の最大制限数に達しました。詳しくは、サポートまでお問い合わせください。"
+  },
+  "message": {
+    "default": {
+      "title": "エラーが発生しました",
+      "message": "連絡先データの読み込み中にエラーが発生しました。しばらく経ってからもう一度やり直してください。"
+    },
+    "badGateway": {
+      "message": "Infusionsoftへの接続中にエラーが発生しました。ご使用の設定でサブドメインとAPIトークンが正しいことを確認してください。"
+    }
+  },
+  "search": {
+    "invalid": "有効な検索ではありません",
+    "placeholder": "名前またはメールアドレスで検索",
+    "toggle": "クリックして検索を切り替え"
+  },
+  "addTag": {
+    "error": "連絡先にタグを追加できませんでした。既にタグを追加済みでないか確認してください",
+    "success": "連絡先にタグを追加しました"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "app": {
+    "description": "Exibe os detalhes do cliente, do pedido e das assinaturas do Infusionsoft",
+    "name": "Aplicativo do Infusionsoft",
+    "parameters": {
+      "subdomain": {
+        "label": "Nome do aplicativo do Infusionsoft",
+        "helpText": "Insira apenas a primeira parte do subdomínio aqui. Por exemplo, digite 'suaempresa'"
+      },
+      "token": {
+        "label": "Token da API",
+        "helpText": "Você pode encontrar o token da sua API do Infusionsoft na seção de configurações de administrador do Infusionsoft"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "Endereço de cobrança",
+      "company": "Empresa",
+      "dateCreated": "Data de criação do contato",
+      "email": "Email",
+      "jobTitle": "Cargo",
+      "leadSource": "Principal origem",
+      "owner": "Responsável",
+      "ownerEmpty": "Não foi possível encontrar as informações do responsável",
+      "phone1": "Telefone 1",
+      "group": {
+        "category": "Categoria",
+        "date": "Data",
+        "empty": "Nenhuma tag encontrada",
+        "tag": "Tag",
+        "title": "Tags"
+      },
+      "orders": {
+        "date": "Data",
+        "empty": "Nenhum pedido encontrado",
+        "order": "Pedido",
+        "status": "Status",
+        "title": "Pedidos",
+        "total": "Total"
+      },
+      "subscriptions": {
+        "billAmount": "Qtd. de faturamento",
+        "date": "Data do próximo faturamento",
+        "empty": "Nenhuma assinatura encontrada",
+        "plan": "Plano",
+        "status": "Status",
+        "title": "Assinaturas"
+      },
+      "edit": "Clique para editar esse contato"
+    }
+  },
+  "contacts": {
+    "empty": "Não foi possível fazer a correspondência desse usuário final com um contato do Infusionsoft. Opcionalmente, você pode fazer uma pesquisa.",
+    "generalInformation": "Informações gerais",
+    "more": "Exibir mais"
+  },
+  "global": {
+    "loading": "Carregando...",
+    "loadingLong": "Carregando dados. Aguarde.",
+    "limitReached": "Você atingiu o limite máximo de exibição de resultados. Entre em contato com o suporte para obter mais informações."
+  },
+  "message": {
+    "default": {
+      "title": "Ocorreu um erro",
+      "message": "Ocorreu um erro ao carregar os dados do contato. Tente novamente mais tarde."
+    },
+    "badGateway": {
+      "message": "Ocorreu um erro ao se conectar com Infusionsoft. Certifique-se de que o subdomínio e o token da API estão corretos nas suas configurações."
+    }
+  },
+  "search": {
+    "invalid": "Pesquisa inválida",
+    "placeholder": "Pesquisar por nome ou email",
+    "toggle": "Clique para alternar a pesquisa"
+  },
+  "addTag": {
+    "error": "Falha ao adicionar a tag ao contato. Verifique se você já a adicionou",
+    "success": "Tag adicionada ao conteúdo"
+  }
+}
