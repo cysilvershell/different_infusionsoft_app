@@ -519,7 +519,7 @@
     },
 
     toggleSearch: function(e) {
-      this.$('.search').toggleClass('active');
+      this.$('.search').slideToggle();
     }
   };
 }());
