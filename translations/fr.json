@@ -1,0 +1,81 @@
+{
+  "app": {
+    "description": "Affiche les détails du client, de la commande et des abonnements d’Infusionsoft",
+    "name": "Application Infusionsoft",
+    "parameters": {
+      "subdomain": {
+        "label": "Nom de l’application Infusionsoft",
+        "helpText": "Saisissez la première partie du sous-domaine seulement ici. Par exemple, saisissez « votrecompagnie »."
+      },
+      "token": {
+        "label": "Jeton API",
+        "helpText": "Vous trouverez votre jeton API Infusionsoft dans la section des paramètres administratifs d’Infusionsoft."
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "Adresse de facturation",
+      "company": "Société",
+      "dateCreated": "Date de création du contact",
+      "email": "E-mail",
+      "jobTitle": "Poste",
+      "leadSource": "Source du prospect",
+      "owner": "Propriétaire",
+      "ownerEmpty": "Infos du propriétaire introuvables",
+      "phone1": "Téléphone 1",
+      "group": {
+        "category": "Catégorie",
+        "date": "Date",
+        "empty": "Aucun marqueur trouvé",
+        "tag": "Marqueur",
+        "title": "Marqueurs"
+      },
+      "orders": {
+        "date": "Date",
+        "empty": "Aucune commande trouvée",
+        "order": "Commande",
+        "status": "Statut",
+        "title": "Commandes",
+        "total": "Total"
+      },
+      "subscriptions": {
+        "billAmount": "Montant de la facture",
+        "date": "Date de la prochaine facture",
+        "empty": "Aucun abonnement trouvé",
+        "plan": "Plan",
+        "status": "Statut",
+        "title": "Abonnements"
+      },
+      "edit": "Cliquez pour modifier ce contact"
+    }
+  },
+  "contacts": {
+    "empty": "Désolés, nous n’avons pas réussi à faire correspondre cet utilisateur final à un contact Infusionsoft. Vous pouvez essayer de le rechercher.",
+    "generalInformation": "Informations générales",
+    "more": "Afficher plus"
+  },
+  "global": {
+    "loading": "Chargement...",
+    "loadingLong": "Veillez patienter, chargement des données en cours",
+    "limitReached": "Vous avez atteint la limite maximum de résultats pouvant être affichés. Contactez l’assistance pour en savoir plus."
+  },
+  "message": {
+    "default": {
+      "title": "Une erreur est survenue.",
+      "message": "Une erreur est survenue pendant le chargement des données de contact. Réessayez plus tard."
+    },
+    "badGateway": {
+      "message": "Une erreur est survenue lors de la connexion à Infusionsoft. Vérifiez que le sous-domaine et le jeton API sont corrects dans vos paramètres."
+    }
+  },
+  "search": {
+    "invalid": "Pas une recherche valide",
+    "placeholder": "Rechercher par nom ou par e-mail",
+    "toggle": "Cliquez pour activer/désactiver la recherche"
+  },
+  "addTag": {
+    "error": "Échec de l’ajout du marqueur au contact. Vérifiez que vous ne l’avez pas déjà ajouté.",
+    "success": "Marqueur ajouté au contenu"
+  }
+}

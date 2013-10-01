@@ -1,0 +1,81 @@
+{
+  "app": {
+    "description": "Visualizza informazioni dettagliate su cliente, ordine e abbonamenti da Infusionsoft",
+    "name": "App Infusionsoft",
+    "parameters": {
+      "subdomain": {
+        "label": "Nome app Infusionsoft",
+        "helpText": "Inserire qui solo la prima parte del sottodominio. Per esempio, inserire 'lamiaazienda'"
+      },
+      "token": {
+        "label": "Token API",
+        "helpText": "Potete trovare il vostro token API Infusionsoft nella sezione delle impostazioni di amministrazione di Infusionsoft"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "Indirizzo di fatturazione",
+      "company": "Società",
+      "dateCreated": "Data di creazione contatto",
+      "email": "E-mail",
+      "jobTitle": "Mansione",
+      "leadSource": "Origine del contatto",
+      "owner": "Proprietario",
+      "ownerEmpty": "Impossibile trovare le informazioni sul proprietario",
+      "phone1": "Telefono 1",
+      "group": {
+        "category": "Categoria",
+        "date": "Data",
+        "empty": "Nessun tag trovato",
+        "tag": "Tag",
+        "title": "Tag"
+      },
+      "orders": {
+        "date": "Data",
+        "empty": "Nessun ordine trovato",
+        "order": "Ordine",
+        "status": "Stato",
+        "title": "Ordini",
+        "total": "Totale"
+      },
+      "subscriptions": {
+        "billAmount": "Ammontare",
+        "date": "Data fatturazione successiva",
+        "empty": "Nessun abbonamento trovato",
+        "plan": "Piano",
+        "status": "Stato",
+        "title": "Abbonamenti"
+      },
+      "edit": "Fare clic per modificare qusto contatto"
+    }
+  },
+  "contacts": {
+    "empty": "Purtroppo non siamo in grado di trovare un contatto Infusionsoft corrispondente a questo utente finale. Prova invece a eseguire una ricerca.",
+    "generalInformation": "Informazioni generali",
+    "more": "Vedi altro"
+  },
+  "global": {
+    "loading": "Caricamento in corso...",
+    "loadingLong": "Caricamento dati, attendere",
+    "limitReached": "È stato raggiunto il limite massimo di risultati da visualizzare. Per ulteriori informazioni, contattare l’assistenza."
+  },
+  "message": {
+    "default": {
+      "title": "Si è verificato un errore",
+      "message": "Errore nel caricamento dei dati del contatto. Riprova più tardi."
+    },
+    "badGateway": {
+      "message": "Si è verificato un errore nel collegamento con Infusionsoft. Verificare che sottodominio e token API nelle impostazioni siano corretti."
+    }
+  },
+  "search": {
+    "invalid": "Ricerca non valida",
+    "placeholder": "Cerca per nome o e-mail",
+    "toggle": "Fare clic per selezionare o deselezionare la ricerca"
+  },
+  "addTag": {
+    "error": "Tag non aggiunto al contatto. Verificare che non sia già stata aggiunto",
+    "success": "Tag aggiunto al contatto"
+  }
+}
