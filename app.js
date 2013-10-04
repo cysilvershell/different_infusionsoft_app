@@ -243,7 +243,7 @@
     getContactGroups: function(id) {
       var self = this;
       return this.promise(function(done, fail) {
-        return self.dataService.query('ContactGroupAssign', self.fields.contactGroupAssign, { contactId: id })
+        return self.dataService.query('ContactGroupAssign', self.fields.contactGroupAssign, { contactId: id }, this.API_MAX_RESULTS_DEFAULT + 1)
           .done(function(groups) {
             groups = groups.map(function(group) {
               var groupCategory = _.find(self.data.groups, function(grp) {
@@ -421,10 +421,17 @@
         // Get the contact specific groups
         this.getContactGroups(contactId).done(function(groups) {
           // Generate template and append content
+          var truncated = (groups.length === this.API_MAX_RESULTS_DEFAULT + 1);
+          if (truncated) {
+            groups.splice(this.API_MAX_RESULTS_DEFAULT, Number.MAX_VALUE);
+          }
+          var link = helpers.fmt("https://%@.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID=%@", this.setting('subdomain'), contactId);
           $groups = this.renderTemplate('groups', {
             categories: this.data.categories,
             contactGroups: groups,
-            groups: this.data.groups
+            groups: this.data.groups,
+            truncated: truncated,
+            seeMoreLink: link
           });
           $content.html($groups);
         }.bind(this));

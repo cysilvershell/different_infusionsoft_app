@@ -24,6 +24,7 @@
       "owner": "Owner",
       "ownerEmpty": "Could not find owner info",
       "phone1": "Phone 1",
+      "showMore": "See more tags",
       "group": {
         "category": "Category",
         "date": "Date",
