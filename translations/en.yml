@@ -66,6 +66,10 @@ parts:
       title: "App field label for Phone 1"
       value: "Phone 1"
   - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.showMore"
+      title: "Link to display more tags"
+      value: "See more tags"
+  - translation:
       key: "txt.apps.infusionsoft_app.contact.details.group.category"
       title: "App field label for category"
       value: "Category"
