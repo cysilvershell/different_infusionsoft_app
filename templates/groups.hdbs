@@ -18,6 +18,9 @@
     {{/contactGroups}}
   </tbody>
 </table>
+{{#if truncated}}
+  <a href="{{seeMoreLink}}" target="_blank" class='see-more'>{{t "contact.details.showMore"}}</a>
+{{/if}}
 {{#if groups}}
 <div class="add-tags">
   <h6>Add tag to contact</h6>
