@@ -54,7 +54,8 @@
   "contacts": {
     "empty": "We're sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead.",
     "generalInformation": "General information",
-    "more": "See more"
+    "more": "See more",
+    "create": "Create a contact for this end-user"
   },
   "global": {
     "loading": "Loading...",
