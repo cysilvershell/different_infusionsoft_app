@@ -1,8 +1,6 @@
 header {
-  position: relative;
-
   .toggle-search {
-    position: absolute;
+    position: relative;
     right: 5px;
     top: 5px;
   }
