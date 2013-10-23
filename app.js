@@ -13,6 +13,7 @@
       'click .orders-subscriptions h5'  : 'setOrdersAndSubscriptionsForContact',
       'click .search-button'            : 'search',
       'click .toggle-search'            : 'toggleSearch',
+      'click .create-contact'           : 'createContact',
       'keypress .search-input'          : 'searchOnEnter',
       'ticket.requester.email.changed'  : 'searchByRequester'
     },
@@ -40,6 +41,11 @@
 
       // Set additional contact content
       this.setOwnerForContact($contact);
+    },
+
+    createContact: function() {
+      this.$('.create-contact').attr("disabled", "disabled");
+      this.dataService.createContact(this);
     },
 
     addTag: function(e) {
@@ -185,6 +191,19 @@
           };
 
       return {
+        createContact: function(app) {
+          var requester = app.ticket().requester();
+          var name = requester.name().split(' ');
+          var firstName = name.shift();
+          var lastName = name.join(' ');
+          return _sendRequest('ContactService.add', {
+            firstName: firstName,
+            lastName: lastName,
+            email: requester.email()
+          }).done(function() {
+            app.searchByRequester();
+          }.bind(this));
+        },
         addContactToGroup: function(contactId, groupId) {
           return _sendRequest('dataService.addContactToGroup', {
             contactId: contactId,

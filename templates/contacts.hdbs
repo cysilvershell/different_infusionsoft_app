@@ -80,8 +80,9 @@
     </section>
   </li>
   {{else}}
-  <li class="well">
-    <p>{{t "contacts.empty" }}</p>
+  <li>
+    <p class='well'>{{t "contacts.empty" }}</p>
+    <button class='btn create-contact input-block-level'>{{t "contacts.create"}}</button>
   </li>
   {{/each}}
 </ul>
