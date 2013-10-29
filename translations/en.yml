@@ -154,6 +154,10 @@ parts:
       title: "App field label for more link for contacts"
       value: "See more"
   - translation:
+      key: "txt.apps.infusionsoft_app.contacts.create"
+      title: "Button to create a contact for the current end-user"
+      value: "Create a contact for this end-user"
+  - translation:
       key: "txt.apps.infusionsoft_app.global.loading"
       title: "App text for loading "
       value: "Loading..."
