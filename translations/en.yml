@@ -20,7 +20,7 @@ parts:
   - translation:
       key: "txt.apps.infusionsoft_app.app.parameters.subdomain.helpText"
       title: "Help text for subdomain field"
-      value: "Enter only the first part of the subdomain here (for example: 'yourcompany')." 
+      value: "Enter only the first part of the subdomain here (for example: 'yourcompany')."
   - translation:
       key: "txt.apps.infusionsoft_app.app.parameters.token.label"
       title: "API token from Infusionsoft"
