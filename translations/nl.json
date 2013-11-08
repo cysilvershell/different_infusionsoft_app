@@ -1,0 +1,83 @@
+{
+  "app": {
+    "description": "Geeft info weer over klant, order en abonnement van Infusionsoft",
+    "name": "Infusionsoft-app",
+    "parameters": {
+      "subdomain": {
+        "label": "Naam van Infusionsoft-app",
+        "helpText": "Geef hier alleen het eerste deel van het subdomein op (bijvoorbeeld: 'uwbedrijf')."
+      },
+      "token": {
+        "label": "API-token",
+        "helpText": "U vindt uw Infusionsoft API-token in de sectie met Admin-instellingen voor Infusionsoft"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "Factuuradres",
+      "company": "Bedrijf",
+      "dateCreated": "Aanmaakdatum van contactpersoon",
+      "email": "E-mailadres",
+      "jobTitle": "Functie",
+      "leadSource": "Bron van lead",
+      "owner": "Eigenaar",
+      "ownerEmpty": "Kan eigenaarinfo niet vinden",
+      "phone1": "Telefoon 1",
+      "showMore": "Meer tags weergeven",
+      "group": {
+        "category": "Categorie",
+        "date": "Datum",
+        "empty": "Geen tags gevonden",
+        "tag": "Tag",
+        "title": "Tags"
+      },
+      "orders": {
+        "date": "Datum",
+        "empty": "Geen orders gevonden",
+        "order": "Order",
+        "status": "Status",
+        "title": "Orders",
+        "total": "Totaal"
+      },
+      "subscriptions": {
+        "billAmount": "Factuurbedrag",
+        "date": "Volgende factureringsdatum",
+        "empty": "Geen abonnementen gevonden",
+        "plan": "Plan",
+        "status": "Status",
+        "title": "Abonnementen"
+      },
+      "edit": "Klik om deze contactpersoon te bewerken"
+    }
+  },
+  "contacts": {
+    "empty": "Kan deze gebruiker niet aan een Infusionsoft-contact koppelen. Probeer in plaats daarvan te zoeken.",
+    "generalInformation": "Algemene informatie",
+    "more": "Zie meer",
+    "create": "Een contactpersoon voor deze eindgebruiker opgeven"
+  },
+  "global": {
+    "loading": "Laden...",
+    "loadingLong": "Gegevens worden geladen. Een ogenblik geduld...",
+    "limitReached": "U hebt het maximale aantal weer te geven resultaten bereikt. Neem contact op met ondersteuning voor meer informatie."
+  },
+  "message": {
+    "default": {
+      "title": "Er is een fout opgetreden",
+      "message": "Fout tijdens laden van contactpersoongegevens. Probeer het later opnieuw."
+    },
+    "badGateway": {
+      "message": "Er is een fout opgetreden bij het maken van een verbinding met Infusionsoft. Controleer of het subdomein en het API-token goed zijn ingesteld bij uw instellingen."
+    }
+  },
+  "search": {
+    "invalid": "Geen geldige zoekopdracht",
+    "placeholder": "Zoek op naam of e-mailadres",
+    "toggle": "Klik om zoeken in of uit te schakelen"
+  },
+  "addTag": {
+    "error": "Kan tag niet aan contactpersoon toevoegen. Controleer of u die niet al hebt toegevoegd",
+    "success": "Tag toevoegen aan contactpersoon"
+  }
+}

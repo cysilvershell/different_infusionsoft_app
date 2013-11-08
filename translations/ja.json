@@ -1,11 +1,11 @@
 {
   "app": {
-    "description": "Infusionsoftからカスタマー、注文および購読の詳細を表示します",
+    "description": "Infusionsoftからカスタマー、注文、および購読の詳細を表示します",
     "name": "Infusionsoftアプリ",
     "parameters": {
       "subdomain": {
         "label": "Infusionsoftアプリ名",
-        "helpText": "ここにはサブドメインの最初の部分のみ入力してください。たとえば、'会社名'を入力します"
+        "helpText": "ここにはサブドメインの最初の部分のみ入力してください（例: '会社名'）。"
       },
       "token": {
         "label": "APIトークン",
@@ -24,6 +24,7 @@
       "owner": "オーナー",
       "ownerEmpty": "オーナー情報が見つかりませんでした",
       "phone1": "電話1",
+      "showMore": "タグの詳細を参照",
       "group": {
         "category": "カテゴリ",
         "date": "日付",
@@ -51,9 +52,10 @@
     }
   },
   "contacts": {
-    "empty": "申し訳ございませんが、このエンドユーザーとInfusionsoftの連絡先を照合できませんでした。代わりに検索を試すことができます。",
+    "empty": "このエンドユーザーはInfusionsoftの連絡先と一致しませんでした。検索してみてください。",
     "generalInformation": "一般情報",
-    "more": "もっと見る"
+    "more": "もっと見る",
+    "create": "このエンドユーザーの連絡先を作成"
   },
   "global": {
     "loading": "読み込み中...",
@@ -63,7 +65,7 @@
   "message": {
     "default": {
       "title": "エラーが発生しました",
-      "message": "連絡先データの読み込み中にエラーが発生しました。しばらく経ってからもう一度やり直してください。"
+      "message": "連絡先データの読み込み中にエラーが発生しました。後でもう一度試してください。"
     },
     "badGateway": {
       "message": "Infusionsoftへの接続中にエラーが発生しました。ご使用の設定でサブドメインとAPIトークンが正しいことを確認してください。"

@@ -1,0 +1,83 @@
+{
+  "app": {
+    "description": "Displays customer, order, and subscription details from Infusionsoft",
+    "name": "Infusionsoft App",
+    "parameters": {
+      "subdomain": {
+        "label": "Infusionsoft App Name",
+        "helpText": "Enter only the first part of the subdomain here (for example: 'yourcompany')."
+      },
+      "token": {
+        "label": "API token",
+        "helpText": "You can find your Infusionsoft API token in the Infusionsoft Admin settings section"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "Billing address",
+      "company": "Company",
+      "dateCreated": "Contact created date",
+      "email": "Email",
+      "jobTitle": "Job title",
+      "leadSource": "Lead source",
+      "owner": "Owner",
+      "ownerEmpty": "Could not find owner info",
+      "phone1": "Phone 1",
+      "showMore": "See more tags",
+      "group": {
+        "category": "Category",
+        "date": "Date",
+        "empty": "No tags found",
+        "tag": "Tag",
+        "title": "Tags"
+      },
+      "orders": {
+        "date": "Date",
+        "empty": "No orders found",
+        "order": "Order",
+        "status": "Status",
+        "title": "Orders",
+        "total": "Total"
+      },
+      "subscriptions": {
+        "billAmount": "Bill amt.",
+        "date": "Next bill date",
+        "empty": "No subscriptions found",
+        "plan": "Plan",
+        "status": "Status",
+        "title": "Subscriptions"
+      },
+      "edit": "Click to edit this contact"
+    }
+  },
+  "contacts": {
+    "empty": "Could not match this end-user with an Infusionsoft contact. Try searching instead.",
+    "generalInformation": "General information",
+    "more": "See more",
+    "create": "Create a contact for this end-user"
+  },
+  "global": {
+    "loading": "Loading...",
+    "loadingLong": "Please wait, loading data",
+    "limitReached": "You reached the maximum limit of results to display. Contact Support for additional information."
+  },
+  "message": {
+    "default": {
+      "title": "An error has occurred",
+      "message": "There was an error loading contact data. Try again later."
+    },
+    "badGateway": {
+      "message": "There was an error connecting to Infusionsoft. Ensure that the Subdomain and API token are correct in your settings."
+    }
+  },
+  "search": {
+    "invalid": "Not a valid search",
+    "placeholder": "Search by name or email",
+    "toggle": "Click to toggle search"
+  },
+  "addTag": {
+    "error": "Failed to add tag to contact. Check to see if you have already added it",
+    "success": "Added tag to contact"
+  }
+}

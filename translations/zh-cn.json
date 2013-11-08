@@ -1,0 +1,83 @@
+{
+  "app": {
+    "description": "显示来自 Infusionsoft 的客户、订单和订阅详情",
+    "name": "Infusionsoft App",
+    "parameters": {
+      "subdomain": {
+        "label": "Infusionsoft App 名称",
+        "helpText": "在这里仅输入子域名的第一个部分（例如：“您的公司”）。"
+      },
+      "token": {
+        "label": "API 密钥",
+        "helpText": "您可在 Infusionsoft 管理员设置区找到您的 Infusionsoft API 密钥"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "帐单地址",
+      "company": "公司",
+      "dateCreated": "联系人创建日期",
+      "email": "电邮",
+      "jobTitle": "职位",
+      "leadSource": "销售线索源",
+      "owner": "所有者",
+      "ownerEmpty": "未找到所有者信息",
+      "phone1": "电话 1",
+      "showMore": "查看更多标签",
+      "group": {
+        "category": "类别",
+        "date": "日期",
+        "empty": "未找到标签",
+        "tag": "标签",
+        "title": "标签"
+      },
+      "orders": {
+        "date": "日期",
+        "empty": "未找到订单",
+        "order": "订单",
+        "status": "状态",
+        "title": "订单",
+        "total": "全部"
+      },
+      "subscriptions": {
+        "billAmount": "帐单金额",
+        "date": "下一个出帐单日期",
+        "empty": "未找到订阅",
+        "plan": "计划",
+        "status": "状态",
+        "title": "订阅"
+      },
+      "edit": "单击以编辑此联系人"
+    }
+  },
+  "contacts": {
+    "empty": "无法将此终端用户与 Infusionsoft 联系人匹配。请尝试搜索。",
+    "generalInformation": "一般信息",
+    "more": "查看更多",
+    "create": "为此终端用户创建一个联系人"
+  },
+  "global": {
+    "loading": "正在加载……",
+    "loadingLong": "请稍候，正在加载数据",
+    "limitReached": "您已达到显示结果的最大限制。联系支持人员获得更多信息。"
+  },
+  "message": {
+    "default": {
+      "title": "发生错误",
+      "message": "加载联系人数据时出错。请稍后再试。"
+    },
+    "badGateway": {
+      "message": "连接到 Infusionsoft 时出错。确保您设置中的子域名和 API 密钥正确。"
+    }
+  },
+  "search": {
+    "invalid": "不是有效的搜索",
+    "placeholder": "按名称或电邮搜索",
+    "toggle": "单击以切换搜索"
+  },
+  "addTag": {
+    "error": "添加标签到联系人失败。请检查您是否已经添加了",
+    "success": "添加标签到联系人"
+  }
+}

@@ -5,7 +5,7 @@
     "parameters": {
       "subdomain": {
         "label": "Nome app Infusionsoft",
-        "helpText": "Inserire qui solo la prima parte del sottodominio. Per esempio, inserire 'lamiaazienda'"
+        "helpText": "Inserire qui solo la prima parte del sottodominio (per esempio: 'lamiaazienda')."
       },
       "token": {
         "label": "Token API",
@@ -24,6 +24,7 @@
       "owner": "Proprietario",
       "ownerEmpty": "Impossibile trovare le informazioni sul proprietario",
       "phone1": "Telefono 1",
+      "showMore": "Visualizza più tag",
       "group": {
         "category": "Categoria",
         "date": "Data",
@@ -51,9 +52,10 @@
     }
   },
   "contacts": {
-    "empty": "Purtroppo non siamo in grado di trovare un contatto Infusionsoft corrispondente a questo utente finale. Prova invece a eseguire una ricerca.",
+    "empty": "Non siamo in grado di trovare un contatto Infusionsoft corrispondente a questo utente finale. Prova invece a eseguire una ricerca.",
     "generalInformation": "Informazioni generali",
-    "more": "Vedi altro"
+    "more": "Vedi altro",
+    "create": "Crea un contatto per questo utente finale"
   },
   "global": {
     "loading": "Caricamento in corso...",

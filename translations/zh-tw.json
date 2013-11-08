@@ -1,0 +1,83 @@
+{
+  "app": {
+    "description": "顯示來自 Infusionsoft 的客戶、訂單和訂閱詳情",
+    "name": "Infusionsoft App",
+    "parameters": {
+      "subdomain": {
+        "label": "Infusionsoft App 名稱",
+        "helpText": "在此僅輸入子網域的第一個部分（例如：「貴公司」）。"
+      },
+      "token": {
+        "label": "API 金鑰",
+        "helpText": "您可在 Infusionsoft 管理員設定值區域內找到您的 Infusionsoft API 金鑰"
+      }
+    }
+  },
+  "contact": {
+    "details": {
+      "billingAddress": "帳單地址",
+      "company": "公司",
+      "dateCreated": "連絡人建立日期",
+      "email": "電郵",
+      "jobTitle": "職稱",
+      "leadSource": "銷售線索來源",
+      "owner": "擁有者",
+      "ownerEmpty": "找不到擁有者資訊",
+      "phone1": "電話 1",
+      "showMore": "檢視更多標籤",
+      "group": {
+        "category": "類別",
+        "date": "日期",
+        "empty": "找不到標籤",
+        "tag": "標籤",
+        "title": "標籤"
+      },
+      "orders": {
+        "date": "日期",
+        "empty": "找不到訂單",
+        "order": "訂單",
+        "status": "狀態",
+        "title": "訂單",
+        "total": "全部"
+      },
+      "subscriptions": {
+        "billAmount": "帳單金額",
+        "date": "下次帳單日期",
+        "empty": "找不到訂閱",
+        "plan": "計劃",
+        "status": "狀態",
+        "title": "訂閱"
+      },
+      "edit": "按一下編輯此連絡人"
+    }
+  },
+  "contacts": {
+    "empty": "沒有符合此終端使用者的 Infusionsoft 連絡人。請嘗試搜尋。",
+    "generalInformation": "一般資訊",
+    "more": "檢視更多",
+    "create": "建立一個連絡人給此終端使用者"
+  },
+  "global": {
+    "loading": "載入中……",
+    "loadingLong": "請稍候，資料載入中",
+    "limitReached": "您已達到顯示結果上限。如需更多資訊請聯絡支援人員。"
+  },
+  "message": {
+    "default": {
+      "title": "發生錯誤",
+      "message": "載入連絡人資料出錯。請稍後再試。"
+    },
+    "badGateway": {
+      "message": "連線至 Infusionsoft 出錯。確保您的設定值中有正確的子網域和 API 金鑰。"
+    }
+  },
+  "search": {
+    "invalid": "非有效搜尋",
+    "placeholder": "按名稱或電郵搜尋",
+    "toggle": "按一下切換搜尋"
+  },
+  "addTag": {
+    "error": "新增標籤至連絡人失敗。檢查您是否已經新增",
+    "success": "新增標籤至連絡人"
+  }
+}

@@ -1,81 +1,83 @@
 {
   "app": {
-    "description": "Displays customer, order and subscriptions details from Infusionsoft",
-    "name": "Infusionsoft App",
+    "description": "Zeigt Kunden-, Bestellungs- und Abonnementinformationen aus Infusionsoft an",
+    "name": "Infusionsoft-App",
     "parameters": {
       "subdomain": {
-        "label": "Infusionsoft App Name",
-        "helpText": "Enter the first part of the subdomain only here. For example enter 'yourcompany'"
+        "label": "Name der Infusionsoft-App",
+        "helpText": "Geben Sie hier nur den ersten Teil der Subdomäne ein (z. B. „IhreFirma“)."
       },
       "token": {
-        "label": "API token",
-        "helpText": "You can find your Infusionsoft API token in the Infusionsoft Admin settings section"
+        "label": "API-Token",
+        "helpText": "Sie finden das Infusionsoft-API-Token im Abschnitt mit den Infusionsoft-Administratoreinstellungen."
       }
     }
   },
   "contact": {
     "details": {
-      "billingAddress": "Billing address",
-      "company": "Company",
-      "dateCreated": "Contact created date",
-      "email": "Email",
-      "jobTitle": "Job title",
-      "leadSource": "Lead source",
-      "owner": "Owner",
-      "ownerEmpty": "Could not find owner info",
-      "phone1": "Phone 1",
+      "billingAddress": "Rechnungsadresse",
+      "company": "Firma",
+      "dateCreated": "Erstellungsdatum des Kontakts",
+      "email": "E-Mail",
+      "jobTitle": "Stellenbezeichnung",
+      "leadSource": "Leadquelle",
+      "owner": "Inhaber",
+      "ownerEmpty": "Inhaberinfos nicht gefunden",
+      "phone1": "Telefon 1",
+      "showMore": "Weitere Stichworte anzeigen",
       "group": {
-        "category": "Category",
-        "date": "Date",
-        "empty": "No tags found",
-        "tag": "Tag",
-        "title": "Tags"
+        "category": "Kategorie",
+        "date": "Datum",
+        "empty": "Keine Stichworte gefunden",
+        "tag": "Stichwort",
+        "title": "Stichworte"
       },
       "orders": {
-        "date": "Date",
-        "empty": "No orders found",
-        "order": "Order",
+        "date": "Datum",
+        "empty": "Keine Bestellungen gefunden",
+        "order": "Bestellung",
         "status": "Status",
-        "title": "Orders",
-        "total": "Total"
+        "title": "Bestellungen",
+        "total": "Gesamtsumme"
       },
       "subscriptions": {
-        "billAmount": "Bill amt.",
-        "date": "Next bill date",
-        "empty": "No subscriptions found",
+        "billAmount": "Rechnungsbetrag",
+        "date": "Nächstes Rechnungsdatum",
+        "empty": "Keine Abonnements gefunden",
         "plan": "Plan",
         "status": "Status",
-        "title": "Subscriptions"
+        "title": "Abonnements"
       },
-      "edit": "Click to edit this contact"
+      "edit": "Klicken, um diesen Kontakt zu bearbeiten"
     }
   },
   "contacts": {
-    "empty": "We're sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead.",
-    "generalInformation": "General information",
-    "more": "See more"
+    "empty": "Dieser Endbenutzer kann keinem Infusionsoft-Kontakt zugeordnet werden. Probieren Sie es stattdessen mit einer Suche.",
+    "generalInformation": "Allgemeine Informationen",
+    "more": "Weitere anzeigen",
+    "create": "Kontakt für diesen Endbenutzer erstellen"
   },
   "global": {
-    "loading": "Loading...",
-    "loadingLong": "Please wait, loading data",
-    "limitReached": "You reached the maximum limit of results to display. Please contact Support for additional information."
+    "loading": "Laden...",
+    "loadingLong": "Daten werden geladen. Bitte warten.",
+    "limitReached": "Sie haben die maximale Anzahl von Ergebnissen erreicht, die angezeigt werden können. Wenden Sie sich an den Support, wenn Sie weitere Informationen benötigen."
   },
   "message": {
     "default": {
-      "title": "An error has occured",
-      "message": "There was an error loading contact data. Please try again later."
+      "title": "Fehler aufgetreten",
+      "message": "Fehler beim Laden der Kontaktdaten. Versuchen Sie es später erneut."
     },
     "badGateway": {
-      "message": "There was an error connecting to Infusionsoft. Please ensure the Subdomain and API token are correct in your settings."
+      "message": "Fehler beim Herstellen einer Verbindung zu Infusionsoft. Stellen Sie sicher, dass die Subdomäne und das API-Token in den Einstellungen korrekt sind."
     }
   },
   "search": {
-    "invalid": "Not a valid search",
-    "placeholder": "Search by name or email",
-    "toggle": "Click to toggle search"
+    "invalid": "Keine gültige Suche",
+    "placeholder": "Nach Namen oder E-Mail-Adresse suchen",
+    "toggle": "Klicken, um Suchfeld ein-/auszublenden"
   },
   "addTag": {
-    "error": "Failed to add tag to contact. Check to see if you have already added it",
-    "success": "Added tag to contact"
+    "error": "Stichwort konnte nicht zum Kontakt hinzugefügt werden. Prüfen Sie, ob Sie es bereits hinzugefügt haben.",
+    "success": "Stichwort zum Kontakt hinzugefügt"
   }
 }
