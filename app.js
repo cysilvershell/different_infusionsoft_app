@@ -137,7 +137,7 @@
             }
             return validate.message;
           },
-          _sendRequest = function(templateName, data) {
+          _sendRequest = function(templateName, data, noAlert) {
             var template = _createTemplate(templateName, data),
                 request  = _createRequest(template),
                 self     = this;
@@ -151,7 +151,7 @@
                   if (isArray || _.isBoolean(response)) {
                     done(response);
                     // Specifically checking against the large limit
-                    if (isArray && response.length === this.API_MAX_RESULTS_GROUPS) {
+                    if (isArray && response.length === this.API_MAX_RESULTS_GROUPS && !noAlert) {
                       this.limitReached();
                     }
                   } else {
@@ -223,14 +223,14 @@
             });
           }.bind(this));
         },
-        query: function(table, fields, query, limit, page) {
+        query: function(table, fields, query, limit, page, noAlert) {
           return _sendRequest('dataService.query', {
             limit   : limit   || app.API_MAX_RESULTS_DEFAULT,
             page    : page    || 0,
             query   : _mapQueryFields(query),
             fields  : fields,
             table   : table
-          });
+          }, noAlert);
         }
       };
     },
@@ -336,19 +336,35 @@
       });
     },
 
-    getGroups: function() {
+    getGroups: function(page, promiseDone) {
       var self = this;
-      if (_.isEmpty(self.data.groups)) {
-        return self.dataService.query('ContactGroup', self.fields.contactGroup, null, self.API_MAX_RESULTS_GROUPS)
-          .done(function(groups) {
-            self.data.groups = groups;
-          });
-      }
-
-      return self.promise(function(done) {
+      var internal = function(done) {
+        if (_.isEmpty(self.data.groups)) {
+          return self.dataService.query('ContactGroup', self.fields.contactGroup, null, self.API_MAX_RESULTS_GROUPS, page, true)
+            .done(function(groups) {
+              if (groups.length) {
+                self.data.tmpgroups = (self.data.tmpgroups || []).concat(groups);
+                self.getGroups((page || 0) + 1, done);
+              }
+              else {
+                self.data.groups = self.data.tmpgroups;
+                done(self.data.groups);
+              }
+            });
+        }
         done(self.data.groups);
-      });
+      };
+
+      if (promiseDone) {
+        internal(promiseDone);
+      }
+      else {
+        return self.promise(function(done) {
+          internal(done);
+        }.bind(self));
+      }
     },
+
 
     getProducts: function() {
       return this.dataService.query('Product', this.fields.product);
