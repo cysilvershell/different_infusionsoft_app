@@ -15,7 +15,8 @@
       'click .toggle-search'            : 'toggleSearch',
       'click .create-contact'           : 'createContact',
       'keypress .search-input'          : 'searchOnEnter',
-      'ticket.requester.email.changed'  : 'searchByRequester'
+      'ticket.requester.email.changed'  : 'searchByRequester',
+      'userInfo.done'                   : 'onUserInfoDone'
     },
     fields: {
       contact               : [ 'FirstName', 'LastName', 'StreetAddress1', 'StreetAddress2', 'City', 'State', 'PostalCode', 'Country', 'Company', 'DateCreated', 'Email', 'Groups', 'Id', 'JobTitle', 'Leadsource', 'OwnerID', 'Phone1', 'Phone1Ext', 'Phone1Type' ],
@@ -29,7 +30,8 @@
       recurringOrder        : [ 'NextBillDate', 'ProductId', 'BillingAmt', 'Status' ]
     },
     requests: {
-      'get' : function(request) { return request; }
+      'get' : function(request) { return request; },
+      'userInfo': { url: '/api/v2/users/me.json' }
     },
 
     // Methods
@@ -46,6 +48,14 @@
     createContact: function() {
       this.$('.create-contact').attr("disabled", "disabled");
       this.dataService.createContact(this);
+    },
+
+    toLocaleDate: function(date) {
+      return new Date(date).toLocaleString(this.locale, {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric"
+      });
     },
 
     addTag: function(e) {
@@ -238,7 +248,7 @@
     formatDate: function(value) {
       if (_.isString(value)) {
         var dateParts = this.FORMAT_DATE.exec(value).slice(1);
-        return '%@/%@/%@'.fmt(dateParts[1], dateParts[2], dateParts[0]);
+        return this.toLocaleDate('%@/%@/%@'.fmt(dateParts[1], dateParts[2], dateParts[0]));
       }
       return value;
     },
@@ -415,7 +425,7 @@
       this.dataService = this.createDataService();
       this.reject      = this.promise(function(done, fail) { fail(); });
 
-      this.searchByRequester();
+      this.ajax('userInfo').done(this.searchByRequester.bind(this));
     },
 
     isEmail: function(value) {
@@ -434,6 +444,10 @@
       var requester = this.ticket().requester();
       if (!requester) { return; }
       this.getContacts(requester.email());
+    },
+
+    onUserInfoDone: function(data) {
+      this.locale = data.user.locale;
     },
 
     searchOnEnter: function(e) {
