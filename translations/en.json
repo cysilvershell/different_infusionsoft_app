@@ -32,6 +32,7 @@
         "tag": "Tag",
         "title": "Tags"
       },
+      "ordersSubscriptionsTitle": "Orders & Subscriptions",
       "orders": {
         "date": "Date",
         "empty": "No orders found",
