@@ -69,7 +69,7 @@
     </section>
 
     <section class="orders-subscriptions">
-      <h5>{{t "contact.details.orders.title" }} &amp; {{t "contact.details.subscriptions.title" }}</h5>
+      <h5>{{t "contact.details.ordersSubscriptionsTitle"}}</h5>
       <div class="content">
         <h6>{{t "contact.details.orders.title" }}</h6>
         <div class="orders">{{t "global.loading" }}</div>

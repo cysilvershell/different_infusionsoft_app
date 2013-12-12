@@ -201,4 +201,7 @@ parts:
       key: "txt.apps.infusionsoft_app.addTag.success"
       title: "Success message after adding a tag successfully in Infusionsoft"
       value: "Added tag to contact"
-
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.ordersSubscriptionsTitle"
+      title: "Title for the orders and subscriptions part"
+      value: "Orders & Subscriptions"
