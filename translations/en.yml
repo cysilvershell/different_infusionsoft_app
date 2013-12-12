@@ -8,7 +8,7 @@ parts:
   - translation:
       key: "txt.apps.infusionsoft_app.app.description"
       title: "Application Description"
-      value: "Displays customer, order, and subscription details from Infusionsoft"
+      value: "Displays customer, order and subscriptions details from Infusionsoft"
   - translation:
       key: "txt.apps.infusionsoft_app.app.name"
       title: "Application Name"
@@ -144,7 +144,7 @@ parts:
   - translation:
       key: "txt.apps.infusionsoft_app.contacts.empty"
       title: "App field error for no matches found"
-      value: "Could not match this end-user with an Infusionsoft contact. Try searching instead."
+      value: "We're sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead."
   - translation:
       key: "txt.apps.infusionsoft_app.contacts.generalInformation"
       title: "App field label for General information"
@@ -168,19 +168,19 @@ parts:
   - translation:
       key: "txt.apps.infusionsoft_app.global.limitReached"
       title: "App error message for loading too many tags"
-      value: "You reached the maximum limit of results to display. Contact Support for additional information."
+      value: "You reached the maximum limit of results to display. Please contact Support for additional information."
   - translation:
       key: "txt.apps.infusionsoft_app.message.default.title"
       title: "Generic error message"
-      value: "An error has occurred"
+      value: "An error has occured"
   - translation:
       key: "txt.apps.infusionsoft_app.message.default.message"
       title: "Default error message"
-      value: "There was an error loading contact data. Try again later."
+      value: "There was an error loading contact data. Please try again later."
   - translation:
       key: "txt.apps.infusionsoft_app.message.badGateway.message"
       title: "Error message for incorrect settings/unable to connect to Infusionsoft"
-      value: "There was an error connecting to Infusionsoft. Ensure that the Subdomain and API token are correct in your settings."
+      value: "There was an error connecting to Infusionsoft. Please ensure the Subdomain and API token are correct in your settings."
   - translation:
       key: "txt.apps.infusionsoft_app.search.invalid"
       title: "Error message for invalid search criteria"
@@ -205,3 +205,23 @@ parts:
       key: "txt.apps.infusionsoft_app.contact.details.ordersSubscriptionsTitle"
       title: "Title for the orders and subscriptions part"
       value: "Orders & Subscriptions"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.paid"
+      title: "Label displayed next to an order when paid"
+      value: "Paid"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.unpaid"
+      title: "Label displayed next to an order when unpaid"
+      value: "Unpaid"
+  - translation:
+      key: "txt.apps.infusionsoft_app.contact.details.orders.amount"
+      title: "Display an amount of dollars"
+      value: "${{amount}}"
+  - translation:
+      key: "txt.apps.infusionsoft_app.addTag.title"
+      title: "Title of the 'add tag' section"
+      value: "Add tag to contact"
+  - translation:
+      key: "txt.apps.infusionsoft_app.addTag.default"
+      title: "Default choice in the add tag dropdown"
+      value: "Please choose:"
