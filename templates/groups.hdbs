@@ -23,10 +23,10 @@
 {{/if}}
 {{#if groups}}
 <div class="add-tags">
-  <h6>Add tag to contact</h6>
+  <h6>{{t "addTag.title"}}</h6>
   <div class="clearfix tags">
     <select class="tag">
-      <option value="">Please choose:</option>
+      <option value="">{{t "addTag.default"}}</option>
       {{#categories}}
       <optgroup label="{{categoryName}}">
         {{#groups}}

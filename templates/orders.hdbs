@@ -12,12 +12,12 @@
     <tr>
       <td>{{dueDate}}</td>
       <td>{{jobTitle}}</td>
-      <td>${{invoiceTotal}}</td>
+      <td>{{t "contact.details.orders.amount" amount=invoiceTotal}}</td>
       <td>
         {{#if payStatus}}
-        <span class="label label-success">Paid</span>
+        <span class="label label-success">{{t "contact.details.orders.paid"}}</span>
         {{else}}
-        <span class="label label-important">Unpaid</span>
+        <span class="label label-important">{{t "contact.dertails.orders.unpaid"}}</span>
         {{/if}}
       </td>
     </tr>
