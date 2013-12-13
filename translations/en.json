@@ -1,11 +1,11 @@
 {
   "app": {
-    "description": "Displays customer, order and subscriptions details from Infusionsoft",
+    "description": "Displays customer, order, and subscription details from Infusionsoft",
     "name": "Infusionsoft App",
     "parameters": {
       "subdomain": {
         "label": "Infusionsoft App Name",
-        "helpText": "Enter the first part of the subdomain only here. For example enter 'yourcompany'"
+        "helpText": "Enter only the first part of the subdomain here (for example: 'yourcompany')."
       },
       "token": {
         "label": "API token",
@@ -56,7 +56,7 @@
     }
   },
   "contacts": {
-    "empty": "We're sorry but it appears we were unable to match this end-user with an Infusionsoft contact. You can try searching instead.",
+    "empty": "Could not match this end-user with an Infusionsoft contact. Try searching instead.",
     "generalInformation": "General information",
     "more": "See more",
     "create": "Create a contact for this end-user"
@@ -64,15 +64,15 @@
   "global": {
     "loading": "Loading...",
     "loadingLong": "Please wait, loading data",
-    "limitReached": "You reached the maximum limit of results to display. Please contact Support for additional information."
+    "limitReached": "You reached the maximum limit of results to display. Contact Support for additional information."
   },
   "message": {
     "default": {
-      "title": "An error has occured",
-      "message": "There was an error loading contact data. Please try again later."
+      "title": "An error has occurred",
+      "message": "There was an error loading contact data. Try again later."
     },
     "badGateway": {
-      "message": "There was an error connecting to Infusionsoft. Please ensure the Subdomain and API token are correct in your settings."
+      "message": "There was an error connecting to Infusionsoft. Ensure that the Subdomain and API token are correct in your settings."
     }
   },
   "search": {
