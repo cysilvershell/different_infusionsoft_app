@@ -196,7 +196,7 @@ parts:
   - translation:
       key: "txt.apps.infusionsoft_app.addTag.error"
       title: "Error message for failure to add tag if it already has been added"
-      value: "Failed to add tag to contact. Check to see if you have already added it"
+      value: "Failed to add tag to contact. Check to see if you have already added it."
   - translation:
       key: "txt.apps.infusionsoft_app.addTag.success"
       title: "Success message after adding a tag successfully in Infusionsoft"
