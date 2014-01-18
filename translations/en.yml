@@ -3,6 +3,7 @@ title: "Infusionsoft"
 packages:
   - default
   - app_infusionsoft_app
+  - classic
 
 parts:
   - translation:
