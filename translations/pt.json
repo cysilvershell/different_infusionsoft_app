@@ -38,7 +38,10 @@
         "order": "Pedido",
         "status": "Status",
         "title": "Pedidos",
-        "total": "Total"
+        "total": "Total",
+        "paid": "Pago",
+        "unpaid": "Não pago",
+        "amount": "${{amount}}"
       },
       "subscriptions": {
         "billAmount": "Qtd. de faturamento",
@@ -48,7 +51,8 @@
         "status": "Status",
         "title": "Assinaturas"
       },
-      "edit": "Clique para editar esse contato"
+      "edit": "Clique para editar esse contato",
+      "ordersSubscriptionsTitle": "Pedidos e assinaturas"
     }
   },
   "contacts": {
@@ -77,7 +81,9 @@
     "toggle": "Clique para alternar a pesquisa"
   },
   "addTag": {
-    "error": "Falha ao adicionar a tag ao contato. Verifique se você já a adicionou",
-    "success": "Tag adicionada ao conteúdo"
+    "error": "Falha ao adicionar a tag ao contato. Verifique se você já a adicionou.",
+    "success": "Tag adicionada ao conteúdo",
+    "title": "Tag adicionada ao contato",
+    "default": "Escolha:"
   }
 }

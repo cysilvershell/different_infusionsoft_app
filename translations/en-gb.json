@@ -38,7 +38,10 @@
         "order": "Order",
         "status": "Status",
         "title": "Orders",
-        "total": "Total"
+        "total": "Total",
+        "paid": "Paid",
+        "unpaid": "Unpaid",
+        "amount": "${{amount}}"
       },
       "subscriptions": {
         "billAmount": "Bill amt.",
@@ -48,7 +51,8 @@
         "status": "Status",
         "title": "Subscriptions"
       },
-      "edit": "Click to edit this contact"
+      "edit": "Click to edit this contact",
+      "ordersSubscriptionsTitle": "Orders & Subscriptions"
     }
   },
   "contacts": {
@@ -77,7 +81,9 @@
     "toggle": "Click to toggle search"
   },
   "addTag": {
-    "error": "Failed to add tag to contact. Check to see if you have already added it",
-    "success": "Added tag to contact"
+    "error": "Failed to add tag to contact. Check to see if you have already added it.",
+    "success": "Added tag to contact",
+    "title": "Add tag to contact",
+    "default": "Please choose:"
   }
 }

@@ -38,17 +38,21 @@
         "order": "Bestellung",
         "status": "Status",
         "title": "Bestellungen",
-        "total": "Gesamtsumme"
+        "total": "Summe",
+        "paid": "Bezahlt",
+        "unpaid": "Nicht bezahlt",
+        "amount": "USD {{amount}}"
       },
       "subscriptions": {
-        "billAmount": "Rechnungsbetrag",
-        "date": "Nächstes Rechnungsdatum",
+        "billAmount": "Betrag",
+        "date": "Nächste Abrechnung",
         "empty": "Keine Abonnements gefunden",
         "plan": "Plan",
         "status": "Status",
         "title": "Abonnements"
       },
-      "edit": "Klicken, um diesen Kontakt zu bearbeiten"
+      "edit": "Klicken, um diesen Kontakt zu bearbeiten",
+      "ordersSubscriptionsTitle": "Bestellungen und Abonnements"
     }
   },
   "contacts": {
@@ -78,6 +82,8 @@
   },
   "addTag": {
     "error": "Stichwort konnte nicht zum Kontakt hinzugefügt werden. Prüfen Sie, ob Sie es bereits hinzugefügt haben.",
-    "success": "Stichwort zum Kontakt hinzugefügt"
+    "success": "Stichwort zum Kontakt hinzugefügt",
+    "title": "Stichwort zum Kontakt hinzufügen",
+    "default": "Bitte auswählen:"
   }
 }

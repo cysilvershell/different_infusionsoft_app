@@ -1,89 +1,255 @@
 {
   "app": {
-    "description": "Displays customer, order, and subscription details from Infusionsoft",
-    "name": "Infusionsoft App",
+    "description": {
+      "title": "Application Description",
+      "value": "Displays customer, order, and subscription details from Infusionsoft"
+    },
+    "name": {
+      "title": "Application Name",
+      "value": "Infusionsoft App"
+    },
     "parameters": {
       "subdomain": {
-        "label": "Infusionsoft App Name",
-        "helpText": "Enter only the first part of the subdomain here (for example: 'yourcompany')."
+        "label": {
+          "title": "Infusionsoft App Name (ie appname.infusionsoft.com)",
+          "value": "Infusionsoft App Name"
+        },
+        "helpText": {
+          "title": "Help text for subdomain field",
+          "value": "Enter only the first part of the subdomain here (for example: 'yourcompany')."
+        }
       },
       "token": {
-        "label": "API token",
-        "helpText": "You can find your Infusionsoft API token in the Infusionsoft Admin settings section"
+        "label": {
+          "title": "API token from Infusionsoft",
+          "value": "API token"
+        },
+        "helpText": {
+          "title": "API Token from Infusionsoft help text",
+          "value": "You can find your Infusionsoft API token in the Infusionsoft Admin settings section"
+        }
       }
-    }
+    },
+    "package": "infusionsoft_app"
   },
   "contact": {
     "details": {
-      "billingAddress": "Billing address",
-      "company": "Company",
-      "dateCreated": "Contact created date",
-      "email": "Email",
-      "jobTitle": "Job title",
-      "leadSource": "Lead source",
-      "owner": "Owner",
-      "ownerEmpty": "Could not find owner info",
-      "phone1": "Phone 1",
-      "showMore": "See more tags",
-      "group": {
-        "category": "Category",
-        "date": "Date",
-        "empty": "No tags found",
-        "tag": "Tag",
-        "title": "Tags"
+      "billingAddress": {
+        "title": "App field label for Billing address",
+        "value": "Billing address"
       },
-      "ordersSubscriptionsTitle": "Orders & Subscriptions",
+      "company": {
+        "title": "App field label for Company",
+        "value": "Company"
+      },
+      "dateCreated": {
+        "title": "App field label for Contact created date",
+        "value": "Contact created date"
+      },
+      "email": {
+        "title": "App field label for email address",
+        "value": "Email"
+      },
+      "jobTitle": {
+        "title": "App field label for job title",
+        "value": "Job title"
+      },
+      "leadSource": {
+        "title": "App field label for lead source",
+        "value": "Lead source"
+      },
+      "owner": {
+        "title": "App field label for owner",
+        "value": "Owner"
+      },
+      "ownerEmpty": {
+        "title": "App field error if owner not found",
+        "value": "Could not find owner info"
+      },
+      "phone1": {
+        "title": "App field label for Phone 1",
+        "value": "Phone 1"
+      },
+      "showMore": {
+        "title": "Link to display more tags",
+        "value": "See more tags"
+      },
+      "group": {
+        "category": {
+          "title": "App field label for category",
+          "value": "Category"
+        },
+        "date": {
+          "title": "App field label for group date field",
+          "value": "Date"
+        },
+        "empty": {
+          "title": "App field placeholder for when there no tags",
+          "value": "No tags found"
+        },
+        "tag": {
+          "title": "App field label for tags",
+          "value": "Tag"
+        },
+        "title": {
+          "title": "App field label for tag group",
+          "value": "Tags"
+        }
+      },
       "orders": {
-        "date": "Date",
-        "empty": "No orders found",
-        "order": "Order",
-        "status": "Status",
-        "title": "Orders",
-        "total": "Total",
-        "paid": "Paid",
-        "unpaid": "Unpaid",
-        "amount": "${{amount}}"
+        "date": {
+          "title": "App field label for date",
+          "value": "Date"
+        },
+        "empty": {
+          "title": "App field placeholder text when there are no orders",
+          "value": "No orders found"
+        },
+        "order": {
+          "title": "App field label for orders",
+          "value": "Order"
+        },
+        "status": {
+          "title": "App field label for order details status",
+          "value": "Status"
+        },
+        "title": {
+          "title": "App field label for order title",
+          "value": "Orders"
+        },
+        "total": {
+          "title": "App field label for order total",
+          "value": "Total"
+        },
+        "paid": {
+          "title": "Label displayed next to an order when paid",
+          "value": "Paid"
+        },
+        "unpaid": {
+          "title": "Label displayed next to an order when unpaid",
+          "value": "Unpaid"
+        },
+        "amount": {
+          "title": "Display an amount of dollars",
+          "value": "${{amount}}"
+        }
       },
       "subscriptions": {
-        "billAmount": "Bill amt.",
-        "date": "Next bill date",
-        "empty": "No subscriptions found",
-        "plan": "Plan",
-        "status": "Status",
-        "title": "Subscriptions"
+        "billAmount": {
+          "title": "App field label for subscription bill amounts",
+          "value": "Bill amt."
+        },
+        "date": {
+          "title": "App field label for subscription dates",
+          "value": "Next bill date"
+        },
+        "empty": {
+          "title": "App field error for no subscriptions",
+          "value": "No subscriptions found"
+        },
+        "plan": {
+          "title": "App field label for subscriptions plan",
+          "value": "Plan"
+        },
+        "status": {
+          "title": "App field label for subscriptions status",
+          "value": "Status"
+        },
+        "title": {
+          "title": "App field label for subscriptions title",
+          "value": "Subscriptions"
+        }
       },
-      "edit": "Click to edit this contact"
+      "edit": {
+        "title": "App field label for editing contact details",
+        "value": "Click to edit this contact"
+      },
+      "ordersSubscriptionsTitle": {
+        "title": "Title for the orders and subscriptions part",
+        "value": "Orders & Subscriptions"
+      }
     }
   },
   "contacts": {
-    "empty": "Could not match this end-user with an Infusionsoft contact. Try searching instead.",
-    "generalInformation": "General information",
-    "more": "See more",
-    "create": "Create a contact for this end-user"
+    "empty": {
+      "title": "App field error for no matches found",
+      "value": "Could not match this end-user with an Infusionsoft contact. Try searching instead."
+    },
+    "generalInformation": {
+      "title": "App field label for General information",
+      "value": "General information"
+    },
+    "more": {
+      "title": "App field label for more link for contacts",
+      "value": "See more"
+    },
+    "create": {
+      "title": "Button to create a contact for the current end-user",
+      "value": "Create a contact for this end-user"
+    }
   },
   "global": {
-    "loading": "Loading...",
-    "loadingLong": "Please wait, loading data",
-    "limitReached": "You reached the maximum limit of results to display. Contact Support for additional information."
+    "loading": {
+      "title": "App text for loading ",
+      "value": "Loading..."
+    },
+    "loadingLong": {
+      "title": "App text for loading",
+      "value": "Please wait, loading data"
+    },
+    "limitReached": {
+      "title": "App error message for loading too many tags",
+      "value": "You reached the maximum limit of results to display. Contact Support for additional information."
+    }
   },
   "message": {
     "default": {
-      "title": "An error has occurred",
-      "message": "There was an error loading contact data. Try again later."
+      "title": {
+        "title": "Generic error message",
+        "value": "An error has occurred"
+      },
+      "message": {
+        "title": "Default error message",
+        "value": "There was an error loading contact data. Try again later."
+      }
     },
     "badGateway": {
-      "message": "There was an error connecting to Infusionsoft. Ensure that the Subdomain and API token are correct in your settings."
+      "message": {
+        "title": "Error message for incorrect settings/unable to connect to Infusionsoft",
+        "value": "There was an error connecting to Infusionsoft. Ensure that the Subdomain and API token are correct in your settings."
+      }
     }
   },
   "search": {
-    "invalid": "Not a valid search",
-    "placeholder": "Search by name or email",
-    "toggle": "Click to toggle search"
+    "invalid": {
+      "title": "Error message for invalid search criteria",
+      "value": "Not a valid search"
+    },
+    "placeholder": {
+      "title": "Search box default text",
+      "value": "Search by name or email"
+    },
+    "toggle": {
+      "title": "Alt text for Toggle search button",
+      "value": "Click to toggle search"
+    }
   },
   "addTag": {
-    "error": "Failed to add tag to contact. Check to see if you have already added it",
-    "success": "Added tag to contact",
-    "title": "Add tag to contact",
-    "default": "Please choose:"
+    "error": {
+      "title": "Error message for failure to add tag if it already has been added",
+      "value": "Failed to add tag to contact. Check to see if you have already added it."
+    },
+    "success": {
+      "title": "Success message after adding a tag successfully in Infusionsoft",
+      "value": "Added tag to contact"
+    },
+    "title": {
+      "title": "Title of the 'add tag' section",
+      "value": "Add tag to contact"
+    },
+    "default": {
+      "title": "Default choice in the add tag dropdown",
+      "value": "Please choose:"
+    }
   }
 }

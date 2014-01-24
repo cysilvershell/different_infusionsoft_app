@@ -5,7 +5,7 @@
     "parameters": {
       "subdomain": {
         "label": "Nombre de aplicación Infusionsoft",
-        "helpText": "Ingrese solo la primera parte del subdominio acá (por ejemplo: \"sucompañía\")."
+        "helpText": "Ingrese solo la primera parte del subdominio acá (por ejemplo: \"sucompañía\")"
       },
       "token": {
         "label": "Token de API",
@@ -38,17 +38,21 @@
         "order": "Pedido",
         "status": "Estado",
         "title": "Pedidos",
-        "total": "Total"
+        "total": "Total",
+        "paid": "Pagado",
+        "unpaid": "Sin pagar",
+        "amount": "${{amount}}"
       },
       "subscriptions": {
-        "billAmount": "Monto de la factura",
-        "date": "Fecha de próxima factura",
+        "billAmount": "Monto de factura",
+        "date": "Fecha próx. factura",
         "empty": "No se han encontrado suscripciones",
         "plan": "Plan",
         "status": "Estado",
         "title": "Suscripciones"
       },
-      "edit": "Haga clic para editar este contacto"
+      "edit": "Haga clic para editar este contacto",
+      "ordersSubscriptionsTitle": "Pedidos y suscripciones"
     }
   },
   "contacts": {
@@ -77,7 +81,9 @@
     "toggle": "Haga clic para abrir/cerrar el cuadro de búsqueda"
   },
   "addTag": {
-    "error": "No se pudo agregar la pestaña al contacto. Verifique si ya la ha agregado",
-    "success": "Se ha agregado la etiqueta al contacto"
+    "error": "No se pudo agregar la etiqueta al contacto. Verifique si ya la ha agregado.",
+    "success": "Se ha agregado la etiqueta al contacto",
+    "title": "Agregar etiqueta al contacto",
+    "default": "Elija:"
   }
 }

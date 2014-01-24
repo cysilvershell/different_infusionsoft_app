@@ -1,83 +1,89 @@
 {
   "app": {
-    "description": "Viser kunde-, ordre- og abonnementdetaljer fra Infusionsoft",
-    "name": "Infusionsoft App",
+    "description": "Viser kunde-, bestilling- og abonnementsdetaljer fra Infusionsoft",
+    "name": "Infusionsoft-appen",
     "parameters": {
       "subdomain": {
-        "label": "Navn på Infusionsoft App",
-        "helpText": "Indtast kun den første del af underdomænet her (for eksempel: 'ditfirma')."
+        "label": "Navnet på Infusionsoft-appen",
+        "helpText": "Legg bare inn første del av underdomenet her (f.eks. «dinbedrift»)."
       },
       "token": {
         "label": "API-token",
-        "helpText": "API-tokenet til Infusionsoft findes i området med indstillinger for Infusionsoft Admin"
+        "helpText": "Du finner API-tokenet til Infusionsoft i administrasjonsinnstillingene i Infusionsoft"
       }
     }
   },
   "contact": {
     "details": {
       "billingAddress": "Faktureringsadresse",
-      "company": "Firma",
-      "dateCreated": "Oprettelsesdato for kontakt",
-      "email": "E-mail",
-      "jobTitle": "Jobtitel",
-      "leadSource": "Kontaktkilde",
-      "owner": "Indehaver",
-      "ownerEmpty": "Kunne ikke finde indehavers info",
+      "company": "Bedrift",
+      "dateCreated": "Opprettelsesdato for kontaktperson",
+      "email": "E-post",
+      "jobTitle": "Jobbtittel",
+      "leadSource": "Kilde til salgsmulighet",
+      "owner": "Eier",
+      "ownerEmpty": "Finner ikke eierinfo",
       "phone1": "Telefon 1",
-      "showMore": "Se flere tags",
+      "showMore": "Se flere tagger",
       "group": {
         "category": "Kategori",
         "date": "Dato",
-        "empty": "Ingen tags blev fundet",
-        "tag": "Tag",
-        "title": "Tags"
+        "empty": "Finner ingen tagger",
+        "tag": "Tagg",
+        "title": "Tagger"
       },
       "orders": {
         "date": "Dato",
-        "empty": "Ingen ordrer blev fundet",
-        "order": "Ordre",
+        "empty": "Finner ingen bestillinger",
+        "order": "Bestilling",
         "status": "Status",
-        "title": "Ordrer",
-        "total": "I alt"
+        "title": "Bestillinger",
+        "total": "Totalt",
+        "paid": "Betalt",
+        "unpaid": "Ikke betalt",
+        "amount": "USD{{amount}}"
       },
       "subscriptions": {
-        "billAmount": "Fakturer. beløb",
-        "date": "Næste faktureringsdato",
-        "empty": "Ingen abonnementer blev fundet",
-        "plan": "Plan",
+        "billAmount": "Fakturabeløp",
+        "date": "Neste fakturadato",
+        "empty": "Finner ingen abonnementer",
+        "plan": "Abonnement",
         "status": "Status",
         "title": "Abonnementer"
       },
-      "edit": "Klik for at redigere denne kontakt"
+      "edit": "Klikk for å redigere denne kontaktpersonen",
+      "ordersSubscriptionsTitle": "Bestillinger og abonnementer"
     }
   },
   "contacts": {
-    "empty": "Kunne ikke matche denne slutbruger med en Infusionsoft-kontakt. Prøv at søge i stedet for.",
-    "generalInformation": "Generelle oplysninger",
-    "more": "Se mere",
-    "create": "Opret en kontakt for denne slutbrugere"
+    "empty": "Finner ingen Infusionsoft-kontaktperson som samsvarer med denne sluttbrukeren. Prøv å søke i stedet.",
+    "generalInformation": "Generell informasjon",
+    "more": "Se mer",
+    "create": "Opprett en kontaktperson for denne sluttbrukeren"
   },
   "global": {
-    "loading": "Indlæser...",
-    "loadingLong": "Vent venligst, indlæser data",
-    "limitReached": "Du har nået det maksimale antal resultater, der kan vises. Kontakt support for yderligere oplysninger."
+    "loading": "Laster...",
+    "loadingLong": "Vent litt, laster data...",
+    "limitReached": "Du har nådd maks. antall resultater som kan vises. Ta kontakt med kundestøtte for å få mer informasjon."
   },
   "message": {
     "default": {
-      "title": "Der forekom en fejl",
-      "message": "Der forekom en fejl under indlæsning af kontaktdata. Prøv igen senere."
+      "title": "Det er oppstått en feil",
+      "message": "Det oppstod en feil under lastingen av data om kontaktperson. Prøv igjen senere."
     },
     "badGateway": {
-      "message": "Der forekom en fejl ved oprettelse af forbindelse til Infusionsoft. Sørg for, at underdomænet og API-token’et er korrekte i dine indstillinger."
+      "message": "Det oppstod en feil under tilkobling til Infusionsoft. Sørg for at det er riktig underdomene og API-token i innstillingene."
     }
   },
   "search": {
-    "invalid": "Ikke en gyldig søgning",
-    "placeholder": "Søg efter navn eller e-mail",
-    "toggle": "Klik for at slå søgning til og fra"
+    "invalid": "Ikke et gyldig søk",
+    "placeholder": "Søk etter navn eller e-postadresse",
+    "toggle": "Klikk for å veksle søket"
   },
   "addTag": {
-    "error": "Kunne ikke føje tag til kontakt. Kontroller, om du allerede har tilføjet den",
-    "success": "Føjede tag til kontakt"
+    "error": "Kan ikke legge til tagg til kontaktpersonen. Sjekk om du allerede har lagt den til.",
+    "success": "La til tagg til kontaktpersonen",
+    "title": "Legg til tagg til kontaktpersonen",
+    "default": "Velg:"
   }
 }
