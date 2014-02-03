@@ -38,7 +38,10 @@
         "order": "Commande",
         "status": "Statut",
         "title": "Commandes",
-        "total": "Total"
+        "total": "Total",
+        "paid": "Payé",
+        "unpaid": "Non payé",
+        "amount": "{{amount}} $"
       },
       "subscriptions": {
         "billAmount": "Montant de la facture",
@@ -48,7 +51,8 @@
         "status": "Statut",
         "title": "Abonnements"
       },
-      "edit": "Cliquez pour modifier ce contact"
+      "edit": "Cliquez pour modifier ce contact",
+      "ordersSubscriptionsTitle": "Commandes et abonnements"
     }
   },
   "contacts": {
@@ -78,6 +82,8 @@
   },
   "addTag": {
     "error": "Échec de l’ajout du marqueur au contact. Vérifiez que vous ne l’avez pas déjà ajouté.",
-    "success": "Marqueur ajouté au contenu"
+    "success": "Marqueur ajouté au contenu",
+    "title": "Ajouter le marqueur au contact",
+    "default": "Choisissez :"
   }
 }

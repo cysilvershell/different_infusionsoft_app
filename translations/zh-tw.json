@@ -38,7 +38,10 @@
         "order": "訂單",
         "status": "狀態",
         "title": "訂單",
-        "total": "全部"
+        "total": "合計",
+        "paid": "已付款",
+        "unpaid": "未付款",
+        "amount": "${{amount}}"
       },
       "subscriptions": {
         "billAmount": "帳單金額",
@@ -48,7 +51,8 @@
         "status": "狀態",
         "title": "訂閱"
       },
-      "edit": "按一下編輯此連絡人"
+      "edit": "按一下編輯此連絡人",
+      "ordersSubscriptionsTitle": "訂單和訂閱"
     }
   },
   "contacts": {
@@ -77,7 +81,9 @@
     "toggle": "按一下切換搜尋"
   },
   "addTag": {
-    "error": "新增標籤至連絡人失敗。檢查您是否已經新增",
-    "success": "新增標籤至連絡人"
+    "error": "新增標籤至連絡人失敗。檢查您是否已經新增。",
+    "success": "新增標籤至連絡人",
+    "title": "新增標籤至連絡人",
+    "default": "請選擇："
   }
 }

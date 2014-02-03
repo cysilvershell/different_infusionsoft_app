@@ -38,7 +38,10 @@
         "order": "Ordre",
         "status": "Status",
         "title": "Ordrer",
-        "total": "I alt"
+        "total": "I alt",
+        "paid": "Betalt",
+        "unpaid": "Ubetalt",
+        "amount": "${{amount}}"
       },
       "subscriptions": {
         "billAmount": "Fakturer. beløb",
@@ -48,7 +51,8 @@
         "status": "Status",
         "title": "Abonnementer"
       },
-      "edit": "Klik for at redigere denne kontakt"
+      "edit": "Klik for at redigere denne kontakt",
+      "ordersSubscriptionsTitle": "Ordrer og abonnementer"
     }
   },
   "contacts": {
@@ -77,7 +81,9 @@
     "toggle": "Klik for at slå søgning til og fra"
   },
   "addTag": {
-    "error": "Kunne ikke føje tag til kontakt. Kontroller, om du allerede har tilføjet den",
-    "success": "Føjede tag til kontakt"
+    "error": "Kunne ikke føje tag til kontakt. Kontroller, om du allerede har tilføjet den.",
+    "success": "Føjede tag til kontakt",
+    "title": "Føj tag til kontakt",
+    "default": "Vælg:"
   }
 }

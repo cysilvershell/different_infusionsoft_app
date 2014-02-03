@@ -38,7 +38,10 @@
         "order": "Order",
         "status": "Status",
         "title": "Orders",
-        "total": "Totaal"
+        "total": "Totaal",
+        "paid": "Betaald",
+        "unpaid": "Niet betaald",
+        "amount": "${{amount}}"
       },
       "subscriptions": {
         "billAmount": "Factuurbedrag",
@@ -48,7 +51,8 @@
         "status": "Status",
         "title": "Abonnementen"
       },
-      "edit": "Klik om deze contactpersoon te bewerken"
+      "edit": "Klik om deze contactpersoon te bewerken",
+      "ordersSubscriptionsTitle": "Orders en abonnementen"
     }
   },
   "contacts": {
@@ -77,7 +81,9 @@
     "toggle": "Klik om zoeken in of uit te schakelen"
   },
   "addTag": {
-    "error": "Kan tag niet aan contactpersoon toevoegen. Controleer of u die niet al hebt toegevoegd",
-    "success": "Tag toevoegen aan contactpersoon"
+    "error": "Kan tag niet aan contactpersoon toevoegen. Controleer of u die niet al hebt toegevoegd.",
+    "success": "Tag toevoegen aan contactpersoon",
+    "title": "Tag toevoegen aan contactpersoon",
+    "default": "Maak een keuze:"
   }
 }

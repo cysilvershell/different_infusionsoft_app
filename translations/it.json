@@ -38,7 +38,10 @@
         "order": "Ordine",
         "status": "Stato",
         "title": "Ordini",
-        "total": "Totale"
+        "total": "Totale",
+        "paid": "Pagato",
+        "unpaid": "Non pagato",
+        "amount": "${{amount}}"
       },
       "subscriptions": {
         "billAmount": "Ammontare",
@@ -48,7 +51,8 @@
         "status": "Stato",
         "title": "Abbonamenti"
       },
-      "edit": "Fare clic per modificare qusto contatto"
+      "edit": "Fare clic per modificare qusto contatto",
+      "ordersSubscriptionsTitle": "Ordini e abbonamenti"
     }
   },
   "contacts": {
@@ -77,7 +81,9 @@
     "toggle": "Fare clic per selezionare o deselezionare la ricerca"
   },
   "addTag": {
-    "error": "Tag non aggiunto al contatto. Verificare che non sia già stata aggiunto",
-    "success": "Tag aggiunto al contatto"
+    "error": "Tag non aggiunta al contatto. Verificare che non sia già stata aggiunta.",
+    "success": "Tag aggiunto al contatto",
+    "title": "Aggiungi Tag al contatto",
+    "default": "Selezionate:"
   }
 }
