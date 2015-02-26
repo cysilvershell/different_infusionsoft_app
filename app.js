@@ -474,7 +474,7 @@
           if (truncated) {
             groups.splice(this.API_MAX_RESULTS_DEFAULT, Number.MAX_VALUE);
           }
-          var link = helpers.fmt("https://%@.infusionsoft.com/Contact/manageContact.jsp?view=edit&amp;ID=%@", this.setting('subdomain'), contactId);
+          var link = helpers.fmt("https://%@.infusionsoft.com/Contact/manageContact.jsp?view=edit&ID=%@", this.setting('subdomain'), contactId);
           $groups = this.renderTemplate('groups', {
             categories: this.data.categories,
             contactGroups: groups,
